@@ -3,6 +3,8 @@
 ; Overall CRC32 checksum: 238f2146
 ; Code base address: $8000
 
+.org 0
+
 .db "NES", $1a                 ; Magic string that always begins an iNES header
 .db $08                        ; Number of 16KB PRG-ROM banks
 .db $00                        ; Number of 8KB CHR-ROM banks
@@ -12,7 +14,7 @@
 .db $00                        ; Video format NTSC/PAL
 .dsb 6
 
-.org $8000
+.base $8000
 
 
 APU_DMC_FREQ = $4010
@@ -207,19 +209,19 @@ _label_8895:
 
 _label_8899:
 	lda #$00                       ; $8899  A9 00
-	sta a:_var_071b_indexed,X      ; $889B  9D 1B 07
+	sta _var_071b_indexed,X      ; $889B  9D 1B 07
 	dex                            ; $889E  CA
 	bpl _label_8899                ; $889F  10 F8
 	lda _var_0016                  ; $88A1  A5 16
 	and #$DF                       ; $88A3  29 DF
 	sta _var_0016                  ; $88A5  85 16
 	lda #$0F                       ; $88A7  A9 0F
-	sta a:_var_0708                ; $88A9  8D 08 07
+	sta _var_0708                ; $88A9  8D 08 07
 	ldx #$03                       ; $88AC  A2 03
 	lda #$00                       ; $88AE  A9 00
 
 _label_88b0:
-	sta a:_var_0702_indexed,X      ; $88B0  9D 02 07
+	sta _var_0702_indexed,X      ; $88B0  9D 02 07
 	dex                            ; $88B3  CA
 	bpl _label_88b0                ; $88B4  10 FA
 	pla                            ; $88B6  68
@@ -235,18 +237,18 @@ _label_88b0:
 	sta APU_PL2_HI                 ; $88CD  8D 07 40
 	sta APU_TRI_HI                 ; $88D0  8D 0B 40
 	sta APU_NOISE_HI               ; $88D3  8D 0F 40
-	sta a:$070C                    ; $88D6  8D 0C 07
-	sta a:$0710                    ; $88D9  8D 10 07
+	sta $070C                    ; $88D6  8D 0C 07
+	sta $0710                    ; $88D9  8D 10 07
 	lda #$00                       ; $88DC  A9 00
 	sta APU_DMC_FREQ               ; $88DE  8D 10 40
 	sta APU_PL1_SWEEP              ; $88E1  8D 01 40
 	sta APU_PL2_SWEEP              ; $88E4  8D 05 40
-	sta a:$070A                    ; $88E7  8D 0A 07
-	sta a:$070E                    ; $88EA  8D 0E 07
+	sta $070A                    ; $88E7  8D 0A 07
+	sta $070E                    ; $88EA  8D 0E 07
 	sta APU_DMC_RAW                ; $88ED  8D 11 40
 	lda #$0F                       ; $88F0  A9 0F
 	sta APU_SND_CHN                ; $88F2  8D 15 40
-	sta a:$071A                    ; $88F5  8D 1A 07
+	sta $071A                    ; $88F5  8D 1A 07
 	rts                            ; $88F8  60
 
 
@@ -342,22 +344,22 @@ _label_88b0:
 
 _label_8e7c:
 	lda #$00                       ; $8E7C  A9 00
-	sta a:$0718                    ; $8E7E  8D 18 07
+	sta $0718                    ; $8E7E  8D 18 07
 	lda #$0F                       ; $8E81  A9 0F
-	sta a:_var_0708                ; $8E83  8D 08 07
+	sta _var_0708                ; $8E83  8D 08 07
 	lda _var_0016                  ; $8E86  A5 16
 	ora #$30                       ; $8E88  09 30
 	ldy #$20                       ; $8E8A  A0 20
-	sty a:$0706                    ; $8E8C  8C 06 07
+	sty $0706                    ; $8E8C  8C 06 07
 	ldy #$00                       ; $8E8F  A0 00
-	sty a:$0707                    ; $8E91  8C 07 07
+	sty $0707                    ; $8E91  8C 07 07
 	sta _var_0016                  ; $8E94  85 16
 	ldy #$04                       ; $8E96  A0 04
 
 _label_8e98:
-	lda a:_var_0773_indexed,Y      ; $8E98  B9 73 07
+	lda _var_0773_indexed,Y      ; $8E98  B9 73 07
 	ora #$08                       ; $8E9B  09 08
-	sta a:_var_0773_indexed,Y      ; $8E9D  99 73 07
+	sta _var_0773_indexed,Y      ; $8E9D  99 73 07
 	dey                            ; $8EA0  88
 	bpl _label_8e98                ; $8EA1  10 F5
 	rts                            ; $8EA3  60
@@ -875,7 +877,7 @@ _label_8e98:
 
 .align $4000, $ff
 
-.org $8000
+.base $8000
 
 ; may be pointers
 .byte $10, $80 ; $c000
@@ -1799,7 +1801,7 @@ _label_8e98:
 .dsb $4000, $ff
 .dsb $4000, $ff
 
-.org $8000
+.base $8000
 
 
 .byte $a2, $ff, $9a, $a9, $30, $20, $3f, $eb, $a9, $06, $20, $45, $eb, $a9, $ff, $85 ; $C000
@@ -2523,7 +2525,7 @@ _var_0604_indexed = $0604
 _var_0608_indexed = $0608
 _var_0702_indexed = $0702
 
-.org $8000
+.base $8000
 
 
 .byte $a9, $01, $d0, $02, $a9, $00, $85, $04, $78, $d8, $a2, $ff, $9a, $a9, $30, $20 ; $8000
@@ -3551,7 +3553,7 @@ _var_0702_indexed = $0702
 .byte $4f, $52, $44, $20, $4f, $4b, $21, $50, $41, $53, $53, $57, $4f, $52, $44, $20 ; $BFE0
 .byte $45, $52, $52, $4f, $52, $21, $01, $09, $86, $00, $d4, $20, $00, $47, $46, $48 ; $BFF0
 ; HOME ROM
-.org $c000
+.base $c000
 
 .byte $44, $33, $39, $31, $36, $35, $32, $30, $42, $38, $37, $4a, $34, $30, $31, $32 ; $C000
 .byte $33, $34, $35, $36, $37, $38, $39, $42, $44, $46, $47, $48, $4a, $30, $33, $35 ; $C010
@@ -4056,8 +4058,8 @@ _label_e01b:
 	sta _var_0056                  ; $E024  85 56
 	lda #$01                       ; $E026  A9 01
 	sta _var_00a6                  ; $E028  85 A6
-	ldx a:_var_01b0                ; $E02A  AE B0 01
-	ldy a:_var_01b1                ; $E02D  AC B1 01
+	ldx _var_01b0                ; $E02A  AE B0 01
+	ldy _var_01b1                ; $E02D  AC B1 01
 	cpx #$AC                       ; $E030  E0 AC
 	bne _label_e038                ; $E032  D0 04
 	cpy #$53                       ; $E034  C0 53
@@ -4065,7 +4067,7 @@ _label_e01b:
 
 _label_e038:
 	lda #$00                       ; $E038  A9 00
-	sta a:$019D                    ; $E03A  8D 9D 01
+	sta $019D                    ; $E03A  8D 9D 01
 	sta _var_0001                  ; $E03D  85 01
 	sta $F4                        ; $E03F  85 F4
 	sta $F5                        ; $E041  85 F5
@@ -4074,20 +4076,20 @@ _label_e038:
 	ldy #$00                       ; $E047  A0 00
 
 _label_e049:
-	lda a:_data_f0eb_indexed,Y     ; $E049  B9 EB F0
-	sta a:_var_0161_indexed,Y      ; $E04C  99 61 01
+	lda _data_f0eb_indexed,Y     ; $E049  B9 EB F0
+	sta _var_0161_indexed,Y      ; $E04C  99 61 01
 	iny                            ; $E04F  C8
 	cpy #$3C                       ; $E050  C0 3C
 	bcc _label_e049                ; $E052  90 F5
 	lda #$3F                       ; $E054  A9 3F
-	sta a:$01A2                    ; $E056  8D A2 01
-	sta a:$01A3                    ; $E059  8D A3 01
-	sta a:$01A4                    ; $E05C  8D A4 01
-	sta a:$01A5                    ; $E05F  8D A5 01
+	sta $01A2                    ; $E056  8D A2 01
+	sta $01A3                    ; $E059  8D A3 01
+	sta $01A4                    ; $E05C  8D A4 01
+	sta $01A5                    ; $E05F  8D A5 01
 	lda #$AC                       ; $E062  A9 AC
-	sta a:_var_01b0                ; $E064  8D B0 01
+	sta _var_01b0                ; $E064  8D B0 01
 	lda #$53                       ; $E067  A9 53
-	sta a:_var_01b1                ; $E069  8D B1 01
+	sta _var_01b1                ; $E069  8D B1 01
 
 _label_e06c:
 	jsr _func_e5cb                 ; $E06C  20 CB E5
@@ -4101,7 +4103,7 @@ _label_e06c:
 	lda _var_0026_indexed          ; $E080  A5 26
 	cmp #$F8                       ; $E082  C9 F8
 	bne _label_e08b                ; $E084  D0 05
-	lda a:_data_ff08               ; $E086  AD 08 FF
+	lda _data_ff08               ; $E086  AD 08 FF
 	sta _var_0001                  ; $E089  85 01
 
 _label_e08b:
@@ -4158,7 +4160,7 @@ _func_e18b:
 	ldy #$03                       ; $E18F  A0 03
 
 _label_e191:
-	lda a:_var_0702_indexed,Y      ; $E191  B9 02 07
+	lda _var_0702_indexed,Y      ; $E191  B9 02 07
 	beq _label_e19b                ; $E194  F0 05
 	dey                            ; $E196  88
 	bpl _label_e191                ; $E197  10 F8
@@ -4166,7 +4168,7 @@ _label_e191:
 
 _label_e19b:
 	lda _var_0021                  ; $E19B  A5 21
-	sta a:_var_0702_indexed,Y      ; $E19D  99 02 07
+	sta _var_0702_indexed,Y      ; $E19D  99 02 07
 
 _label_e1a0:
 	ldy _var_0020_indexed          ; $E1A0  A4 20
@@ -4246,7 +4248,7 @@ _func_e20b:
 	lda #$F8                       ; $E20D  A9 F8
 
 _label_e20f:
-	sta a:_var_0200_indexed,X      ; $E20F  9D 00 02
+	sta _var_0200_indexed,X      ; $E20F  9D 00 02
 	inx                            ; $E212  E8
 	bne _label_e20f                ; $E213  D0 FA
 	rts                            ; $E215  60
@@ -4313,21 +4315,21 @@ _func_e24c:
 _label_e261:
 	jsr _func_e2f1                 ; $E261  20 F1 E2
 	lda #$00                       ; $E264  A9 00
-	sta a:_var_0100_indexed,X      ; $E266  9D 00 01
+	sta _var_0100_indexed,X      ; $E266  9D 00 01
 	lda _var_001c_indexed          ; $E269  A5 1C
-	sta a:_var_0103_indexed,X      ; $E26B  9D 03 01
+	sta _var_0103_indexed,X      ; $E26B  9D 03 01
 	clc                            ; $E26E  18
 	adc _var_0020_indexed          ; $E26F  65 20
 	sta _var_001c_indexed          ; $E271  85 1C
 	lda _var_001d                  ; $E273  A5 1D
-	sta a:_var_0102_indexed,X      ; $E275  9D 02 01
+	sta _var_0102_indexed,X      ; $E275  9D 02 01
 	adc #$00                       ; $E278  69 00
 	sta _var_001d                  ; $E27A  85 1D
 	lda _var_001b                  ; $E27C  A5 1B
 	ldy #$00                       ; $E27E  A0 00
 
 _label_e280:
-	sta a:_var_0104_indexed,X      ; $E280  9D 04 01
+	sta _var_0104_indexed,X      ; $E280  9D 04 01
 	iny                            ; $E283  C8
 	inx                            ; $E284  E8
 	inc _var_0018_indexed          ; $E285  E6 18
@@ -4344,7 +4346,7 @@ _label_e28d:
 	ldx _var_002d                  ; $E295  A6 2D
 	sta _var_002d                  ; $E297  85 2D
 	tya                            ; $E299  98
-	sta a:_var_0101_indexed,X      ; $E29A  9D 01 01
+	sta _var_0101_indexed,X      ; $E29A  9D 01 01
 	ldx _var_0021                  ; $E29D  A6 21
 	lda _var_0022_indexed          ; $E29F  A5 22
 	sta _var_002e                  ; $E2A1  85 2E
@@ -4358,7 +4360,7 @@ _label_e2a9:
 	ldx _var_002d                  ; $E2AD  A6 2D
 	sta _var_002d                  ; $E2AF  85 2D
 	tya                            ; $E2B1  98
-	sta a:_var_0101_indexed,X      ; $E2B2  9D 01 01
+	sta _var_0101_indexed,X      ; $E2B2  9D 01 01
 	ldx _var_0021                  ; $E2B5  A6 21
 	lda _var_0022_indexed          ; $E2B7  A5 22
 	sta _var_002e                  ; $E2B9  85 2E
@@ -4393,7 +4395,7 @@ _func_e2bc:
 	pla                            ; $E2E7  68
 	and #$03                       ; $E2E8  29 03
 	tay                            ; $E2EA  A8
-	lda a:_data_e5c7_indexed,Y     ; $E2EB  B9 C7 E5
+	lda _data_e5c7_indexed,Y     ; $E2EB  B9 C7 E5
 	jmp _label_e246                ; $E2EE  4C 46 E2
 
 _func_e2f1:
@@ -4473,18 +4475,18 @@ _label_e35b:
 	adc #$04                       ; $E35E  69 04
 	jsr _func_e31b                 ; $E360  20 1B E3
 	lda #$00                       ; $E363  A9 00
-	sta a:_var_0100_indexed,X      ; $E365  9D 00 01
+	sta _var_0100_indexed,X      ; $E365  9D 00 01
 	lda _var_0019                  ; $E368  A5 19
-	sta a:_var_0101_indexed,X      ; $E36A  9D 01 01
+	sta _var_0101_indexed,X      ; $E36A  9D 01 01
 	sta _var_0022_indexed          ; $E36D  85 22
 	lda _var_001d                  ; $E36F  A5 1D
-	sta a:_var_0102_indexed,X      ; $E371  9D 02 01
+	sta _var_0102_indexed,X      ; $E371  9D 02 01
 	lda _var_001c_indexed          ; $E374  A5 1C
-	sta a:_var_0103_indexed,X      ; $E376  9D 03 01
+	sta _var_0103_indexed,X      ; $E376  9D 03 01
 
 _label_e379:
 	lda (_var_001a_indexed),Y      ; $E379  B1 1A
-	sta a:_var_0104_indexed,X      ; $E37B  9D 04 01
+	sta _var_0104_indexed,X      ; $E37B  9D 04 01
 	bit _var_0018_indexed          ; $E37E  24 18
 	bmi _label_e387                ; $E380  30 05
 	iny                            ; $E382  C8
@@ -4561,14 +4563,14 @@ _label_e483:
 	lda #$07                       ; $E485  A9 07
 	jsr _func_e31b                 ; $E487  20 1B E3
 	lda #$03                       ; $E48A  A9 03
-	sta a:_var_0100_indexed,X      ; $E48C  9D 00 01
+	sta _var_0100_indexed,X      ; $E48C  9D 00 01
 	lda _var_001d                  ; $E48F  A5 1D
-	sta a:_var_0101_indexed,X      ; $E491  9D 01 01
+	sta _var_0101_indexed,X      ; $E491  9D 01 01
 	tya                            ; $E494  98
-	sta a:_var_0102_indexed,X      ; $E495  9D 02 01
+	sta _var_0102_indexed,X      ; $E495  9D 02 01
 	ldy _var_001a_indexed          ; $E498  A4 1A
-	lda a:_data_e5c7_indexed,Y     ; $E49A  B9 C7 E5
-	sta a:_var_0103_indexed,X      ; $E49D  9D 03 01
+	lda _data_e5c7_indexed,Y     ; $E49A  B9 C7 E5
+	sta _var_0103_indexed,X      ; $E49D  9D 03 01
 	lda _var_001c_indexed          ; $E4A0  A5 1C
 	and #$02                       ; $E4A2  29 02
 	lsr a                          ; $E4A4  4A
@@ -4580,11 +4582,11 @@ _label_e483:
 	iny                            ; $E4AD  C8
 
 _label_e4ae:
-	lda a:_data_e5bf_indexed,Y     ; $E4AE  B9 BF E5
-	sta a:_var_0104_indexed,X      ; $E4B1  9D 04 01
-	lda a:_data_e5c3_indexed,Y     ; $E4B4  B9 C3 E5
-	and a:_var_0103_indexed,X      ; $E4B7  3D 03 01
-	sta a:_var_0103_indexed,X      ; $E4BA  9D 03 01
+	lda _data_e5bf_indexed,Y     ; $E4AE  B9 BF E5
+	sta _var_0104_indexed,X      ; $E4B1  9D 04 01
+	lda _data_e5c3_indexed,Y     ; $E4B4  B9 C3 E5
+	and _var_0103_indexed,X      ; $E4B7  3D 03 01
+	sta _var_0103_indexed,X      ; $E4BA  9D 03 01
 	txa                            ; $E4BD  8A
 	clc                            ; $E4BE  18
 	adc #$07                       ; $E4BF  69 07
@@ -4715,7 +4717,7 @@ _func_e55c:
 
 _label_e56c:
 	lda (_var_0020_indexed),Y      ; $E56C  B1 20
-	sta a:_var_0018_indexed,Y      ; $E56E  99 18 00
+	sta _var_0018_indexed,Y      ; $E56E  99 18 00
 	iny                            ; $E571  C8
 	cpy #$06                       ; $E572  C0 06
 	bne _label_e56c                ; $E574  D0 F6
@@ -4787,10 +4789,10 @@ _func_e5cb:
 	tya                            ; $E5CB  98
 	pha                            ; $E5CC  48
 	ldy _var_0003                  ; $E5CD  A4 03
-	lda a:_data_e5de_indexed,Y     ; $E5CF  B9 DE E5
+	lda _data_e5de_indexed,Y     ; $E5CF  B9 DE E5
 	bit _var_0001                  ; $E5D2  24 01
 	bpl _label_e5d9                ; $E5D4  10 03
-	lda a:_data_e5e4_indexed,Y     ; $E5D6  B9 E4 E5
+	lda _data_e5e4_indexed,Y     ; $E5D6  B9 E4 E5
 
 _label_e5d9:
 	sta $02                        ; $E5D9  85 02
@@ -4833,7 +4835,7 @@ _func_e728:
 	sta _var_002d                  ; $E72C  85 2D
 	sta _var_00d6                  ; $E72E  85 D6
 	sta _var_004d                  ; $E730  85 4D
-	sta a:$0160                    ; $E732  8D 60 01
+	sta $0160                    ; $E732  8D 60 01
 	rts                            ; $E735  60
 
 _func_e736:
@@ -4862,7 +4864,7 @@ _func_e74a:
 
 _func_e750:
 	lda #$0F                       ; $E750  A9 0F
-	sta a:_var_00d7_indexed,Y      ; $E752  99 D7 00
+	sta _var_00d7_indexed,Y      ; $E752  99 D7 00
 	dey                            ; $E755  88
 	bpl _func_e750                 ; $E756  10 F8
 	lda #$03                       ; $E758  A9 03
@@ -4875,7 +4877,7 @@ _func_e75d:
 	ldy #$18                       ; $E760  A0 18
 
 _label_e762:
-	sta a:_var_00d7_indexed,Y      ; $E762  99 D7 00
+	sta _var_00d7_indexed,Y      ; $E762  99 D7 00
 	dey                            ; $E765  88
 	bpl _label_e762                ; $E766  10 FA
 	lda _var_0028                  ; $E768  A5 28
@@ -4918,7 +4920,7 @@ _func_e79e:
 	lda #$0F                       ; $E7A5  A9 0F
 
 _label_e7a7:
-	sta a:_var_00d7_indexed,Y      ; $E7A7  99 D7 00
+	sta _var_00d7_indexed,Y      ; $E7A7  99 D7 00
 	iny                            ; $E7AA  C8
 	dec _var_0019                  ; $E7AB  C6 19
 	bne _func_e79e                 ; $E7AD  D0 EF
@@ -4948,7 +4950,7 @@ _func_e7ca:
 	sta _var_0020_indexed          ; $E7CE  85 20
 
 _label_e7d0:
-	lda a:_var_00d7_indexed,Y      ; $E7D0  B9 D7 00
+	lda _var_00d7_indexed,Y      ; $E7D0  B9 D7 00
 	cmp #$10                       ; $E7D3  C9 10
 	bcc _label_e7db                ; $E7D5  90 04
 	sbc #$10                       ; $E7D7  E9 10
@@ -4958,10 +4960,10 @@ _label_e7db:
 	cmp #$0F                       ; $E7DB  C9 0F
 	beq _label_e7e8                ; $E7DD  F0 09
 	tax                            ; $E7DF  AA
-	lda a:_data_e7f6_indexed,X     ; $E7E0  BD F6 E7
+	lda _data_e7f6_indexed,X     ; $E7E0  BD F6 E7
 
 _label_e7e3:
-	sta a:_var_00d7_indexed,Y      ; $E7E3  99 D7 00
+	sta _var_00d7_indexed,Y      ; $E7E3  99 D7 00
 	inc _var_0020_indexed          ; $E7E6  E6 20
 
 _label_e7e8:
@@ -5107,11 +5109,11 @@ _jump_engine_e9ed:               ; jump engine detected
 	beq _label_e9ec                ; $E9EF  F0 FB
 	ldx #$00                       ; $E9F1  A2 00
 	stx _var_002d                  ; $E9F3  86 2D
-	ldy a:_var_0100_indexed,X      ; $E9F5  BC 00 01
+	ldy _var_0100_indexed,X      ; $E9F5  BC 00 01
 	inx                            ; $E9F8  E8
-	lda a:_data_ea06_indexed,Y     ; $E9F9  B9 06 EA
+	lda _data_ea06_indexed,Y     ; $E9F9  B9 06 EA
 	sta _var_001e                  ; $E9FC  85 1E
-	lda a:_data_ea0a_indexed,Y     ; $E9FE  B9 0A EA
+	lda _data_ea0a_indexed,Y     ; $E9FE  B9 0A EA
 	sta $1F                        ; $EA01  85 1F
 	jmp (_var_001e)                ; $EA03  6C 1E 00
 
@@ -5206,9 +5208,9 @@ _label_eb50:
 	pha                            ; $EB64  48
 	txa                            ; $EB65  8A
 	jsr _func_ff09                 ; $EB66  20 09 FF
-	lda a:_data_8000_indexed,Y     ; $EB69  B9 00 80
+	lda _data_8000_indexed,Y     ; $EB69  B9 00 80
 	sta _var_0036_indexed          ; $EB6C  85 36
-	lda a:_data_8000_indexed+1,Y   ; $EB6E  B9 01 80
+	lda _data_8000_indexed+1,Y   ; $EB6E  B9 01 80
 	sta $37                        ; $EB71  85 37
 	jsr _func_ebc3                 ; $EB73  20 C3 EB
 	pla                            ; $EB76  68
@@ -5224,11 +5226,11 @@ _label_eb82:
 	asl a                          ; $EB82  0A
 	asl a                          ; $EB83  0A
 	tay                            ; $EB84  A8
-	lda a:_data_eb9b_indexed,Y     ; $EB85  B9 9B EB
+	lda _data_eb9b_indexed,Y     ; $EB85  B9 9B EB
 	jsr _func_ff09                 ; $EB88  20 09 FF
-	lda a:_data_eb9b_indexed+2,Y   ; $EB8B  B9 9D EB
+	lda _data_eb9b_indexed+2,Y   ; $EB8B  B9 9D EB
 	sta _var_001c_indexed          ; $EB8E  85 1C
-	lda a:_data_eb9b_indexed+3,Y   ; $EB90  B9 9E EB
+	lda _data_eb9b_indexed+3,Y   ; $EB90  B9 9E EB
 	sta _var_001d                  ; $EB93  85 1D
 	jsr _func_eb12                 ; $EB95  20 12 EB
 	jmp (_var_001c_indexed)        ; $EB98  6C 1C 00  jump engine detected
@@ -5323,7 +5325,7 @@ _label_ec20:
 
 _label_ec2d:
 	lda (_var_0022_indexed),Y      ; $EC2D  B1 22
-	sta a:_var_0200_indexed,X      ; $EC2F  9D 00 02
+	sta _var_0200_indexed,X      ; $EC2F  9D 00 02
 	sta PPU_DATA                   ; $EC32  8D 07 20
 	inx                            ; $EC35  E8
 	iny                            ; $EC36  C8
@@ -5354,8 +5356,8 @@ _label_ec46:
 	tay                            ; $EC57  A8
 
 _label_ec58:
-	lda a:_var_0200_indexed,Y      ; $EC58  B9 00 02
-	sta a:_var_0200_indexed,X      ; $EC5B  9D 00 02
+	lda _var_0200_indexed,Y      ; $EC58  B9 00 02
+	sta _var_0200_indexed,X      ; $EC5B  9D 00 02
 	sta PPU_DATA                   ; $EC5E  8D 07 20
 	inx                            ; $EC61  E8
 	iny                            ; $EC62  C8
@@ -5430,7 +5432,7 @@ _func_ee5d:
 	lda #$F8                       ; $EE65  A9 F8
 
 _label_ee67:
-	sta a:_var_0200_indexed,X      ; $EE67  9D 00 02
+	sta _var_0200_indexed,X      ; $EE67  9D 00 02
 	inx                            ; $EE6A  E8
 	inx                            ; $EE6B  E8
 	inx                            ; $EE6C  E8
@@ -5455,7 +5457,7 @@ _label_ee85:
 	lda #$F8                       ; $EE87  A9 F8
 
 _label_ee89:
-	sta a:_var_0200_indexed,X      ; $EE89  9D 00 02
+	sta _var_0200_indexed,X      ; $EE89  9D 00 02
 	dex                            ; $EE8C  CA
 	dex                            ; $EE8D  CA
 	dex                            ; $EE8E  CA
@@ -5479,7 +5481,7 @@ _func_eeb0:
 
 _label_eeb4:
 	ldx _var_0032                  ; $EEB4  A6 32
-	lda a:_var_0600_indexed,X      ; $EEB6  BD 00 06
+	lda _var_0600_indexed,X      ; $EEB6  BD 00 06
 	beq _label_eebe                ; $EEB9  F0 03
 	jsr _jump_engine_eec7          ; $EEBB  20 C7 EE
 
@@ -5491,10 +5493,10 @@ _label_eebe:
 	rts                            ; $EEC6  60
 
 _jump_engine_eec7:               ; jump engine detected
-	ldy a:_var_0604_indexed,X      ; $EEC7  BC 04 06
+	ldy _var_0604_indexed,X      ; $EEC7  BC 04 06
 	beq _label_eed6                ; $EECA  F0 0A
 	sty _var_001d                  ; $EECC  84 1D
-	lda a:_var_0608_indexed,X      ; $EECE  BD 08 06
+	lda _var_0608_indexed,X      ; $EECE  BD 08 06
 	sta _var_001c_indexed          ; $EED1  85 1C
 	jmp (_var_001c_indexed)        ; $EED3  6C 1C 00
 
@@ -5513,7 +5515,7 @@ _func_eee4:
 	pha                            ; $EEE6  48
 
 _label_eee7:
-	lda a:_var_0600_indexed,Y      ; $EEE7  B9 00 06
+	lda _var_0600_indexed,Y      ; $EEE7  B9 00 06
 	beq _label_eef4                ; $EEEA  F0 08
 	iny                            ; $EEEC  C8
 	cpy $04                        ; $EEED  C4 04
@@ -5524,7 +5526,7 @@ _label_eee7:
 
 _label_eef4:
 	pla                            ; $EEF4  68
-	sta a:_var_0600_indexed,Y      ; $EEF5  99 00 06
+	sta _var_0600_indexed,Y      ; $EEF5  99 00 06
 	clc                            ; $EEF8  18
 	rts                            ; $EEF9  60
 
@@ -5541,7 +5543,7 @@ _func_ef50:
 	tax                            ; $EF52  AA
 
 _label_ef53:
-	sta a:_var_0600_indexed,X      ; $EF53  9D 00 06
+	sta _var_0600_indexed,X      ; $EF53  9D 00 06
 	dex                            ; $EF56  CA
 	bne _label_ef53                ; $EF57  D0 FA
 	rts                            ; $EF59  60
@@ -5595,8 +5597,8 @@ _func_ff09:
 	sta _var_0000_indexed          ; $FF09  85 00
 	sty _var_0020_indexed          ; $FF0B  84 20
 	tay                            ; $FF0D  A8
-	lda a:_data_ff00_indexed,Y     ; $FF0E  B9 00 FF
-	sta a:_data_ff00_indexed,Y     ; $FF11  99 00 FF
+	lda _data_ff00_indexed,Y     ; $FF0E  B9 00 FF
+	sta _data_ff00_indexed,Y     ; $FF11  99 00 FF
 	ldy _var_0020_indexed          ; $FF14  A4 20
 	rts                            ; $FF16  60
 
@@ -5607,7 +5609,7 @@ _func_ff09:
 
 .byte $e5, $af, $00, $00, $38, $82, $01, $07, $86, $b8 ; $FFF7
 
-.org $27FFA
+InterruptVectors:
 
 .dw NMI, Reset, IRQ
 
