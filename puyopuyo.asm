@@ -5,13 +5,13 @@
 
 .org 0
 
-.db "NES", $1a                 ; Magic string that always begins an iNES header
-.db $08                        ; Number of 16KB PRG-ROM banks
-.db $00                        ; Number of 8KB CHR-ROM banks
-.db $20                        ; Control bits 1
-.db $00                        ; Control bits 2
-.db $00                        ; Number of 8KB PRG-RAM banks
-.db $00                        ; Video format NTSC/PAL
+.db "NES", $1a ; Magic string that always begins an iNES header
+.db $08 ; Number of 16KB PRG-ROM banks
+.db $00 ; Number of 8KB CHR-ROM banks
+.db $20 ; Control bits 1
+.db $00 ; Control bits 2
+.db $00 ; Number of 8KB PRG-RAM banks
+.db $00 ; Video format NTSC/PAL
 .dsb 6
 
 .base $8000
@@ -49,16 +49,16 @@ _var_071b_indexed = $071B
 _var_0773_indexed = $0773
 
 _data_8000_indexed:
-	jmp _label_8891                ; 0:$8000  4C 91 88
+	jmp _label_8891 ; 0:$8000  4C 91 88
 
 _func_8003:
-	jmp _label_8895                ; 0:$8003  4C 95 88
+	jmp _label_8895 ; 0:$8003  4C 95 88
 
 
 .byte $4c, $f9, $88, $4c, $16, $80, $4c, $82, $88, $4c, $89, $88 ; 0:$8006
 
 _func_8012:
-	jmp _label_8e7c                ; 0:$8012  4C 7C 8E
+	jmp _label_8e7c ; 0:$8012  4C 7C 8E
 
 
 .byte $60, $a5, $16, $29, $fb, $c5, $16, $d0, $f7, $09, $04, $85, $16, $20, $ef, $81 ; 0:$8015
@@ -199,57 +199,57 @@ _func_8012:
 .byte $03, $85, $16, $60, $a5, $16, $29, $fc, $09, $01, $d0, $f5 ; 0:$8885
 
 _label_8891:
-	lda #$00                       ; 0:$8891  A9 00
-	sta _var_0016                  ; 0:$8893  85 16
+	lda #$00 ; 0:$8891  A9 00
+	sta _var_0016 ; 0:$8893  85 16
 
 _label_8895:
-	txa                            ; 0:$8895  8A
-	pha                            ; 0:$8896  48
-	ldx #$07                       ; 0:$8897  A2 07
+	txa ; 0:$8895  8A
+	pha ; 0:$8896  48
+	ldx #$07 ; 0:$8897  A2 07
 
 _label_8899:
-	lda #$00                       ; 0:$8899  A9 00
-	sta _var_071b_indexed,X      ; 0:$889B  9D 1B 07
-	dex                            ; 0:$889E  CA
-	bpl _label_8899                ; 0:$889F  10 F8
-	lda _var_0016                  ; 0:$88A1  A5 16
-	and #$DF                       ; 0:$88A3  29 DF
-	sta _var_0016                  ; 0:$88A5  85 16
-	lda #$0F                       ; 0:$88A7  A9 0F
-	sta _var_0708                ; 0:$88A9  8D 08 07
-	ldx #$03                       ; 0:$88AC  A2 03
-	lda #$00                       ; 0:$88AE  A9 00
+	lda #$00 ; 0:$8899  A9 00
+	sta _var_071b_indexed,X ; 0:$889B  9D 1B 07
+	dex ; 0:$889E  CA
+	bpl _label_8899 ; 0:$889F  10 F8
+	lda _var_0016 ; 0:$88A1  A5 16
+	and #$DF ; 0:$88A3  29 DF
+	sta _var_0016 ; 0:$88A5  85 16
+	lda #$0F ; 0:$88A7  A9 0F
+	sta _var_0708 ; 0:$88A9  8D 08 07
+	ldx #$03 ; 0:$88AC  A2 03
+	lda #$00 ; 0:$88AE  A9 00
 
 _label_88b0:
-	sta _var_0702_indexed,X      ; 0:$88B0  9D 02 07
-	dex                            ; 0:$88B3  CA
-	bpl _label_88b0                ; 0:$88B4  10 FA
-	pla                            ; 0:$88B6  68
-	tax                            ; 0:$88B7  AA
-	lda #$30                       ; 0:$88B8  A9 30
-	sta APU_PL1_VOL                ; 0:$88BA  8D 00 40
-	sta APU_PL2_VOL                ; 0:$88BD  8D 04 40
-	sta APU_NOISE_VOL              ; 0:$88C0  8D 0C 40
-	lda #$80                       ; 0:$88C3  A9 80
-	sta APU_TRI_LINEAR             ; 0:$88C5  8D 08 40
-	lda #$FF                       ; 0:$88C8  A9 FF
-	sta APU_PL1_HI                 ; 0:$88CA  8D 03 40
-	sta APU_PL2_HI                 ; 0:$88CD  8D 07 40
-	sta APU_TRI_HI                 ; 0:$88D0  8D 0B 40
-	sta APU_NOISE_HI               ; 0:$88D3  8D 0F 40
-	sta $070C                    ; 0:$88D6  8D 0C 07
-	sta $0710                    ; 0:$88D9  8D 10 07
-	lda #$00                       ; 0:$88DC  A9 00
-	sta APU_DMC_FREQ               ; 0:$88DE  8D 10 40
-	sta APU_PL1_SWEEP              ; 0:$88E1  8D 01 40
-	sta APU_PL2_SWEEP              ; 0:$88E4  8D 05 40
-	sta $070A                    ; 0:$88E7  8D 0A 07
-	sta $070E                    ; 0:$88EA  8D 0E 07
-	sta APU_DMC_RAW                ; 0:$88ED  8D 11 40
-	lda #$0F                       ; 0:$88F0  A9 0F
-	sta APU_SND_CHN                ; 0:$88F2  8D 15 40
-	sta $071A                    ; 0:$88F5  8D 1A 07
-	rts                            ; 0:$88F8  60
+	sta _var_0702_indexed,X ; 0:$88B0  9D 02 07
+	dex ; 0:$88B3  CA
+	bpl _label_88b0 ; 0:$88B4  10 FA
+	pla ; 0:$88B6  68
+	tax ; 0:$88B7  AA
+	lda #$30 ; 0:$88B8  A9 30
+	sta APU_PL1_VOL ; 0:$88BA  8D 00 40
+	sta APU_PL2_VOL ; 0:$88BD  8D 04 40
+	sta APU_NOISE_VOL ; 0:$88C0  8D 0C 40
+	lda #$80 ; 0:$88C3  A9 80
+	sta APU_TRI_LINEAR ; 0:$88C5  8D 08 40
+	lda #$FF ; 0:$88C8  A9 FF
+	sta APU_PL1_HI ; 0:$88CA  8D 03 40
+	sta APU_PL2_HI ; 0:$88CD  8D 07 40
+	sta APU_TRI_HI ; 0:$88D0  8D 0B 40
+	sta APU_NOISE_HI ; 0:$88D3  8D 0F 40
+	sta $070C ; 0:$88D6  8D 0C 07
+	sta $0710 ; 0:$88D9  8D 10 07
+	lda #$00 ; 0:$88DC  A9 00
+	sta APU_DMC_FREQ ; 0:$88DE  8D 10 40
+	sta APU_PL1_SWEEP ; 0:$88E1  8D 01 40
+	sta APU_PL2_SWEEP ; 0:$88E4  8D 05 40
+	sta $070A ; 0:$88E7  8D 0A 07
+	sta $070E ; 0:$88EA  8D 0E 07
+	sta APU_DMC_RAW ; 0:$88ED  8D 11 40
+	lda #$0F ; 0:$88F0  A9 0F
+	sta APU_SND_CHN ; 0:$88F2  8D 15 40
+	sta $071A ; 0:$88F5  8D 1A 07
+	rts ; 0:$88F8  60
 
 
 .byte $48, $84, $12, $a0, $03, $b9, $02, $07, $f0, $12, $88, $10, $f8, $a5, $12, $48 ; 0:$88F9
@@ -340,29 +340,29 @@ _label_88b0:
 .byte $0d, $0d, $0c, $0c, $0b, $0b, $0a, $80, $dc, $1c, $00, $00, $e3, $24, $00, $00 ; 0:$8E49
 .byte $ec, $1c, $00, $00, $f3, $0c, $00, $00, $f6, $08, $00, $00, $f8, $10, $00, $00 ; 0:$8E59
 .byte $01, $07, $61, $3f, $06, $00, $00, $80, $00, $74, $8e, $25, $e0, $27, $29, $2c ; 0:$8E69
-.byte $31, $82, $00              ; 0:$8E79
+.byte $31, $82, $00 ; 0:$8E79
 
 _label_8e7c:
-	lda #$00                       ; 0:$8E7C  A9 00
-	sta $0718                    ; 0:$8E7E  8D 18 07
-	lda #$0F                       ; 0:$8E81  A9 0F
-	sta _var_0708                ; 0:$8E83  8D 08 07
-	lda _var_0016                  ; 0:$8E86  A5 16
-	ora #$30                       ; 0:$8E88  09 30
-	ldy #$20                       ; 0:$8E8A  A0 20
-	sty $0706                    ; 0:$8E8C  8C 06 07
-	ldy #$00                       ; 0:$8E8F  A0 00
-	sty $0707                    ; 0:$8E91  8C 07 07
-	sta _var_0016                  ; 0:$8E94  85 16
-	ldy #$04                       ; 0:$8E96  A0 04
+	lda #$00 ; 0:$8E7C  A9 00
+	sta $0718 ; 0:$8E7E  8D 18 07
+	lda #$0F ; 0:$8E81  A9 0F
+	sta _var_0708 ; 0:$8E83  8D 08 07
+	lda _var_0016 ; 0:$8E86  A5 16
+	ora #$30 ; 0:$8E88  09 30
+	ldy #$20 ; 0:$8E8A  A0 20
+	sty $0706 ; 0:$8E8C  8C 06 07
+	ldy #$00 ; 0:$8E8F  A0 00
+	sty $0707 ; 0:$8E91  8C 07 07
+	sta _var_0016 ; 0:$8E94  85 16
+	ldy #$04 ; 0:$8E96  A0 04
 
 _label_8e98:
-	lda _var_0773_indexed,Y      ; 0:$8E98  B9 73 07
-	ora #$08                       ; 0:$8E9B  09 08
-	sta _var_0773_indexed,Y      ; 0:$8E9D  99 73 07
-	dey                            ; 0:$8EA0  88
-	bpl _label_8e98                ; 0:$8EA1  10 F5
-	rts                            ; 0:$8EA3  60
+	lda _var_0773_indexed,Y ; 0:$8E98  B9 73 07
+	ora #$08 ; 0:$8E9B  09 08
+	sta _var_0773_indexed,Y ; 0:$8E9D  99 73 07
+	dey ; 0:$8EA0  88
+	bpl _label_8e98 ; 0:$8EA1  10 F5
+	rts ; 0:$8EA3  60
 
 ; dummy
 .byte $00 ; 0:$8EA4
@@ -1792,8 +1792,8 @@ _label_8e98:
 
 ; the only visible graphics on YYCHR
 ; the rest appear to be compressed in some way
-.incbin "chr/font.chr"
-.incbin "chr/bricks.chr"
+.incbin "src/chr/font.chr"
+.incbin "src/chr/bricks.chr"
 
 .align $4000, $ff
 ; banks 2-4 are entirely empty, this provides plenty of room for additional game code
@@ -3742,180 +3742,180 @@ _var_0702_indexed = $0702
 .align $1000, $ff
 
 _label_d000:
-	sei                            ; 7:$D000  78
-	ldx #$FF                       ; 7:$D001  A2 FF
-	txs                            ; 7:$D003  9A
-	lda #$30                       ; 7:$D004  A9 30
-	jsr _func_eb3f                 ; 7:$D006  20 3F EB
-	lda #$06                       ; 7:$D009  A9 06
-	jsr _func_eb45                 ; 7:$D00B  20 45 EB
-	lda #$00                       ; 7:$D00E  A9 00
-	ldx #$EF                       ; 7:$D010  A2 EF
+	sei ; 7:$D000  78
+	ldx #$FF ; 7:$D001  A2 FF
+	txs ; 7:$D003  9A
+	lda #$30 ; 7:$D004  A9 30
+	jsr _func_eb3f ; 7:$D006  20 3F EB
+	lda #$06 ; 7:$D009  A9 06
+	jsr _func_eb45 ; 7:$D00B  20 45 EB
+	lda #$00 ; 7:$D00E  A9 00
+	ldx #$EF ; 7:$D010  A2 EF
 
 _label_d012:
-	sta _var_0000_indexed,X        ; 7:$D012  95 00
-	dex                            ; 7:$D014  CA
-	cpx #$0F                       ; 7:$D015  E0 0F
-	bne _label_d012                ; 7:$D017  D0 F9
-	lda #$FF                       ; 7:$D019  A9 FF
-	sta _var_0056                  ; 7:$D01B  85 56
-	lda #$01                       ; 7:$D01D  A9 01
-	sta _var_00a6                  ; 7:$D01F  85 A6
-	lda #$30                       ; 7:$D021  A9 30
-	jsr _func_eb3f                 ; 7:$D023  20 3F EB
-	lda #$06                       ; 7:$D026  A9 06
-	jsr _func_eb45                 ; 7:$D028  20 45 EB
-	jsr _func_e131                 ; 7:$D02B  20 31 E1
-	jsr _func_eb12                 ; 7:$D02E  20 12 EB
-	jsr _func_e728                 ; 7:$D031  20 28 E7
-	jsr _func_ee3b                 ; 7:$D034  20 3B EE
-	jsr _func_e20b                 ; 7:$D037  20 0B E2
-	ldy #$18                       ; 7:$D03A  A0 18
-	jsr _func_e750                 ; 7:$D03C  20 50 E7
-	lda #$1E                       ; 7:$D03F  A9 1E
-	sta $08                        ; 7:$D041  85 08
-	lda #$D3                       ; 7:$D043  A9 D3
-	sta $09                        ; 7:$D045  85 09
-	lda #$D9                       ; 7:$D047  A9 D9
-	sta $0A                        ; 7:$D049  85 0A
-	lda #$D2                       ; 7:$D04B  A9 D2
-	sta $0B                        ; 7:$D04D  85 0B
-	lda #$DD                       ; 7:$D04F  A9 DD
-	sta _var_0006_indexed          ; 7:$D051  85 06
-	lda #$D1                       ; 7:$D053  A9 D1
-	sta $07                        ; 7:$D055  85 07
-	lda #$DB                       ; 7:$D057  A9 DB
-	sta _var_001c_indexed          ; 7:$D059  85 1C
-	lda #$D1                       ; 7:$D05B  A9 D1
-	sta _var_001d                  ; 7:$D05D  85 1D
-	jsr _func_eb4b                 ; 7:$D05F  20 4B EB
-	lda #$02                       ; 7:$D062  A9 02
-	ldy #$00                       ; 7:$D064  A0 00
-	jsr _func_e2bc                 ; 7:$D066  20 BC E2
-	jsr _func_ef50                 ; 7:$D069  20 50 EF
-	lda #$65                       ; 7:$D06C  A9 65
-	ldy #$D1                       ; 7:$D06E  A0 D1
-	jsr _func_e55c                 ; 7:$D070  20 5C E5
-	lda #$8E                       ; 7:$D073  A9 8E
-	sta _var_0048                  ; 7:$D075  85 48
-	lda #$D1                       ; 7:$D077  A9 D1
-	sta _var_0049                  ; 7:$D079  85 49
-	lda #$07                       ; 7:$D07B  A9 07
-	jsr _func_e75d                 ; 7:$D07D  20 5D E7
-	ldy #$B4                       ; 7:$D080  A0 B4
+	sta _var_0000_indexed,X ; 7:$D012  95 00
+	dex ; 7:$D014  CA
+	cpx #$0F ; 7:$D015  E0 0F
+	bne _label_d012 ; 7:$D017  D0 F9
+	lda #$FF ; 7:$D019  A9 FF
+	sta _var_0056 ; 7:$D01B  85 56
+	lda #$01 ; 7:$D01D  A9 01
+	sta _var_00a6 ; 7:$D01F  85 A6
+	lda #$30 ; 7:$D021  A9 30
+	jsr _func_eb3f ; 7:$D023  20 3F EB
+	lda #$06 ; 7:$D026  A9 06
+	jsr _func_eb45 ; 7:$D028  20 45 EB
+	jsr _func_e131 ; 7:$D02B  20 31 E1
+	jsr _func_eb12 ; 7:$D02E  20 12 EB
+	jsr _func_e728 ; 7:$D031  20 28 E7
+	jsr _func_ee3b ; 7:$D034  20 3B EE
+	jsr _func_e20b ; 7:$D037  20 0B E2
+	ldy #$18 ; 7:$D03A  A0 18
+	jsr _func_e750 ; 7:$D03C  20 50 E7
+	lda #$1E ; 7:$D03F  A9 1E
+	sta $08 ; 7:$D041  85 08
+	lda #$D3 ; 7:$D043  A9 D3
+	sta $09 ; 7:$D045  85 09
+	lda #$D9 ; 7:$D047  A9 D9
+	sta $0A ; 7:$D049  85 0A
+	lda #$D2 ; 7:$D04B  A9 D2
+	sta $0B ; 7:$D04D  85 0B
+	lda #$DD ; 7:$D04F  A9 DD
+	sta _var_0006_indexed ; 7:$D051  85 06
+	lda #$D1 ; 7:$D053  A9 D1
+	sta $07 ; 7:$D055  85 07
+	lda #$DB ; 7:$D057  A9 DB
+	sta _var_001c_indexed ; 7:$D059  85 1C
+	lda #$D1 ; 7:$D05B  A9 D1
+	sta _var_001d ; 7:$D05D  85 1D
+	jsr _func_eb4b ; 7:$D05F  20 4B EB
+	lda #$02 ; 7:$D062  A9 02
+	ldy #$00 ; 7:$D064  A0 00
+	jsr _func_e2bc ; 7:$D066  20 BC E2
+	jsr _func_ef50 ; 7:$D069  20 50 EF
+	lda #$65 ; 7:$D06C  A9 65
+	ldy #$D1 ; 7:$D06E  A0 D1
+	jsr _func_e55c ; 7:$D070  20 5C E5
+	lda #$8E ; 7:$D073  A9 8E
+	sta _var_0048 ; 7:$D075  85 48
+	lda #$D1 ; 7:$D077  A9 D1
+	sta _var_0049 ; 7:$D079  85 49
+	lda #$07 ; 7:$D07B  A9 07
+	jsr _func_e75d ; 7:$D07D  20 5D E7
+	ldy #$B4 ; 7:$D080  A0 B4
 
 _label_d082:
-	tya                            ; 7:$D082  98
-	pha                            ; 7:$D083  48
-	jsr _func_e736                 ; 7:$D084  20 36 E7
-	jsr _func_e1a3                 ; 7:$D087  20 A3 E1
-	pla                            ; 7:$D08A  68
-	tay                            ; 7:$D08B  A8
-	lda _var_0024_indexed          ; 7:$D08C  A5 24
-	and #$F0                       ; 7:$D08E  29 F0
-	bne _label_d095                ; 7:$D090  D0 03
-	dey                            ; 7:$D092  88
-	bne _label_d082                ; 7:$D093  D0 ED
+	tya ; 7:$D082  98
+	pha ; 7:$D083  48
+	jsr _func_e736 ; 7:$D084  20 36 E7
+	jsr _func_e1a3 ; 7:$D087  20 A3 E1
+	pla ; 7:$D08A  68
+	tay ; 7:$D08B  A8
+	lda _var_0024_indexed ; 7:$D08C  A5 24
+	and #$F0 ; 7:$D08E  29 F0
+	bne _label_d095 ; 7:$D090  D0 03
+	dey ; 7:$D092  88
+	bne _label_d082 ; 7:$D093  D0 ED
 
 _label_d095:
-	lda #$05                       ; 7:$D095  A9 05
-	jsr _func_e7b0                 ; 7:$D097  20 B0 E7
-	lda #$03                       ; 7:$D09A  A9 03
-	ldy #$00                       ; 7:$D09C  A0 00
-	jsr _func_e2bc                 ; 7:$D09E  20 BC E2
-	jsr _func_e20b                 ; 7:$D0A1  20 0B E2
-	ldy #$D1                       ; 7:$D0A4  A0 D1
-	lda #$78                       ; 7:$D0A6  A9 78
-	jsr _func_e587                 ; 7:$D0A8  20 87 E5
-	lda #$1E                       ; 7:$D0AB  A9 1E
-	sta _var_0018_indexed          ; 7:$D0AD  85 18
-	lda #$20                       ; 7:$D0AF  A9 20
-	sta _var_0019                  ; 7:$D0B1  85 19
-	lda #$86                       ; 7:$D0B3  A9 86
-	sta _var_001a_indexed          ; 7:$D0B5  85 1A
-	lda #$D4                       ; 7:$D0B7  A9 D4
-	sta _var_001b                  ; 7:$D0B9  85 1B
-	lda #$00                       ; 7:$D0BB  A9 00
-	sta _var_001c_indexed          ; 7:$D0BD  85 1C
-	lda #$20                       ; 7:$D0BF  A9 20
-	sta _var_001d                  ; 7:$D0C1  85 1D
-	jsr _func_e357                 ; 7:$D0C3  20 57 E3
-	lda #$8E                       ; 7:$D0C6  A9 8E
-	sta _var_0048                  ; 7:$D0C8  85 48
-	lda #$D1                       ; 7:$D0CA  A9 D1
-	sta _var_0049                  ; 7:$D0CC  85 49
-	lda _var_0001                  ; 7:$D0CE  A5 01
-	bpl _label_d0da                ; 7:$D0D0  10 08
-	lda #$C2                       ; 7:$D0D2  A9 C2
-	sta _var_0048                  ; 7:$D0D4  85 48
-	lda #$D1                       ; 7:$D0D6  A9 D1
-	sta _var_0049                  ; 7:$D0D8  85 49
+	lda #$05 ; 7:$D095  A9 05
+	jsr _func_e7b0 ; 7:$D097  20 B0 E7
+	lda #$03 ; 7:$D09A  A9 03
+	ldy #$00 ; 7:$D09C  A0 00
+	jsr _func_e2bc ; 7:$D09E  20 BC E2
+	jsr _func_e20b ; 7:$D0A1  20 0B E2
+	ldy #$D1 ; 7:$D0A4  A0 D1
+	lda #$78 ; 7:$D0A6  A9 78
+	jsr _func_e587 ; 7:$D0A8  20 87 E5
+	lda #$1E ; 7:$D0AB  A9 1E
+	sta _var_0018_indexed ; 7:$D0AD  85 18
+	lda #$20 ; 7:$D0AF  A9 20
+	sta _var_0019 ; 7:$D0B1  85 19
+	lda #$86 ; 7:$D0B3  A9 86
+	sta _var_001a_indexed ; 7:$D0B5  85 1A
+	lda #$D4 ; 7:$D0B7  A9 D4
+	sta _var_001b ; 7:$D0B9  85 1B
+	lda #$00 ; 7:$D0BB  A9 00
+	sta _var_001c_indexed ; 7:$D0BD  85 1C
+	lda #$20 ; 7:$D0BF  A9 20
+	sta _var_001d ; 7:$D0C1  85 1D
+	jsr _func_e357 ; 7:$D0C3  20 57 E3
+	lda #$8E ; 7:$D0C6  A9 8E
+	sta _var_0048 ; 7:$D0C8  85 48
+	lda #$D1 ; 7:$D0CA  A9 D1
+	sta _var_0049 ; 7:$D0CC  85 49
+	lda _var_0001 ; 7:$D0CE  A5 01
+	bpl _label_d0da ; 7:$D0D0  10 08
+	lda #$C2 ; 7:$D0D2  A9 C2
+	sta _var_0048 ; 7:$D0D4  85 48
+	lda #$D1 ; 7:$D0D6  A9 D1
+	sta _var_0049 ; 7:$D0D8  85 49
 
 _label_d0da:
-	lda #$05                       ; 7:$D0DA  A9 05
-	jsr _func_e75d                 ; 7:$D0DC  20 5D E7
-	lda #$01                       ; 7:$D0DF  A9 01
-	jsr _func_eee4                 ; 7:$D0E1  20 E4 EE
-	lda #$02                       ; 7:$D0E4  A9 02
-	jsr _func_eee4                 ; 7:$D0E6  20 E4 EE
-	lda #$01                       ; 7:$D0E9  A9 01
-	jsr _func_e18b                 ; 7:$D0EB  20 8B E1
-	lda #$00                       ; 7:$D0EE  A9 00
-	sta _var_00c9                  ; 7:$D0F0  85 C9
-	sta _var_00ca                  ; 7:$D0F2  85 CA
+	lda #$05 ; 7:$D0DA  A9 05
+	jsr _func_e75d ; 7:$D0DC  20 5D E7
+	lda #$01 ; 7:$D0DF  A9 01
+	jsr _func_eee4 ; 7:$D0E1  20 E4 EE
+	lda #$02 ; 7:$D0E4  A9 02
+	jsr _func_eee4 ; 7:$D0E6  20 E4 EE
+	lda #$01 ; 7:$D0E9  A9 01
+	jsr _func_e18b ; 7:$D0EB  20 8B E1
+	lda #$00 ; 7:$D0EE  A9 00
+	sta _var_00c9 ; 7:$D0F0  85 C9
+	sta _var_00ca ; 7:$D0F2  85 CA
 
 _label_d0f4:
-	jsr _func_e736                 ; 7:$D0F4  20 36 E7
-	jsr _func_e1a3                 ; 7:$D0F7  20 A3 E1
-	jsr _func_ee49                 ; 7:$D0FA  20 49 EE
-	jsr _func_eeb0                 ; 7:$D0FD  20 B0 EE
-	jsr _func_ee5d                 ; 7:$D100  20 5D EE
-	inc _var_00c9                  ; 7:$D103  E6 C9
-	lda _var_00c9                  ; 7:$D105  A5 C9
-	cmp #$3C                       ; 7:$D107  C9 3C
-	bne _label_d11d                ; 7:$D109  D0 12
-	lda #$00                       ; 7:$D10B  A9 00
-	sta _var_00c9                  ; 7:$D10D  85 C9
-	inc _var_00ca                  ; 7:$D10F  E6 CA
-	lda _var_00ca                  ; 7:$D111  A5 CA
-	cmp #$28                       ; 7:$D113  C9 28
-	bne _label_d11d                ; 7:$D115  D0 06
-	lda #$00                       ; 7:$D117  A9 00
-	sta _var_00ca                  ; 7:$D119  85 CA
-	beq _label_d13d                ; 7:$D11B  F0 20
+	jsr _func_e736 ; 7:$D0F4  20 36 E7
+	jsr _func_e1a3 ; 7:$D0F7  20 A3 E1
+	jsr _func_ee49 ; 7:$D0FA  20 49 EE
+	jsr _func_eeb0 ; 7:$D0FD  20 B0 EE
+	jsr _func_ee5d ; 7:$D100  20 5D EE
+	inc _var_00c9 ; 7:$D103  E6 C9
+	lda _var_00c9 ; 7:$D105  A5 C9
+	cmp #$3C ; 7:$D107  C9 3C
+	bne _label_d11d ; 7:$D109  D0 12
+	lda #$00 ; 7:$D10B  A9 00
+	sta _var_00c9 ; 7:$D10D  85 C9
+	inc _var_00ca ; 7:$D10F  E6 CA
+	lda _var_00ca ; 7:$D111  A5 CA
+	cmp #$28 ; 7:$D113  C9 28
+	bne _label_d11d ; 7:$D115  D0 06
+	lda #$00 ; 7:$D117  A9 00
+	sta _var_00ca ; 7:$D119  85 CA
+	beq _label_d13d ; 7:$D11B  F0 20
 
 _label_d11d:
-	lda _var_0024_indexed          ; 7:$D11D  A5 24
-	and #$F0                       ; 7:$D11F  29 F0
-	beq _label_d0f4                ; 7:$D121  F0 D1
-	jsr _func_e17c                 ; 7:$D123  20 7C E1
-	lda #$05                       ; 7:$D126  A9 05
-	jsr _func_e7b0                 ; 7:$D128  20 B0 E7
-	jsr _func_e140                 ; 7:$D12B  20 40 E1
-	jsr _func_e20b                 ; 7:$D12E  20 0B E2
-	lda #$00                       ; 7:$D131  A9 00
-	ldy #$00                       ; 7:$D133  A0 00
-	jsr _func_e2bc                 ; 7:$D135  20 BC E2
-	lda #$02                       ; 7:$D138  A9 02
-	jmp _label_eb82                ; 7:$D13A  4C 82 EB
+	lda _var_0024_indexed ; 7:$D11D  A5 24
+	and #$F0 ; 7:$D11F  29 F0
+	beq _label_d0f4 ; 7:$D121  F0 D1
+	jsr _func_e17c ; 7:$D123  20 7C E1
+	lda #$05 ; 7:$D126  A9 05
+	jsr _func_e7b0 ; 7:$D128  20 B0 E7
+	jsr _func_e140 ; 7:$D12B  20 40 E1
+	jsr _func_e20b ; 7:$D12E  20 0B E2
+	lda #$00 ; 7:$D131  A9 00
+	ldy #$00 ; 7:$D133  A0 00
+	jsr _func_e2bc ; 7:$D135  20 BC E2
+	lda #$02 ; 7:$D138  A9 02
+	jmp _label_eb82 ; 7:$D13A  4C 82 EB
 
 _label_d13d:
-	jsr _func_e17c                 ; 7:$D13D  20 7C E1
-	jsr _func_ef50                 ; 7:$D140  20 50 EF
-	lda #$05                       ; 7:$D143  A9 05
-	jsr _func_e7b0                 ; 7:$D145  20 B0 E7
-	jsr _func_e140                 ; 7:$D148  20 40 E1
-	jsr _func_e20b                 ; 7:$D14B  20 0B E2
-	lda #$00                       ; 7:$D14E  A9 00
-	ldy #$00                       ; 7:$D150  A0 00
-	jsr _func_e2bc                 ; 7:$D152  20 BC E2
-	lda #$D1                       ; 7:$D155  A9 D1
-	sta _var_001d                  ; 7:$D157  85 1D
-	lda #$A7                       ; 7:$D159  A9 A7
-	sta _var_001c_indexed          ; 7:$D15B  85 1C
-	jsr _func_e74a                 ; 7:$D15D  20 4A E7
-	lda #$04                       ; 7:$D160  A9 04
-	jmp _label_eb82                ; 7:$D162  4C 82 EB
+	jsr _func_e17c ; 7:$D13D  20 7C E1
+	jsr _func_ef50 ; 7:$D140  20 50 EF
+	lda #$05 ; 7:$D143  A9 05
+	jsr _func_e7b0 ; 7:$D145  20 B0 E7
+	jsr _func_e140 ; 7:$D148  20 40 E1
+	jsr _func_e20b ; 7:$D14B  20 0B E2
+	lda #$00 ; 7:$D14E  A9 00
+	ldy #$00 ; 7:$D150  A0 00
+	jsr _func_e2bc ; 7:$D152  20 BC E2
+	lda #$D1 ; 7:$D155  A9 D1
+	sta _var_001d ; 7:$D157  85 1D
+	lda #$A7 ; 7:$D159  A9 A7
+	sta _var_001c_indexed ; 7:$D15B  85 1C
+	jsr _func_e74a ; 7:$D15D  20 4A E7
+	lda #$04 ; 7:$D160  A9 04
+	jmp _label_eb82 ; 7:$D162  4C 82 EB
 
 .byte $01, $0a, $4a, $d4, $0b, $21, $03, $0d, $5f, $d4, $89, $21, $01, $0b, $54, $d4 ; 7:$D165
 .byte $4a, $22, $00, $06, $0e, $c2, $20, $01, $03, $0e, $82, $22, $01, $04, $0c, $04 ; 7:$D175
@@ -4032,82 +4032,82 @@ _label_d13d:
 .align $1000, $ff
 
 Reset:
-	sei                            ; 7:$E000  78
-	cld                            ; 7:$E001  D8
-	ldx #$FF                       ; 7:$E002  A2 FF
-	txs                            ; 7:$E004  9A
-	lda #$30                       ; 7:$E005  A9 30
-	jsr _func_eb3f                 ; 7:$E007  20 3F EB
-	lda #$06                       ; 7:$E00A  A9 06
-	jsr _func_eb45                 ; 7:$E00C  20 45 EB
-	ldx #$03                       ; 7:$E00F  A2 03
+	sei ; 7:$E000  78
+	cld ; 7:$E001  D8
+	ldx #$FF ; 7:$E002  A2 FF
+	txs ; 7:$E004  9A
+	lda #$30 ; 7:$E005  A9 30
+	jsr _func_eb3f ; 7:$E007  20 3F EB
+	lda #$06 ; 7:$E00A  A9 06
+	jsr _func_eb45 ; 7:$E00C  20 45 EB
+	ldx #$03 ; 7:$E00F  A2 03
 
 _label_e011:
-	lda PPU_STATUS                 ; 7:$E011  AD 02 20
-	bpl _label_e011                ; 7:$E014  10 FB
-	dex                            ; 7:$E016  CA
-	bne _label_e011                ; 7:$E017  D0 F8
-	ldx #$EF                       ; 7:$E019  A2 EF
+	lda PPU_STATUS ; 7:$E011  AD 02 20
+	bpl _label_e011 ; 7:$E014  10 FB
+	dex ; 7:$E016  CA
+	bne _label_e011 ; 7:$E017  D0 F8
+	ldx #$EF ; 7:$E019  A2 EF
 
 _label_e01b:
-	sta _var_0000_indexed,X        ; 7:$E01B  95 00
-	dex                            ; 7:$E01D  CA
-	cpx #$0F                       ; 7:$E01E  E0 0F
-	bne _label_e01b                ; 7:$E020  D0 F9
-	lda #$FF                       ; 7:$E022  A9 FF
-	sta _var_0056                  ; 7:$E024  85 56
-	lda #$01                       ; 7:$E026  A9 01
-	sta _var_00a6                  ; 7:$E028  85 A6
-	ldx _var_01b0                ; 7:$E02A  AE B0 01
-	ldy _var_01b1                ; 7:$E02D  AC B1 01
-	cpx #$AC                       ; 7:$E030  E0 AC
-	bne _label_e038                ; 7:$E032  D0 04
-	cpy #$53                       ; 7:$E034  C0 53
-	beq _label_e06c                ; 7:$E036  F0 34
+	sta _var_0000_indexed,X ; 7:$E01B  95 00
+	dex ; 7:$E01D  CA
+	cpx #$0F ; 7:$E01E  E0 0F
+	bne _label_e01b ; 7:$E020  D0 F9
+	lda #$FF ; 7:$E022  A9 FF
+	sta _var_0056 ; 7:$E024  85 56
+	lda #$01 ; 7:$E026  A9 01
+	sta _var_00a6 ; 7:$E028  85 A6
+	ldx _var_01b0 ; 7:$E02A  AE B0 01
+	ldy _var_01b1 ; 7:$E02D  AC B1 01
+	cpx #$AC ; 7:$E030  E0 AC
+	bne _label_e038 ; 7:$E032  D0 04
+	cpy #$53 ; 7:$E034  C0 53
+	beq _label_e06c ; 7:$E036  F0 34
 
 _label_e038:
-	lda #$00                       ; 7:$E038  A9 00
-	sta $019D                    ; 7:$E03A  8D 9D 01
-	sta _var_0001                  ; 7:$E03D  85 01
-	sta $F4                        ; 7:$E03F  85 F4
-	sta $F5                        ; 7:$E041  85 F5
-	lda #$02                       ; 7:$E043  A9 02
-	sta _var_0003                  ; 7:$E045  85 03
-	ldy #$00                       ; 7:$E047  A0 00
+	lda #$00 ; 7:$E038  A9 00
+	sta $019D ; 7:$E03A  8D 9D 01
+	sta _var_0001 ; 7:$E03D  85 01
+	sta $F4 ; 7:$E03F  85 F4
+	sta $F5 ; 7:$E041  85 F5
+	lda #$02 ; 7:$E043  A9 02
+	sta _var_0003 ; 7:$E045  85 03
+	ldy #$00 ; 7:$E047  A0 00
 
 _label_e049:
-	lda _data_f0eb_indexed,Y     ; 7:$E049  B9 EB F0
-	sta _var_0161_indexed,Y      ; 7:$E04C  99 61 01
-	iny                            ; 7:$E04F  C8
-	cpy #$3C                       ; 7:$E050  C0 3C
-	bcc _label_e049                ; 7:$E052  90 F5
-	lda #$3F                       ; 7:$E054  A9 3F
-	sta $01A2                    ; 7:$E056  8D A2 01
-	sta $01A3                    ; 7:$E059  8D A3 01
-	sta $01A4                    ; 7:$E05C  8D A4 01
-	sta $01A5                    ; 7:$E05F  8D A5 01
-	lda #$AC                       ; 7:$E062  A9 AC
-	sta _var_01b0                ; 7:$E064  8D B0 01
-	lda #$53                       ; 7:$E067  A9 53
-	sta _var_01b1                ; 7:$E069  8D B1 01
+	lda _data_f0eb_indexed,Y ; 7:$E049  B9 EB F0
+	sta _var_0161_indexed,Y ; 7:$E04C  99 61 01
+	iny ; 7:$E04F  C8
+	cpy #$3C ; 7:$E050  C0 3C
+	bcc _label_e049 ; 7:$E052  90 F5
+	lda #$3F ; 7:$E054  A9 3F
+	sta $01A2 ; 7:$E056  8D A2 01
+	sta $01A3 ; 7:$E059  8D A3 01
+	sta $01A4 ; 7:$E05C  8D A4 01
+	sta $01A5 ; 7:$E05F  8D A5 01
+	lda #$AC ; 7:$E062  A9 AC
+	sta _var_01b0 ; 7:$E064  8D B0 01
+	lda #$53 ; 7:$E067  A9 53
+	sta _var_01b1 ; 7:$E069  8D B1 01
 
 _label_e06c:
-	jsr _func_e5cb                 ; 7:$E06C  20 CB E5
-	lda #$00                       ; 7:$E06F  A9 00
-	sta $2B                        ; 7:$E071  85 2B
-	sta $2C                        ; 7:$E073  85 2C
-	jsr _func_e131                 ; 7:$E075  20 31 E1
-	lda #$07                       ; 7:$E078  A9 07
-	jsr _func_ff09                 ; 7:$E07A  20 09 FF
-	jsr _func_e1a3                 ; 7:$E07D  20 A3 E1
-	lda _var_0026_indexed          ; 7:$E080  A5 26
-	cmp #$F8                       ; 7:$E082  C9 F8
-	bne _label_e08b                ; 7:$E084  D0 05
-	lda _data_ff08               ; 7:$E086  AD 08 FF
-	sta _var_0001                  ; 7:$E089  85 01
+	jsr _func_e5cb ; 7:$E06C  20 CB E5
+	lda #$00 ; 7:$E06F  A9 00
+	sta $2B ; 7:$E071  85 2B
+	sta $2C ; 7:$E073  85 2C
+	jsr _func_e131 ; 7:$E075  20 31 E1
+	lda #$07 ; 7:$E078  A9 07
+	jsr _func_ff09 ; 7:$E07A  20 09 FF
+	jsr _func_e1a3 ; 7:$E07D  20 A3 E1
+	lda _var_0026_indexed ; 7:$E080  A5 26
+	cmp #$F8 ; 7:$E082  C9 F8
+	bne _label_e08b ; 7:$E084  D0 05
+	lda _data_ff08 ; 7:$E086  AD 08 FF
+	sta _var_0001 ; 7:$E089  85 01
 
 _label_e08b:
-	jmp _label_d000                ; 7:$E08B  4C 00 D0
+	jmp _label_d000 ; 7:$E08B  4C 00 D0
 
 
 .byte $a9, $0e, $85, $1c, $a9, $20, $85, $1d, $a0, $00, $a5, $1d, $8d, $06, $20, $a5 ; 7:$E08E
@@ -4120,25 +4120,25 @@ _label_e08b:
 .byte $00, $00, $8e, $8e, $00, $00, $8e, $8e, $00, $00, $8e, $8c, $8d, $8c, $8d, $8e ; 7:$E0FE
 .byte $8c, $8d, $8e, $8c, $8d, $8c, $8d, $8e, $8c, $8d, $8e, $8c, $8d, $8c, $8d, $8e ; 7:$E10E
 .byte $8c, $8d, $8e, $8c, $8d, $8c, $8d, $8e, $8c, $8d, $8e, $8c, $8d, $8c, $8d, $8e ; 7:$E11E
-.byte $8c, $8d, $8e              ; 7:$E12E
+.byte $8c, $8d, $8e ; 7:$E12E
 
 _func_e131:
-	lda _var_0000_indexed          ; 7:$E131  A5 00
-	pha                            ; 7:$E133  48
-	lda #$00                       ; 7:$E134  A9 00
-	jsr _func_ff09                 ; 7:$E136  20 09 FF
-	jsr _data_8000_indexed         ; 7:$E139  20 00 80
-	pla                            ; 7:$E13C  68
-	jmp _func_ff09                 ; 7:$E13D  4C 09 FF
+	lda _var_0000_indexed ; 7:$E131  A5 00
+	pha ; 7:$E133  48
+	lda #$00 ; 7:$E134  A9 00
+	jsr _func_ff09 ; 7:$E136  20 09 FF
+	jsr _data_8000_indexed ; 7:$E139  20 00 80
+	pla ; 7:$E13C  68
+	jmp _func_ff09 ; 7:$E13D  4C 09 FF
 
 _func_e140:
-	lda _var_0000_indexed          ; 7:$E140  A5 00
-	pha                            ; 7:$E142  48
-	lda #$00                       ; 7:$E143  A9 00
-	jsr _func_ff09                 ; 7:$E145  20 09 FF
-	jsr _func_8003                 ; 7:$E148  20 03 80
-	pla                            ; 7:$E14B  68
-	jmp _func_ff09                 ; 7:$E14C  4C 09 FF
+	lda _var_0000_indexed ; 7:$E140  A5 00
+	pha ; 7:$E142  48
+	lda #$00 ; 7:$E143  A9 00
+	jsr _func_ff09 ; 7:$E145  20 09 FF
+	jsr _func_8003 ; 7:$E148  20 03 80
+	pla ; 7:$E14B  68
+	jmp _func_ff09 ; 7:$E14C  4C 09 FF
 
 
 .byte $a5, $00, $48, $a9, $00, $20, $09, $ff, $20, $09, $80, $68, $4c, $09, $ff, $a5 ; 7:$E14F
@@ -4146,394 +4146,394 @@ _func_e140:
 .byte $48, $a9, $00, $20, $09, $ff, $20, $0f, $80, $68, $4c, $09, $ff ; 7:$E16F
 
 _func_e17c:
-	lda _var_0000_indexed          ; 7:$E17C  A5 00
-	pha                            ; 7:$E17E  48
-	lda #$00                       ; 7:$E17F  A9 00
-	jsr _func_ff09                 ; 7:$E181  20 09 FF
-	jsr _func_8012                 ; 7:$E184  20 12 80
-	pla                            ; 7:$E187  68
-	jmp _func_ff09                 ; 7:$E188  4C 09 FF
+	lda _var_0000_indexed ; 7:$E17C  A5 00
+	pha ; 7:$E17E  48
+	lda #$00 ; 7:$E17F  A9 00
+	jsr _func_ff09 ; 7:$E181  20 09 FF
+	jsr _func_8012 ; 7:$E184  20 12 80
+	pla ; 7:$E187  68
+	jmp _func_ff09 ; 7:$E188  4C 09 FF
 
 _func_e18b:
-	sty _var_0020_indexed          ; 7:$E18B  84 20
-	sta _var_0021                  ; 7:$E18D  85 21
-	ldy #$03                       ; 7:$E18F  A0 03
+	sty _var_0020_indexed ; 7:$E18B  84 20
+	sta _var_0021 ; 7:$E18D  85 21
+	ldy #$03 ; 7:$E18F  A0 03
 
 _label_e191:
-	lda _var_0702_indexed,Y      ; 7:$E191  B9 02 07
-	beq _label_e19b                ; 7:$E194  F0 05
-	dey                            ; 7:$E196  88
-	bpl _label_e191                ; 7:$E197  10 F8
-	bmi _label_e1a0                ; 7:$E199  30 05
+	lda _var_0702_indexed,Y ; 7:$E191  B9 02 07
+	beq _label_e19b ; 7:$E194  F0 05
+	dey ; 7:$E196  88
+	bpl _label_e191 ; 7:$E197  10 F8
+	bmi _label_e1a0 ; 7:$E199  30 05
 
 _label_e19b:
-	lda _var_0021                  ; 7:$E19B  A5 21
-	sta _var_0702_indexed,Y      ; 7:$E19D  99 02 07
+	lda _var_0021 ; 7:$E19B  A5 21
+	sta _var_0702_indexed,Y ; 7:$E19D  99 02 07
 
 _label_e1a0:
-	ldy _var_0020_indexed          ; 7:$E1A0  A4 20
-	rts                            ; 7:$E1A2  60
+	ldy _var_0020_indexed ; 7:$E1A0  A4 20
+	rts ; 7:$E1A2  60
 
 _func_e1a3:
-	jsr _func_e1e9                 ; 7:$E1A3  20 E9 E1
+	jsr _func_e1e9 ; 7:$E1A3  20 E9 E1
 
 _label_e1a6:
-	lda _var_0020_indexed          ; 7:$E1A6  A5 20
-	sta _var_0022_indexed          ; 7:$E1A8  85 22
-	lda _var_0021                  ; 7:$E1AA  A5 21
-	sta _var_0023                  ; 7:$E1AC  85 23
-	lda _var_0024_indexed          ; 7:$E1AE  A5 24
-	pha                            ; 7:$E1B0  48
-	lda _var_0025                  ; 7:$E1B1  A5 25
-	pha                            ; 7:$E1B3  48
-	jsr _func_e1e9                 ; 7:$E1B4  20 E9 E1
-	pla                            ; 7:$E1B7  68
-	cmp _var_0025                  ; 7:$E1B8  C5 25
-	bne _label_e1d0                ; 7:$E1BA  D0 14
-	pla                            ; 7:$E1BC  68
-	cmp _var_0024_indexed          ; 7:$E1BD  C5 24
-	bne _label_e1a6                ; 7:$E1BF  D0 E5
-	lda _var_0020_indexed          ; 7:$E1C1  A5 20
-	cmp _var_0022_indexed          ; 7:$E1C3  C5 22
-	bne _label_e1a6                ; 7:$E1C5  D0 DF
-	lda _var_0021                  ; 7:$E1C7  A5 21
-	cmp _var_0023                  ; 7:$E1C9  C5 23
-	bne _label_e1a6                ; 7:$E1CB  D0 D9
-	jmp _label_e1d4                ; 7:$E1CD  4C D4 E1
+	lda _var_0020_indexed ; 7:$E1A6  A5 20
+	sta _var_0022_indexed ; 7:$E1A8  85 22
+	lda _var_0021 ; 7:$E1AA  A5 21
+	sta _var_0023 ; 7:$E1AC  85 23
+	lda _var_0024_indexed ; 7:$E1AE  A5 24
+	pha ; 7:$E1B0  48
+	lda _var_0025 ; 7:$E1B1  A5 25
+	pha ; 7:$E1B3  48
+	jsr _func_e1e9 ; 7:$E1B4  20 E9 E1
+	pla ; 7:$E1B7  68
+	cmp _var_0025 ; 7:$E1B8  C5 25
+	bne _label_e1d0 ; 7:$E1BA  D0 14
+	pla ; 7:$E1BC  68
+	cmp _var_0024_indexed ; 7:$E1BD  C5 24
+	bne _label_e1a6 ; 7:$E1BF  D0 E5
+	lda _var_0020_indexed ; 7:$E1C1  A5 20
+	cmp _var_0022_indexed ; 7:$E1C3  C5 22
+	bne _label_e1a6 ; 7:$E1C5  D0 DF
+	lda _var_0021 ; 7:$E1C7  A5 21
+	cmp _var_0023 ; 7:$E1C9  C5 23
+	bne _label_e1a6 ; 7:$E1CB  D0 D9
+	jmp _label_e1d4 ; 7:$E1CD  4C D4 E1
 
 _label_e1d0:
-	pla                            ; 7:$E1D0  68
-	jmp _label_e1a6                ; 7:$E1D1  4C A6 E1
+	pla ; 7:$E1D0  68
+	jmp _label_e1a6 ; 7:$E1D1  4C A6 E1
 
 _label_e1d4:
-	ldx #$01                       ; 7:$E1D4  A2 01
+	ldx #$01 ; 7:$E1D4  A2 01
 
 _label_e1d6:
-	ldy _var_0026_indexed,X        ; 7:$E1D6  B4 26
-	lda _var_0024_indexed,X        ; 7:$E1D8  B5 24
-	ora _var_0020_indexed,X        ; 7:$E1DA  15 20
-	sta _var_0026_indexed,X        ; 7:$E1DC  95 26
-	tya                            ; 7:$E1DE  98
-	eor _var_0026_indexed,X        ; 7:$E1DF  55 26
-	and _var_0026_indexed,X        ; 7:$E1E1  35 26
-	sta _var_0024_indexed,X        ; 7:$E1E3  95 24
-	dex                            ; 7:$E1E5  CA
-	bpl _label_e1d6                ; 7:$E1E6  10 EE
-	rts                            ; 7:$E1E8  60
+	ldy _var_0026_indexed,X ; 7:$E1D6  B4 26
+	lda _var_0024_indexed,X ; 7:$E1D8  B5 24
+	ora _var_0020_indexed,X ; 7:$E1DA  15 20
+	sta _var_0026_indexed,X ; 7:$E1DC  95 26
+	tya ; 7:$E1DE  98
+	eor _var_0026_indexed,X ; 7:$E1DF  55 26
+	and _var_0026_indexed,X ; 7:$E1E1  35 26
+	sta _var_0024_indexed,X ; 7:$E1E3  95 24
+	dex ; 7:$E1E5  CA
+	bpl _label_e1d6 ; 7:$E1E6  10 EE
+	rts ; 7:$E1E8  60
 
 _func_e1e9:
-	lda #$01                       ; 7:$E1E9  A9 01
-	sta JOYPAD1                    ; 7:$E1EB  8D 16 40
-	lda #$00                       ; 7:$E1EE  A9 00
-	sta JOYPAD1                    ; 7:$E1F0  8D 16 40
-	ldx #$08                       ; 7:$E1F3  A2 08
+	lda #$01 ; 7:$E1E9  A9 01
+	sta JOYPAD1 ; 7:$E1EB  8D 16 40
+	lda #$00 ; 7:$E1EE  A9 00
+	sta JOYPAD1 ; 7:$E1F0  8D 16 40
+	ldx #$08 ; 7:$E1F3  A2 08
 
 _label_e1f5:
-	lda JOYPAD1                    ; 7:$E1F5  AD 16 40
-	lsr a                          ; 7:$E1F8  4A
-	rol _var_0024_indexed          ; 7:$E1F9  26 24
-	lsr a                          ; 7:$E1FB  4A
-	rol _var_0020_indexed          ; 7:$E1FC  26 20
-	lda JOYPAD2                    ; 7:$E1FE  AD 17 40
-	lsr a                          ; 7:$E201  4A
-	rol _var_0025                  ; 7:$E202  26 25
-	lsr a                          ; 7:$E204  4A
-	rol _var_0021                  ; 7:$E205  26 21
-	dex                            ; 7:$E207  CA
-	bne _label_e1f5                ; 7:$E208  D0 EB
-	rts                            ; 7:$E20A  60
+	lda JOYPAD1 ; 7:$E1F5  AD 16 40
+	lsr a ; 7:$E1F8  4A
+	rol _var_0024_indexed ; 7:$E1F9  26 24
+	lsr a ; 7:$E1FB  4A
+	rol _var_0020_indexed ; 7:$E1FC  26 20
+	lda JOYPAD2 ; 7:$E1FE  AD 17 40
+	lsr a ; 7:$E201  4A
+	rol _var_0025 ; 7:$E202  26 25
+	lsr a ; 7:$E204  4A
+	rol _var_0021 ; 7:$E205  26 21
+	dex ; 7:$E207  CA
+	bne _label_e1f5 ; 7:$E208  D0 EB
+	rts ; 7:$E20A  60
 
 _func_e20b:
-	ldx #$00                       ; 7:$E20B  A2 00
-	lda #$F8                       ; 7:$E20D  A9 F8
+	ldx #$00 ; 7:$E20B  A2 00
+	lda #$F8 ; 7:$E20D  A9 F8
 
 _label_e20f:
-	sta _var_0200_indexed,X      ; 7:$E20F  9D 00 02
-	inx                            ; 7:$E212  E8
-	bne _label_e20f                ; 7:$E213  D0 FA
-	rts                            ; 7:$E215  60
+	sta _var_0200_indexed,X ; 7:$E20F  9D 00 02
+	inx ; 7:$E212  E8
+	bne _label_e20f ; 7:$E213  D0 FA
+	rts ; 7:$E215  60
 
 _func_e216:
-	lda _var_0028                  ; 7:$E216  A5 28
-	bpl _label_e223                ; 7:$E218  10 09
-	sta PPU_CTRL                   ; 7:$E21A  8D 00 20
-	lda _var_002f                  ; 7:$E21D  A5 2F
+	lda _var_0028 ; 7:$E216  A5 28
+	bpl _label_e223 ; 7:$E218  10 09
+	sta PPU_CTRL ; 7:$E21A  8D 00 20
+	lda _var_002f ; 7:$E21D  A5 2F
 
 _label_e21f:
-	cmp _var_002f                  ; 7:$E21F  C5 2F
-	beq _label_e21f                ; 7:$E221  F0 FC
+	cmp _var_002f ; 7:$E21F  C5 2F
+	beq _label_e21f ; 7:$E221  F0 FC
 
 _label_e223:
-	rts                            ; 7:$E223  60
+	rts ; 7:$E223  60
 
 _label_e224:
-	lda _var_002e                  ; 7:$E224  A5 2E
-	bne _func_e229                 ; 7:$E226  D0 01
-	rts                            ; 7:$E228  60
+	lda _var_002e ; 7:$E224  A5 2E
+	bne _func_e229 ; 7:$E226  D0 01
+	rts ; 7:$E228  60
 
 _func_e229:
-	tya                            ; 7:$E229  98
-	pha                            ; 7:$E22A  48
-	txa                            ; 7:$E22B  8A
-	pha                            ; 7:$E22C  48
-	jsr _func_e235                 ; 7:$E22D  20 35 E2
-	pla                            ; 7:$E230  68
-	tax                            ; 7:$E231  AA
-	pla                            ; 7:$E232  68
-	tay                            ; 7:$E233  A8
-	rts                            ; 7:$E234  60
+	tya ; 7:$E229  98
+	pha ; 7:$E22A  48
+	txa ; 7:$E22B  8A
+	pha ; 7:$E22C  48
+	jsr _func_e235 ; 7:$E22D  20 35 E2
+	pla ; 7:$E230  68
+	tax ; 7:$E231  AA
+	pla ; 7:$E232  68
+	tay ; 7:$E233  A8
+	rts ; 7:$E234  60
 
 _func_e235:
-	jsr _func_e216                 ; 7:$E235  20 16 E2
-	lda _var_0029                  ; 7:$E238  A5 29
-	and #$18                       ; 7:$E23A  29 18
-	bne _label_e245                ; 7:$E23C  D0 07
-	lda _var_0028                  ; 7:$E23E  A5 28
-	bmi _label_e245                ; 7:$E240  30 03
-	jmp _jump_engine_e9ed          ; 7:$E242  4C ED E9
+	jsr _func_e216 ; 7:$E235  20 16 E2
+	lda _var_0029 ; 7:$E238  A5 29
+	and #$18 ; 7:$E23A  29 18
+	bne _label_e245 ; 7:$E23C  D0 07
+	lda _var_0028 ; 7:$E23E  A5 28
+	bmi _label_e245 ; 7:$E240  30 03
+	jmp _jump_engine_e9ed ; 7:$E242  4C ED E9
 
 _label_e245:
-	rts                            ; 7:$E245  60
+	rts ; 7:$E245  60
 
 _label_e246:
-	jsr _func_e24c                 ; 7:$E246  20 4C E2
-	jmp _label_e224                ; 7:$E249  4C 24 E2
+	jsr _func_e24c ; 7:$E246  20 4C E2
+	jmp _label_e224 ; 7:$E249  4C 24 E2
 
 _func_e24c:
-	sta _var_001b                  ; 7:$E24C  85 1B
-	lda _var_0019                  ; 7:$E24E  A5 19
-	eor #$FF                       ; 7:$E250  49 FF
-	sta _var_0019                  ; 7:$E252  85 19
-	lda _var_0018_indexed          ; 7:$E254  A5 18
-	eor #$FF                       ; 7:$E256  49 FF
-	clc                            ; 7:$E258  18
-	adc #$01                       ; 7:$E259  69 01
-	sta _var_0018_indexed          ; 7:$E25B  85 18
-	bcc _label_e261                ; 7:$E25D  90 02
-	inc _var_0019                  ; 7:$E25F  E6 19
+	sta _var_001b ; 7:$E24C  85 1B
+	lda _var_0019 ; 7:$E24E  A5 19
+	eor #$FF ; 7:$E250  49 FF
+	sta _var_0019 ; 7:$E252  85 19
+	lda _var_0018_indexed ; 7:$E254  A5 18
+	eor #$FF ; 7:$E256  49 FF
+	clc ; 7:$E258  18
+	adc #$01 ; 7:$E259  69 01
+	sta _var_0018_indexed ; 7:$E25B  85 18
+	bcc _label_e261 ; 7:$E25D  90 02
+	inc _var_0019 ; 7:$E25F  E6 19
 
 _label_e261:
-	jsr _func_e2f1                 ; 7:$E261  20 F1 E2
-	lda #$00                       ; 7:$E264  A9 00
-	sta _var_0100_indexed,X      ; 7:$E266  9D 00 01
-	lda _var_001c_indexed          ; 7:$E269  A5 1C
-	sta _var_0103_indexed,X      ; 7:$E26B  9D 03 01
-	clc                            ; 7:$E26E  18
-	adc _var_0020_indexed          ; 7:$E26F  65 20
-	sta _var_001c_indexed          ; 7:$E271  85 1C
-	lda _var_001d                  ; 7:$E273  A5 1D
-	sta _var_0102_indexed,X      ; 7:$E275  9D 02 01
-	adc #$00                       ; 7:$E278  69 00
-	sta _var_001d                  ; 7:$E27A  85 1D
-	lda _var_001b                  ; 7:$E27C  A5 1B
-	ldy #$00                       ; 7:$E27E  A0 00
+	jsr _func_e2f1 ; 7:$E261  20 F1 E2
+	lda #$00 ; 7:$E264  A9 00
+	sta _var_0100_indexed,X ; 7:$E266  9D 00 01
+	lda _var_001c_indexed ; 7:$E269  A5 1C
+	sta _var_0103_indexed,X ; 7:$E26B  9D 03 01
+	clc ; 7:$E26E  18
+	adc _var_0020_indexed ; 7:$E26F  65 20
+	sta _var_001c_indexed ; 7:$E271  85 1C
+	lda _var_001d ; 7:$E273  A5 1D
+	sta _var_0102_indexed,X ; 7:$E275  9D 02 01
+	adc #$00 ; 7:$E278  69 00
+	sta _var_001d ; 7:$E27A  85 1D
+	lda _var_001b ; 7:$E27C  A5 1B
+	ldy #$00 ; 7:$E27E  A0 00
 
 _label_e280:
-	sta _var_0104_indexed,X      ; 7:$E280  9D 04 01
-	iny                            ; 7:$E283  C8
-	inx                            ; 7:$E284  E8
-	inc _var_0018_indexed          ; 7:$E285  E6 18
-	bne _label_e28d                ; 7:$E287  D0 04
-	inc _var_0019                  ; 7:$E289  E6 19
-	beq _label_e2a9                ; 7:$E28B  F0 1C
+	sta _var_0104_indexed,X ; 7:$E280  9D 04 01
+	iny ; 7:$E283  C8
+	inx ; 7:$E284  E8
+	inc _var_0018_indexed ; 7:$E285  E6 18
+	bne _label_e28d ; 7:$E287  D0 04
+	inc _var_0019 ; 7:$E289  E6 19
+	beq _label_e2a9 ; 7:$E28B  F0 1C
 
 _label_e28d:
-	cpy _var_0020_indexed          ; 7:$E28D  C4 20
-	bne _label_e280                ; 7:$E28F  D0 EF
-	txa                            ; 7:$E291  8A
-	clc                            ; 7:$E292  18
-	adc #$04                       ; 7:$E293  69 04
-	ldx _var_002d                  ; 7:$E295  A6 2D
-	sta _var_002d                  ; 7:$E297  85 2D
-	tya                            ; 7:$E299  98
-	sta _var_0101_indexed,X      ; 7:$E29A  9D 01 01
-	ldx _var_0021                  ; 7:$E29D  A6 21
-	lda _var_0022_indexed          ; 7:$E29F  A5 22
-	sta _var_002e                  ; 7:$E2A1  85 2E
-	jsr _func_e229                 ; 7:$E2A3  20 29 E2
-	jmp _label_e261                ; 7:$E2A6  4C 61 E2
+	cpy _var_0020_indexed ; 7:$E28D  C4 20
+	bne _label_e280 ; 7:$E28F  D0 EF
+	txa ; 7:$E291  8A
+	clc ; 7:$E292  18
+	adc #$04 ; 7:$E293  69 04
+	ldx _var_002d ; 7:$E295  A6 2D
+	sta _var_002d ; 7:$E297  85 2D
+	tya ; 7:$E299  98
+	sta _var_0101_indexed,X ; 7:$E29A  9D 01 01
+	ldx _var_0021 ; 7:$E29D  A6 21
+	lda _var_0022_indexed ; 7:$E29F  A5 22
+	sta _var_002e ; 7:$E2A1  85 2E
+	jsr _func_e229 ; 7:$E2A3  20 29 E2
+	jmp _label_e261 ; 7:$E2A6  4C 61 E2
 
 _label_e2a9:
-	txa                            ; 7:$E2A9  8A
-	clc                            ; 7:$E2AA  18
-	adc #$04                       ; 7:$E2AB  69 04
-	ldx _var_002d                  ; 7:$E2AD  A6 2D
-	sta _var_002d                  ; 7:$E2AF  85 2D
-	tya                            ; 7:$E2B1  98
-	sta _var_0101_indexed,X      ; 7:$E2B2  9D 01 01
-	ldx _var_0021                  ; 7:$E2B5  A6 21
-	lda _var_0022_indexed          ; 7:$E2B7  A5 22
-	sta _var_002e                  ; 7:$E2B9  85 2E
-	rts                            ; 7:$E2BB  60
+	txa ; 7:$E2A9  8A
+	clc ; 7:$E2AA  18
+	adc #$04 ; 7:$E2AB  69 04
+	ldx _var_002d ; 7:$E2AD  A6 2D
+	sta _var_002d ; 7:$E2AF  85 2D
+	tya ; 7:$E2B1  98
+	sta _var_0101_indexed,X ; 7:$E2B2  9D 01 01
+	ldx _var_0021 ; 7:$E2B5  A6 21
+	lda _var_0022_indexed ; 7:$E2B7  A5 22
+	sta _var_002e ; 7:$E2B9  85 2E
+	rts ; 7:$E2BB  60
 
 _func_e2bc:
-	pha                            ; 7:$E2BC  48
-	lsr a                          ; 7:$E2BD  4A
-	lsr a                          ; 7:$E2BE  4A
-	lsr a                          ; 7:$E2BF  4A
-	lsr a                          ; 7:$E2C0  4A
-	ora #$20                       ; 7:$E2C1  09 20
-	pha                            ; 7:$E2C3  48
-	sta _var_001d                  ; 7:$E2C4  85 1D
-	lda #$00                       ; 7:$E2C6  A9 00
-	sta _var_001c_indexed          ; 7:$E2C8  85 1C
-	lda #$03                       ; 7:$E2CA  A9 03
-	sta _var_0019                  ; 7:$E2CC  85 19
-	lda #$C0                       ; 7:$E2CE  A9 C0
-	sta _var_0018_indexed          ; 7:$E2D0  85 18
-	tya                            ; 7:$E2D2  98
-	jsr _func_e24c                 ; 7:$E2D3  20 4C E2
-	pla                            ; 7:$E2D6  68
-	ora #$03                       ; 7:$E2D7  09 03
-	sta _var_001d                  ; 7:$E2D9  85 1D
-	lda #$C0                       ; 7:$E2DB  A9 C0
-	sta _var_001c_indexed          ; 7:$E2DD  85 1C
-	lda #$00                       ; 7:$E2DF  A9 00
-	sta _var_0019                  ; 7:$E2E1  85 19
-	lda #$40                       ; 7:$E2E3  A9 40
-	sta _var_0018_indexed          ; 7:$E2E5  85 18
-	pla                            ; 7:$E2E7  68
-	and #$03                       ; 7:$E2E8  29 03
-	tay                            ; 7:$E2EA  A8
-	lda _data_e5c7_indexed,Y     ; 7:$E2EB  B9 C7 E5
-	jmp _label_e246                ; 7:$E2EE  4C 46 E2
+	pha ; 7:$E2BC  48
+	lsr a ; 7:$E2BD  4A
+	lsr a ; 7:$E2BE  4A
+	lsr a ; 7:$E2BF  4A
+	lsr a ; 7:$E2C0  4A
+	ora #$20 ; 7:$E2C1  09 20
+	pha ; 7:$E2C3  48
+	sta _var_001d ; 7:$E2C4  85 1D
+	lda #$00 ; 7:$E2C6  A9 00
+	sta _var_001c_indexed ; 7:$E2C8  85 1C
+	lda #$03 ; 7:$E2CA  A9 03
+	sta _var_0019 ; 7:$E2CC  85 19
+	lda #$C0 ; 7:$E2CE  A9 C0
+	sta _var_0018_indexed ; 7:$E2D0  85 18
+	tya ; 7:$E2D2  98
+	jsr _func_e24c ; 7:$E2D3  20 4C E2
+	pla ; 7:$E2D6  68
+	ora #$03 ; 7:$E2D7  09 03
+	sta _var_001d ; 7:$E2D9  85 1D
+	lda #$C0 ; 7:$E2DB  A9 C0
+	sta _var_001c_indexed ; 7:$E2DD  85 1C
+	lda #$00 ; 7:$E2DF  A9 00
+	sta _var_0019 ; 7:$E2E1  85 19
+	lda #$40 ; 7:$E2E3  A9 40
+	sta _var_0018_indexed ; 7:$E2E5  85 18
+	pla ; 7:$E2E7  68
+	and #$03 ; 7:$E2E8  29 03
+	tay ; 7:$E2EA  A8
+	lda _data_e5c7_indexed,Y ; 7:$E2EB  B9 C7 E5
+	jmp _label_e246 ; 7:$E2EE  4C 46 E2
 
 _func_e2f1:
-	lda _var_004d                  ; 7:$E2F1  A5 4D
-	beq _label_e2f9                ; 7:$E2F3  F0 04
-	lda #$30                       ; 7:$E2F5  A9 30
-	bne _label_e2fb                ; 7:$E2F7  D0 02
+	lda _var_004d ; 7:$E2F1  A5 4D
+	beq _label_e2f9 ; 7:$E2F3  F0 04
+	lda #$30 ; 7:$E2F5  A9 30
+	bne _label_e2fb ; 7:$E2F7  D0 02
 
 _label_e2f9:
-	lda #$50                       ; 7:$E2F9  A9 50
+	lda #$50 ; 7:$E2F9  A9 50
 
 _label_e2fb:
-	sec                            ; 7:$E2FB  38
-	sbc _var_002d                  ; 7:$E2FC  E5 2D
-	cmp #$05                       ; 7:$E2FE  C9 05
-	bcs _label_e308                ; 7:$E300  B0 06
-	jsr _func_e229                 ; 7:$E302  20 29 E2
-	jmp _func_e2f1                 ; 7:$E305  4C F1 E2
+	sec ; 7:$E2FB  38
+	sbc _var_002d ; 7:$E2FC  E5 2D
+	cmp #$05 ; 7:$E2FE  C9 05
+	bcs _label_e308 ; 7:$E300  B0 06
+	jsr _func_e229 ; 7:$E302  20 29 E2
+	jmp _func_e2f1 ; 7:$E305  4C F1 E2
 
 _label_e308:
-	sbc #$04                       ; 7:$E308  E9 04
-	sta _var_0020_indexed          ; 7:$E30A  85 20
-	stx _var_0021                  ; 7:$E30C  86 21
-	lda _var_002e                  ; 7:$E30E  A5 2E
-	ldx #$00                       ; 7:$E310  A2 00
-	stx _var_002e                  ; 7:$E312  86 2E
-	ldx _var_002d                  ; 7:$E314  A6 2D
-	sta _var_0022_indexed          ; 7:$E316  85 22
-	inc _var_0022_indexed          ; 7:$E318  E6 22
-	rts                            ; 7:$E31A  60
+	sbc #$04 ; 7:$E308  E9 04
+	sta _var_0020_indexed ; 7:$E30A  85 20
+	stx _var_0021 ; 7:$E30C  86 21
+	lda _var_002e ; 7:$E30E  A5 2E
+	ldx #$00 ; 7:$E310  A2 00
+	stx _var_002e ; 7:$E312  86 2E
+	ldx _var_002d ; 7:$E314  A6 2D
+	sta _var_0022_indexed ; 7:$E316  85 22
+	inc _var_0022_indexed ; 7:$E318  E6 22
+	rts ; 7:$E31A  60
 
 _func_e31b:
-	pha                            ; 7:$E31B  48
-	jsr _func_e334                 ; 7:$E31C  20 34 E3
-	bcc _label_e324                ; 7:$E31F  90 03
-	jsr _func_e229                 ; 7:$E321  20 29 E2
+	pha ; 7:$E31B  48
+	jsr _func_e334 ; 7:$E31C  20 34 E3
+	bcc _label_e324 ; 7:$E31F  90 03
+	jsr _func_e229 ; 7:$E321  20 29 E2
 
 _label_e324:
-	stx _var_0021                  ; 7:$E324  86 21
-	lda _var_002d                  ; 7:$E326  A5 2D
-	ldx _var_002e                  ; 7:$E328  A6 2E
-	inx                            ; 7:$E32A  E8
-	stx _var_0020_indexed          ; 7:$E32B  86 20
-	ldx #$00                       ; 7:$E32D  A2 00
-	stx _var_002e                  ; 7:$E32F  86 2E
-	tax                            ; 7:$E331  AA
-	pla                            ; 7:$E332  68
-	rts                            ; 7:$E333  60
+	stx _var_0021 ; 7:$E324  86 21
+	lda _var_002d ; 7:$E326  A5 2D
+	ldx _var_002e ; 7:$E328  A6 2E
+	inx ; 7:$E32A  E8
+	stx _var_0020_indexed ; 7:$E32B  86 20
+	ldx #$00 ; 7:$E32D  A2 00
+	stx _var_002e ; 7:$E32F  86 2E
+	tax ; 7:$E331  AA
+	pla ; 7:$E332  68
+	rts ; 7:$E333  60
 
 _func_e334:
-	pha                            ; 7:$E334  48
-	clc                            ; 7:$E335  18
-	adc _var_002d                  ; 7:$E336  65 2D
-	cmp #$47                       ; 7:$E338  C9 47
-	bcs _label_e345                ; 7:$E33A  B0 09
-	cmp #$31                       ; 7:$E33C  C9 31
-	bcc _label_e345                ; 7:$E33E  90 05
-	lda _var_004d                  ; 7:$E340  A5 4D
-	bne _label_e345                ; 7:$E342  D0 01
-	clc                            ; 7:$E344  18
+	pha ; 7:$E334  48
+	clc ; 7:$E335  18
+	adc _var_002d ; 7:$E336  65 2D
+	cmp #$47 ; 7:$E338  C9 47
+	bcs _label_e345 ; 7:$E33A  B0 09
+	cmp #$31 ; 7:$E33C  C9 31
+	bcc _label_e345 ; 7:$E33E  90 05
+	lda _var_004d ; 7:$E340  A5 4D
+	bne _label_e345 ; 7:$E342  D0 01
+	clc ; 7:$E344  18
 
 _label_e345:
-	pla                            ; 7:$E345  68
-	rts                            ; 7:$E346  60
+	pla ; 7:$E345  68
+	rts ; 7:$E346  60
 
 
 .byte $a5, $4d, $d0, $04, $a9, $46, $f0, $02, $a9, $30, $38, $e5, $2d, $e9, $04, $60 ; 7:$E347
 
 _func_e357:
-	txa                            ; 7:$E357  8A
-	pha                            ; 7:$E358  48
-	ldy #$00                       ; 7:$E359  A0 00
+	txa ; 7:$E357  8A
+	pha ; 7:$E358  48
+	ldy #$00 ; 7:$E359  A0 00
 
 _label_e35b:
-	lda _var_0019                  ; 7:$E35B  A5 19
-	clc                            ; 7:$E35D  18
-	adc #$04                       ; 7:$E35E  69 04
-	jsr _func_e31b                 ; 7:$E360  20 1B E3
-	lda #$00                       ; 7:$E363  A9 00
-	sta _var_0100_indexed,X      ; 7:$E365  9D 00 01
-	lda _var_0019                  ; 7:$E368  A5 19
-	sta _var_0101_indexed,X      ; 7:$E36A  9D 01 01
-	sta _var_0022_indexed          ; 7:$E36D  85 22
-	lda _var_001d                  ; 7:$E36F  A5 1D
-	sta _var_0102_indexed,X      ; 7:$E371  9D 02 01
-	lda _var_001c_indexed          ; 7:$E374  A5 1C
-	sta _var_0103_indexed,X      ; 7:$E376  9D 03 01
+	lda _var_0019 ; 7:$E35B  A5 19
+	clc ; 7:$E35D  18
+	adc #$04 ; 7:$E35E  69 04
+	jsr _func_e31b ; 7:$E360  20 1B E3
+	lda #$00 ; 7:$E363  A9 00
+	sta _var_0100_indexed,X ; 7:$E365  9D 00 01
+	lda _var_0019 ; 7:$E368  A5 19
+	sta _var_0101_indexed,X ; 7:$E36A  9D 01 01
+	sta _var_0022_indexed ; 7:$E36D  85 22
+	lda _var_001d ; 7:$E36F  A5 1D
+	sta _var_0102_indexed,X ; 7:$E371  9D 02 01
+	lda _var_001c_indexed ; 7:$E374  A5 1C
+	sta _var_0103_indexed,X ; 7:$E376  9D 03 01
 
 _label_e379:
-	lda (_var_001a_indexed),Y      ; 7:$E379  B1 1A
-	sta _var_0104_indexed,X      ; 7:$E37B  9D 04 01
-	bit _var_0018_indexed          ; 7:$E37E  24 18
-	bmi _label_e387                ; 7:$E380  30 05
-	iny                            ; 7:$E382  C8
-	bne _label_e387                ; 7:$E383  D0 02
-	inc _var_001b                  ; 7:$E385  E6 1B
+	lda (_var_001a_indexed),Y ; 7:$E379  B1 1A
+	sta _var_0104_indexed,X ; 7:$E37B  9D 04 01
+	bit _var_0018_indexed ; 7:$E37E  24 18
+	bmi _label_e387 ; 7:$E380  30 05
+	iny ; 7:$E382  C8
+	bne _label_e387 ; 7:$E383  D0 02
+	inc _var_001b ; 7:$E385  E6 1B
 
 _label_e387:
-	inx                            ; 7:$E387  E8
-	dec _var_0022_indexed          ; 7:$E388  C6 22
-	bne _label_e379                ; 7:$E38A  D0 ED
-	txa                            ; 7:$E38C  8A
-	clc                            ; 7:$E38D  18
-	adc #$04                       ; 7:$E38E  69 04
-	sta _var_002d                  ; 7:$E390  85 2D
-	lda _var_0020_indexed          ; 7:$E392  A5 20
-	sta _var_002e                  ; 7:$E394  85 2E
-	lda _var_001c_indexed          ; 7:$E396  A5 1C
-	clc                            ; 7:$E398  18
-	adc #$20                       ; 7:$E399  69 20
-	sta _var_001c_indexed          ; 7:$E39B  85 1C
-	bcs _label_e3bb                ; 7:$E39D  B0 1C
-	cmp #$C0                       ; 7:$E39F  C9 C0
-	bcc _label_e3bd                ; 7:$E3A1  90 1A
-	lda _var_001d                  ; 7:$E3A3  A5 1D
-	and #$23                       ; 7:$E3A5  29 23
-	cmp #$23                       ; 7:$E3A7  C9 23
-	bne _label_e3bd                ; 7:$E3A9  D0 12
-	lda _var_001d                  ; 7:$E3AB  A5 1D
-	sbc #$03                       ; 7:$E3AD  E9 03
-	eor #$08                       ; 7:$E3AF  49 08
-	sta _var_001d                  ; 7:$E3B1  85 1D
-	lda _var_001c_indexed          ; 7:$E3B3  A5 1C
-	and #$1F                       ; 7:$E3B5  29 1F
-	sta _var_001c_indexed          ; 7:$E3B7  85 1C
-	bpl _label_e3bd                ; 7:$E3B9  10 02
+	inx ; 7:$E387  E8
+	dec _var_0022_indexed ; 7:$E388  C6 22
+	bne _label_e379 ; 7:$E38A  D0 ED
+	txa ; 7:$E38C  8A
+	clc ; 7:$E38D  18
+	adc #$04 ; 7:$E38E  69 04
+	sta _var_002d ; 7:$E390  85 2D
+	lda _var_0020_indexed ; 7:$E392  A5 20
+	sta _var_002e ; 7:$E394  85 2E
+	lda _var_001c_indexed ; 7:$E396  A5 1C
+	clc ; 7:$E398  18
+	adc #$20 ; 7:$E399  69 20
+	sta _var_001c_indexed ; 7:$E39B  85 1C
+	bcs _label_e3bb ; 7:$E39D  B0 1C
+	cmp #$C0 ; 7:$E39F  C9 C0
+	bcc _label_e3bd ; 7:$E3A1  90 1A
+	lda _var_001d ; 7:$E3A3  A5 1D
+	and #$23 ; 7:$E3A5  29 23
+	cmp #$23 ; 7:$E3A7  C9 23
+	bne _label_e3bd ; 7:$E3A9  D0 12
+	lda _var_001d ; 7:$E3AB  A5 1D
+	sbc #$03 ; 7:$E3AD  E9 03
+	eor #$08 ; 7:$E3AF  49 08
+	sta _var_001d ; 7:$E3B1  85 1D
+	lda _var_001c_indexed ; 7:$E3B3  A5 1C
+	and #$1F ; 7:$E3B5  29 1F
+	sta _var_001c_indexed ; 7:$E3B7  85 1C
+	bpl _label_e3bd ; 7:$E3B9  10 02
 
 _label_e3bb:
-	inc _var_001d                  ; 7:$E3BB  E6 1D
+	inc _var_001d ; 7:$E3BB  E6 1D
 
 _label_e3bd:
-	dec _var_0018_indexed          ; 7:$E3BD  C6 18
-	lda _var_0018_indexed          ; 7:$E3BF  A5 18
-	and #$7F                       ; 7:$E3C1  29 7F
-	bne _label_e35b                ; 7:$E3C3  D0 96
-	pla                            ; 7:$E3C5  68
-	tax                            ; 7:$E3C6  AA
-	rts                            ; 7:$E3C7  60
+	dec _var_0018_indexed ; 7:$E3BD  C6 18
+	lda _var_0018_indexed ; 7:$E3BF  A5 18
+	and #$7F ; 7:$E3C1  29 7F
+	bne _label_e35b ; 7:$E3C3  D0 96
+	pla ; 7:$E3C5  68
+	tax ; 7:$E3C6  AA
+	rts ; 7:$E3C7  60
 
 
 .byte $a5, $1c, $48, $98, $48, $a5, $19, $48, $a0, $00, $b1, $1a, $f0, $11, $a8, $b9 ; 7:$E3C8
@@ -4547,258 +4547,258 @@ _label_e3bd:
 .byte $65, $3f, $a8, $b9, $c7, $e5, $9d, $08, $01, $a5, $1c, $29, $02, $4a, $a8, $a5 ; 7:$E448
 .byte $1c, $29, $40, $f0, $02, $c8, $c8, $b9, $bf, $e5, $9d, $09, $01, $b9, $c3, $e5 ; 7:$E458
 .byte $3d, $08, $01, $9d, $08, $01, $8a, $18, $69, $0a, $85, $2d, $a6, $21, $a5, $20 ; 7:$E468
-.byte $85, $2e, $60              ; 7:$E478
+.byte $85, $2e, $60 ; 7:$E478
 
 _func_e47b:
-	lda _var_001c_indexed          ; 7:$E47B  A5 1C
-	pha                            ; 7:$E47D  48
-	tya                            ; 7:$E47E  98
-	pha                            ; 7:$E47F  48
-	lda _var_0019                  ; 7:$E480  A5 19
-	pha                            ; 7:$E482  48
+	lda _var_001c_indexed ; 7:$E47B  A5 1C
+	pha ; 7:$E47D  48
+	tya ; 7:$E47E  98
+	pha ; 7:$E47F  48
+	lda _var_0019 ; 7:$E480  A5 19
+	pha ; 7:$E482  48
 
 _label_e483:
-	tya                            ; 7:$E483  98
-	pha                            ; 7:$E484  48
-	lda #$07                       ; 7:$E485  A9 07
-	jsr _func_e31b                 ; 7:$E487  20 1B E3
-	lda #$03                       ; 7:$E48A  A9 03
-	sta _var_0100_indexed,X      ; 7:$E48C  9D 00 01
-	lda _var_001d                  ; 7:$E48F  A5 1D
-	sta _var_0101_indexed,X      ; 7:$E491  9D 01 01
-	tya                            ; 7:$E494  98
-	sta _var_0102_indexed,X      ; 7:$E495  9D 02 01
-	ldy _var_001a_indexed          ; 7:$E498  A4 1A
-	lda _data_e5c7_indexed,Y     ; 7:$E49A  B9 C7 E5
-	sta _var_0103_indexed,X      ; 7:$E49D  9D 03 01
-	lda _var_001c_indexed          ; 7:$E4A0  A5 1C
-	and #$02                       ; 7:$E4A2  29 02
-	lsr a                          ; 7:$E4A4  4A
-	tay                            ; 7:$E4A5  A8
-	lda _var_001c_indexed          ; 7:$E4A6  A5 1C
-	and #$40                       ; 7:$E4A8  29 40
-	beq _label_e4ae                ; 7:$E4AA  F0 02
-	iny                            ; 7:$E4AC  C8
-	iny                            ; 7:$E4AD  C8
+	tya ; 7:$E483  98
+	pha ; 7:$E484  48
+	lda #$07 ; 7:$E485  A9 07
+	jsr _func_e31b ; 7:$E487  20 1B E3
+	lda #$03 ; 7:$E48A  A9 03
+	sta _var_0100_indexed,X ; 7:$E48C  9D 00 01
+	lda _var_001d ; 7:$E48F  A5 1D
+	sta _var_0101_indexed,X ; 7:$E491  9D 01 01
+	tya ; 7:$E494  98
+	sta _var_0102_indexed,X ; 7:$E495  9D 02 01
+	ldy _var_001a_indexed ; 7:$E498  A4 1A
+	lda _data_e5c7_indexed,Y ; 7:$E49A  B9 C7 E5
+	sta _var_0103_indexed,X ; 7:$E49D  9D 03 01
+	lda _var_001c_indexed ; 7:$E4A0  A5 1C
+	and #$02 ; 7:$E4A2  29 02
+	lsr a ; 7:$E4A4  4A
+	tay ; 7:$E4A5  A8
+	lda _var_001c_indexed ; 7:$E4A6  A5 1C
+	and #$40 ; 7:$E4A8  29 40
+	beq _label_e4ae ; 7:$E4AA  F0 02
+	iny ; 7:$E4AC  C8
+	iny ; 7:$E4AD  C8
 
 _label_e4ae:
-	lda _data_e5bf_indexed,Y     ; 7:$E4AE  B9 BF E5
-	sta _var_0104_indexed,X      ; 7:$E4B1  9D 04 01
-	lda _data_e5c3_indexed,Y     ; 7:$E4B4  B9 C3 E5
-	and _var_0103_indexed,X      ; 7:$E4B7  3D 03 01
-	sta _var_0103_indexed,X      ; 7:$E4BA  9D 03 01
-	txa                            ; 7:$E4BD  8A
-	clc                            ; 7:$E4BE  18
-	adc #$07                       ; 7:$E4BF  69 07
-	sta _var_002d                  ; 7:$E4C1  85 2D
-	ldx _var_0021                  ; 7:$E4C3  A6 21
-	lda _var_0020_indexed          ; 7:$E4C5  A5 20
-	sta _var_002e                  ; 7:$E4C7  85 2E
-	pla                            ; 7:$E4C9  68
-	tay                            ; 7:$E4CA  A8
-	jsr _func_e4e8                 ; 7:$E4CB  20 E8 E4
-	dec _var_0019                  ; 7:$E4CE  C6 19
-	beq _label_e4d5                ; 7:$E4D0  F0 03
-	jmp _label_e483                ; 7:$E4D2  4C 83 E4
+	lda _data_e5bf_indexed,Y ; 7:$E4AE  B9 BF E5
+	sta _var_0104_indexed,X ; 7:$E4B1  9D 04 01
+	lda _data_e5c3_indexed,Y ; 7:$E4B4  B9 C3 E5
+	and _var_0103_indexed,X ; 7:$E4B7  3D 03 01
+	sta _var_0103_indexed,X ; 7:$E4BA  9D 03 01
+	txa ; 7:$E4BD  8A
+	clc ; 7:$E4BE  18
+	adc #$07 ; 7:$E4BF  69 07
+	sta _var_002d ; 7:$E4C1  85 2D
+	ldx _var_0021 ; 7:$E4C3  A6 21
+	lda _var_0020_indexed ; 7:$E4C5  A5 20
+	sta _var_002e ; 7:$E4C7  85 2E
+	pla ; 7:$E4C9  68
+	tay ; 7:$E4CA  A8
+	jsr _func_e4e8 ; 7:$E4CB  20 E8 E4
+	dec _var_0019 ; 7:$E4CE  C6 19
+	beq _label_e4d5 ; 7:$E4D0  F0 03
+	jmp _label_e483 ; 7:$E4D2  4C 83 E4
 
 _label_e4d5:
-	pla                            ; 7:$E4D5  68
-	sta _var_0019                  ; 7:$E4D6  85 19
-	dec _var_0018_indexed          ; 7:$E4D8  C6 18
-	beq _label_e4e5                ; 7:$E4DA  F0 09
-	pla                            ; 7:$E4DC  68
-	tay                            ; 7:$E4DD  A8
-	pla                            ; 7:$E4DE  68
-	jsr _func_e4fb                 ; 7:$E4DF  20 FB E4
-	jmp _func_e47b                 ; 7:$E4E2  4C 7B E4
+	pla ; 7:$E4D5  68
+	sta _var_0019 ; 7:$E4D6  85 19
+	dec _var_0018_indexed ; 7:$E4D8  C6 18
+	beq _label_e4e5 ; 7:$E4DA  F0 09
+	pla ; 7:$E4DC  68
+	tay ; 7:$E4DD  A8
+	pla ; 7:$E4DE  68
+	jsr _func_e4fb ; 7:$E4DF  20 FB E4
+	jmp _func_e47b ; 7:$E4E2  4C 7B E4
 
 _label_e4e5:
-	pla                            ; 7:$E4E5  68
-	pla                            ; 7:$E4E6  68
-	rts                            ; 7:$E4E7  60
+	pla ; 7:$E4E5  68
+	pla ; 7:$E4E6  68
+	rts ; 7:$E4E7  60
 
 _func_e4e8:
-	lda _var_001c_indexed          ; 7:$E4E8  A5 1C
-	and #$FE                       ; 7:$E4EA  29 FE
-	clc                            ; 7:$E4EC  18
-	adc #$02                       ; 7:$E4ED  69 02
-	sta _var_001c_indexed          ; 7:$E4EF  85 1C
-	and #$03                       ; 7:$E4F1  29 03
-	bne _label_e4fa                ; 7:$E4F3  D0 05
-	cpy #$00                       ; 7:$E4F5  C0 00
-	beq _label_e4fa                ; 7:$E4F7  F0 01
-	iny                            ; 7:$E4F9  C8
+	lda _var_001c_indexed ; 7:$E4E8  A5 1C
+	and #$FE ; 7:$E4EA  29 FE
+	clc ; 7:$E4EC  18
+	adc #$02 ; 7:$E4ED  69 02
+	sta _var_001c_indexed ; 7:$E4EF  85 1C
+	and #$03 ; 7:$E4F1  29 03
+	bne _label_e4fa ; 7:$E4F3  D0 05
+	cpy #$00 ; 7:$E4F5  C0 00
+	beq _label_e4fa ; 7:$E4F7  F0 01
+	iny ; 7:$E4F9  C8
 
 _label_e4fa:
-	rts                            ; 7:$E4FA  60
+	rts ; 7:$E4FA  60
 
 _func_e4fb:
-	sta _var_001c_indexed          ; 7:$E4FB  85 1C
-	and #$FE                       ; 7:$E4FD  29 FE
-	clc                            ; 7:$E4FF  18
-	adc #$40                       ; 7:$E500  69 40
-	sta _var_001c_indexed          ; 7:$E502  85 1C
-	bcs _label_e52b                ; 7:$E504  B0 25
-	cmp #$C0                       ; 7:$E506  C9 C0
-	bcc _label_e531                ; 7:$E508  90 27
-	lda _var_001d                  ; 7:$E50A  A5 1D
-	and #$03                       ; 7:$E50C  29 03
-	cmp #$03                       ; 7:$E50E  C9 03
-	bne _label_e52f                ; 7:$E510  D0 1D
-	lda _var_001d                  ; 7:$E512  A5 1D
-	eor #$08                       ; 7:$E514  49 08
-	and #$28                       ; 7:$E516  29 28
-	sta _var_001d                  ; 7:$E518  85 1D
-	lda _var_001c_indexed          ; 7:$E51A  A5 1C
-	and #$1F                       ; 7:$E51C  29 1F
-	sta _var_001c_indexed          ; 7:$E51E  85 1C
-	cpy #$00                       ; 7:$E520  C0 00
-	beq _label_e53e                ; 7:$E522  F0 1A
-	lsr a                          ; 7:$E524  4A
-	lsr a                          ; 7:$E525  4A
-	ora #$C0                       ; 7:$E526  09 C0
-	tay                            ; 7:$E528  A8
-	bmi _label_e53e                ; 7:$E529  30 13
+	sta _var_001c_indexed ; 7:$E4FB  85 1C
+	and #$FE ; 7:$E4FD  29 FE
+	clc ; 7:$E4FF  18
+	adc #$40 ; 7:$E500  69 40
+	sta _var_001c_indexed ; 7:$E502  85 1C
+	bcs _label_e52b ; 7:$E504  B0 25
+	cmp #$C0 ; 7:$E506  C9 C0
+	bcc _label_e531 ; 7:$E508  90 27
+	lda _var_001d ; 7:$E50A  A5 1D
+	and #$03 ; 7:$E50C  29 03
+	cmp #$03 ; 7:$E50E  C9 03
+	bne _label_e52f ; 7:$E510  D0 1D
+	lda _var_001d ; 7:$E512  A5 1D
+	eor #$08 ; 7:$E514  49 08
+	and #$28 ; 7:$E516  29 28
+	sta _var_001d ; 7:$E518  85 1D
+	lda _var_001c_indexed ; 7:$E51A  A5 1C
+	and #$1F ; 7:$E51C  29 1F
+	sta _var_001c_indexed ; 7:$E51E  85 1C
+	cpy #$00 ; 7:$E520  C0 00
+	beq _label_e53e ; 7:$E522  F0 1A
+	lsr a ; 7:$E524  4A
+	lsr a ; 7:$E525  4A
+	ora #$C0 ; 7:$E526  09 C0
+	tay ; 7:$E528  A8
+	bmi _label_e53e ; 7:$E529  30 13
 
 _label_e52b:
-	inc _var_001d                  ; 7:$E52B  E6 1D
-	bne _label_e535                ; 7:$E52D  D0 06
+	inc _var_001d ; 7:$E52B  E6 1D
+	bne _label_e535 ; 7:$E52D  D0 06
 
 _label_e52f:
-	lda _var_001c_indexed          ; 7:$E52F  A5 1C
+	lda _var_001c_indexed ; 7:$E52F  A5 1C
 
 _label_e531:
-	and #$60                       ; 7:$E531  29 60
-	bne _label_e53e                ; 7:$E533  D0 09
+	and #$60 ; 7:$E531  29 60
+	bne _label_e53e ; 7:$E533  D0 09
 
 _label_e535:
-	cpy #$00                       ; 7:$E535  C0 00
-	beq _label_e53e                ; 7:$E537  F0 05
-	tya                            ; 7:$E539  98
-	clc                            ; 7:$E53A  18
-	adc #$08                       ; 7:$E53B  69 08
-	tay                            ; 7:$E53D  A8
+	cpy #$00 ; 7:$E535  C0 00
+	beq _label_e53e ; 7:$E537  F0 05
+	tya ; 7:$E539  98
+	clc ; 7:$E53A  18
+	adc #$08 ; 7:$E53B  69 08
+	tay ; 7:$E53D  A8
 
 _label_e53e:
-	rts                            ; 7:$E53E  60
+	rts ; 7:$E53E  60
 
 _func_e53f:
-	lda _var_001d                  ; 7:$E53F  A5 1D
-	and #$03                       ; 7:$E541  29 03
-	sta _var_0020_indexed          ; 7:$E543  85 20
-	lda _var_001c_indexed          ; 7:$E545  A5 1C
-	asl a                          ; 7:$E547  0A
-	rol _var_0020_indexed          ; 7:$E548  26 20
-	lsr a                          ; 7:$E54A  4A
-	and #$1F                       ; 7:$E54B  29 1F
-	lsr a                          ; 7:$E54D  4A
-	lsr a                          ; 7:$E54E  4A
-	sta _var_0021                  ; 7:$E54F  85 21
-	lda _var_0020_indexed          ; 7:$E551  A5 20
-	asl a                          ; 7:$E553  0A
-	asl a                          ; 7:$E554  0A
-	asl a                          ; 7:$E555  0A
-	ora _var_0021                  ; 7:$E556  05 21
-	ora #$C0                       ; 7:$E558  09 C0
-	tay                            ; 7:$E55A  A8
-	rts                            ; 7:$E55B  60
+	lda _var_001d ; 7:$E53F  A5 1D
+	and #$03 ; 7:$E541  29 03
+	sta _var_0020_indexed ; 7:$E543  85 20
+	lda _var_001c_indexed ; 7:$E545  A5 1C
+	asl a ; 7:$E547  0A
+	rol _var_0020_indexed ; 7:$E548  26 20
+	lsr a ; 7:$E54A  4A
+	and #$1F ; 7:$E54B  29 1F
+	lsr a ; 7:$E54D  4A
+	lsr a ; 7:$E54E  4A
+	sta _var_0021 ; 7:$E54F  85 21
+	lda _var_0020_indexed ; 7:$E551  A5 20
+	asl a ; 7:$E553  0A
+	asl a ; 7:$E554  0A
+	asl a ; 7:$E555  0A
+	ora _var_0021 ; 7:$E556  05 21
+	ora #$C0 ; 7:$E558  09 C0
+	tay ; 7:$E55A  A8
+	rts ; 7:$E55B  60
 
 _func_e55c:
-	sta _var_0020_indexed          ; 7:$E55C  85 20
-	pha                            ; 7:$E55E  48
-	sty _var_0021                  ; 7:$E55F  84 21
-	tya                            ; 7:$E561  98
-	pha                            ; 7:$E562  48
-	ldy #$00                       ; 7:$E563  A0 00
-	lda (_var_0020_indexed),Y      ; 7:$E565  B1 20
-	beq _label_e584                ; 7:$E567  F0 1B
-	sta _var_0018_indexed          ; 7:$E569  85 18
-	iny                            ; 7:$E56B  C8
+	sta _var_0020_indexed ; 7:$E55C  85 20
+	pha ; 7:$E55E  48
+	sty _var_0021 ; 7:$E55F  84 21
+	tya ; 7:$E561  98
+	pha ; 7:$E562  48
+	ldy #$00 ; 7:$E563  A0 00
+	lda (_var_0020_indexed),Y ; 7:$E565  B1 20
+	beq _label_e584 ; 7:$E567  F0 1B
+	sta _var_0018_indexed ; 7:$E569  85 18
+	iny ; 7:$E56B  C8
 
 _label_e56c:
-	lda (_var_0020_indexed),Y      ; 7:$E56C  B1 20
-	sta _var_0018_indexed,Y      ; 7:$E56E  99 18 00
-	iny                            ; 7:$E571  C8
-	cpy #$06                       ; 7:$E572  C0 06
-	bne _label_e56c                ; 7:$E574  D0 F6
-	jsr _func_e357                 ; 7:$E576  20 57 E3
-	pla                            ; 7:$E579  68
-	tay                            ; 7:$E57A  A8
-	pla                            ; 7:$E57B  68
-	clc                            ; 7:$E57C  18
-	adc #$06                       ; 7:$E57D  69 06
-	bcc _func_e55c                 ; 7:$E57F  90 DB
-	iny                            ; 7:$E581  C8
-	bne _func_e55c                 ; 7:$E582  D0 D8
+	lda (_var_0020_indexed),Y ; 7:$E56C  B1 20
+	sta _var_0018_indexed,Y ; 7:$E56E  99 18 00
+	iny ; 7:$E571  C8
+	cpy #$06 ; 7:$E572  C0 06
+	bne _label_e56c ; 7:$E574  D0 F6
+	jsr _func_e357 ; 7:$E576  20 57 E3
+	pla ; 7:$E579  68
+	tay ; 7:$E57A  A8
+	pla ; 7:$E57B  68
+	clc ; 7:$E57C  18
+	adc #$06 ; 7:$E57D  69 06
+	bcc _func_e55c ; 7:$E57F  90 DB
+	iny ; 7:$E581  C8
+	bne _func_e55c ; 7:$E582  D0 D8
 
 _label_e584:
-	pla                            ; 7:$E584  68
-	pla                            ; 7:$E585  68
-	rts                            ; 7:$E586  60
+	pla ; 7:$E584  68
+	pla ; 7:$E585  68
+	rts ; 7:$E586  60
 
 _func_e587:
-	sta _var_0022_indexed          ; 7:$E587  85 22
-	pha                            ; 7:$E589  48
-	sty _var_0023                  ; 7:$E58A  84 23
-	tya                            ; 7:$E58C  98
-	pha                            ; 7:$E58D  48
-	ldy #$00                       ; 7:$E58E  A0 00
-	lda (_var_0022_indexed),Y      ; 7:$E590  B1 22
-	beq _label_e5bc                ; 7:$E592  F0 28
-	sta _var_0018_indexed          ; 7:$E594  85 18
-	iny                            ; 7:$E596  C8
-	lda (_var_0022_indexed),Y      ; 7:$E597  B1 22
-	sta _var_0019                  ; 7:$E599  85 19
-	iny                            ; 7:$E59B  C8
-	lda (_var_0022_indexed),Y      ; 7:$E59C  B1 22
-	sta _var_001c_indexed          ; 7:$E59E  85 1C
-	iny                            ; 7:$E5A0  C8
-	lda (_var_0022_indexed),Y      ; 7:$E5A1  B1 22
-	sta _var_001d                  ; 7:$E5A3  85 1D
-	iny                            ; 7:$E5A5  C8
-	lda (_var_0022_indexed),Y      ; 7:$E5A6  B1 22
-	sta _var_001a_indexed          ; 7:$E5A8  85 1A
-	iny                            ; 7:$E5AA  C8
-	jsr _func_e53f                 ; 7:$E5AB  20 3F E5
-	jsr _func_e47b                 ; 7:$E5AE  20 7B E4
-	pla                            ; 7:$E5B1  68
-	tay                            ; 7:$E5B2  A8
-	pla                            ; 7:$E5B3  68
-	clc                            ; 7:$E5B4  18
-	adc #$05                       ; 7:$E5B5  69 05
-	bcc _func_e587                 ; 7:$E5B7  90 CE
-	iny                            ; 7:$E5B9  C8
-	bne _func_e587                 ; 7:$E5BA  D0 CB
+	sta _var_0022_indexed ; 7:$E587  85 22
+	pha ; 7:$E589  48
+	sty _var_0023 ; 7:$E58A  84 23
+	tya ; 7:$E58C  98
+	pha ; 7:$E58D  48
+	ldy #$00 ; 7:$E58E  A0 00
+	lda (_var_0022_indexed),Y ; 7:$E590  B1 22
+	beq _label_e5bc ; 7:$E592  F0 28
+	sta _var_0018_indexed ; 7:$E594  85 18
+	iny ; 7:$E596  C8
+	lda (_var_0022_indexed),Y ; 7:$E597  B1 22
+	sta _var_0019 ; 7:$E599  85 19
+	iny ; 7:$E59B  C8
+	lda (_var_0022_indexed),Y ; 7:$E59C  B1 22
+	sta _var_001c_indexed ; 7:$E59E  85 1C
+	iny ; 7:$E5A0  C8
+	lda (_var_0022_indexed),Y ; 7:$E5A1  B1 22
+	sta _var_001d ; 7:$E5A3  85 1D
+	iny ; 7:$E5A5  C8
+	lda (_var_0022_indexed),Y ; 7:$E5A6  B1 22
+	sta _var_001a_indexed ; 7:$E5A8  85 1A
+	iny ; 7:$E5AA  C8
+	jsr _func_e53f ; 7:$E5AB  20 3F E5
+	jsr _func_e47b ; 7:$E5AE  20 7B E4
+	pla ; 7:$E5B1  68
+	tay ; 7:$E5B2  A8
+	pla ; 7:$E5B3  68
+	clc ; 7:$E5B4  18
+	adc #$05 ; 7:$E5B5  69 05
+	bcc _func_e587 ; 7:$E5B7  90 CE
+	iny ; 7:$E5B9  C8
+	bne _func_e587 ; 7:$E5BA  D0 CB
 
 _label_e5bc:
-	pla                            ; 7:$E5BC  68
-	pla                            ; 7:$E5BD  68
-	rts                            ; 7:$E5BE  60
+	pla ; 7:$E5BC  68
+	pla ; 7:$E5BD  68
+	rts ; 7:$E5BE  60
 
 ; appear to be crumb masks
 _data_e5bf_indexed:
-.byte $fc, $f3, $cf, $3f         ; 7:$E5BF
+.byte $fc, $f3, $cf, $3f ; 7:$E5BF
 
 _data_e5c3_indexed:
-.byte $03, $0c, $30, $c0         ; 7:$E5C3
+.byte $03, $0c, $30, $c0 ; 7:$E5C3
 
 _data_e5c7_indexed:
-.byte $00, $55, $aa, $ff         ; 7:$E5C7
+.byte $00, $55, $aa, $ff ; 7:$E5C7
 
 _func_e5cb:
-	tya                            ; 7:$E5CB  98
-	pha                            ; 7:$E5CC  48
-	ldy _var_0003                  ; 7:$E5CD  A4 03
-	lda _data_e5de_indexed,Y     ; 7:$E5CF  B9 DE E5
-	bit _var_0001                  ; 7:$E5D2  24 01
-	bpl _label_e5d9                ; 7:$E5D4  10 03
-	lda _data_e5e4_indexed,Y     ; 7:$E5D6  B9 E4 E5
+	tya ; 7:$E5CB  98
+	pha ; 7:$E5CC  48
+	ldy _var_0003 ; 7:$E5CD  A4 03
+	lda _data_e5de_indexed,Y ; 7:$E5CF  B9 DE E5
+	bit _var_0001 ; 7:$E5D2  24 01
+	bpl _label_e5d9 ; 7:$E5D4  10 03
+	lda _data_e5e4_indexed,Y ; 7:$E5D6  B9 E4 E5
 
 _label_e5d9:
-	sta $02                        ; 7:$E5D9  85 02
-	pla                            ; 7:$E5DB  68
-	tay                            ; 7:$E5DC  A8
-	rts                            ; 7:$E5DD  60
+	sta $02 ; 7:$E5D9  85 02
+	pla ; 7:$E5DB  68
+	tay ; 7:$E5DC  A8
+	rts ; 7:$E5DD  60
 
 _data_e5de_indexed:
 .byte $12, $18, $1e, $2a, $3c, $ff ; 7:$E5DE
@@ -4827,156 +4827,156 @@ _data_e5e4_indexed:
 .byte $1d, $60, $85, $1d, $a5, $f2, $06, $f2, $26, $f3, $06, $f2, $26, $f3, $38, $65 ; 7:$E6F4
 .byte $f2, $26, $f3, $85, $f2, $85, $1c, $20, $04, $e6, $a5, $1d, $60, $a5, $33, $0a ; 7:$E704
 .byte $0a, $38, $65, $33, $85, $33, $60, $a5, $33, $65, $34, $69, $01, $45, $35, $85 ; 7:$E714
-.byte $33, $e6, $34, $60         ; 7:$E724
+.byte $33, $e6, $34, $60 ; 7:$E724
 
 _func_e728:
-	lda #$00                       ; 7:$E728  A9 00
-	sta _var_002e                  ; 7:$E72A  85 2E
-	sta _var_002d                  ; 7:$E72C  85 2D
-	sta _var_00d6                  ; 7:$E72E  85 D6
-	sta _var_004d                  ; 7:$E730  85 4D
-	sta $0160                    ; 7:$E732  8D 60 01
-	rts                            ; 7:$E735  60
+	lda #$00 ; 7:$E728  A9 00
+	sta _var_002e ; 7:$E72A  85 2E
+	sta _var_002d ; 7:$E72C  85 2D
+	sta _var_00d6 ; 7:$E72E  85 D6
+	sta _var_004d ; 7:$E730  85 4D
+	sta $0160 ; 7:$E732  8D 60 01
+	rts ; 7:$E735  60
 
 _func_e736:
-	lda #$00                       ; 7:$E736  A9 00
-	sta _var_002f                  ; 7:$E738  85 2F
+	lda #$00 ; 7:$E736  A9 00
+	sta _var_002f ; 7:$E738  85 2F
 
 _label_e73a:
-	lda _var_002f                  ; 7:$E73A  A5 2F
-	beq _label_e73a                ; 7:$E73C  F0 FC
-	rts                            ; 7:$E73E  60
+	lda _var_002f ; 7:$E73A  A5 2F
+	beq _label_e73a ; 7:$E73C  F0 FC
+	rts ; 7:$E73E  60
 
 _func_e73f:
-	lda #$00                       ; 7:$E73F  A9 00
-	sta _var_002f                  ; 7:$E741  85 2F
+	lda #$00 ; 7:$E73F  A9 00
+	sta _var_002f ; 7:$E741  85 2F
 
 _label_e743:
-	jsr _func_e736                 ; 7:$E743  20 36 E7
-	dey                            ; 7:$E746  88
-	bne _label_e743                ; 7:$E747  D0 FA
-	rts                            ; 7:$E749  60
+	jsr _func_e736 ; 7:$E743  20 36 E7
+	dey ; 7:$E746  88
+	bne _label_e743 ; 7:$E747  D0 FA
+	rts ; 7:$E749  60
 
 _func_e74a:
-	jsr _func_e882                 ; 7:$E74A  20 82 E8
-	sta _var_00d6                  ; 7:$E74D  85 D6
-	rts                            ; 7:$E74F  60
+	jsr _func_e882 ; 7:$E74A  20 82 E8
+	sta _var_00d6 ; 7:$E74D  85 D6
+	rts ; 7:$E74F  60
 
 _func_e750:
-	lda #$0F                       ; 7:$E750  A9 0F
-	sta _var_00d7_indexed,Y      ; 7:$E752  99 D7 00
-	dey                            ; 7:$E755  88
-	bpl _func_e750                 ; 7:$E756  10 F8
-	lda #$03                       ; 7:$E758  A9 03
-	sta _var_00d6                  ; 7:$E75A  85 D6
-	rts                            ; 7:$E75C  60
+	lda #$0F ; 7:$E750  A9 0F
+	sta _var_00d7_indexed,Y ; 7:$E752  99 D7 00
+	dey ; 7:$E755  88
+	bpl _func_e750 ; 7:$E756  10 F8
+	lda #$03 ; 7:$E758  A9 03
+	sta _var_00d6 ; 7:$E75A  85 D6
+	rts ; 7:$E75C  60
 
 _func_e75d:
-	pha                            ; 7:$E75D  48
-	lda #$0F                       ; 7:$E75E  A9 0F
-	ldy #$18                       ; 7:$E760  A0 18
+	pha ; 7:$E75D  48
+	lda #$0F ; 7:$E75E  A9 0F
+	ldy #$18 ; 7:$E760  A0 18
 
 _label_e762:
-	sta _var_00d7_indexed,Y      ; 7:$E762  99 D7 00
-	dey                            ; 7:$E765  88
-	bpl _label_e762                ; 7:$E766  10 FA
-	lda _var_0028                  ; 7:$E768  A5 28
-	bmi _label_e76f                ; 7:$E76A  30 03
-	jsr _func_eb08                 ; 7:$E76C  20 08 EB
+	sta _var_00d7_indexed,Y ; 7:$E762  99 D7 00
+	dey ; 7:$E765  88
+	bpl _label_e762 ; 7:$E766  10 FA
+	lda _var_0028 ; 7:$E768  A5 28
+	bmi _label_e76f ; 7:$E76A  30 03
+	jsr _func_eb08 ; 7:$E76C  20 08 EB
 
 _label_e76f:
-	jsr _func_e879                 ; 7:$E76F  20 79 E8
-	jsr _func_eb31                 ; 7:$E772  20 31 EB
-	lda _var_0048                  ; 7:$E775  A5 48
-	sta _var_001c_indexed          ; 7:$E777  85 1C
-	lda _var_0049                  ; 7:$E779  A5 49
-	sta _var_001d                  ; 7:$E77B  85 1D
-	lda #$30                       ; 7:$E77D  A9 30
+	jsr _func_e879 ; 7:$E76F  20 79 E8
+	jsr _func_eb31 ; 7:$E772  20 31 EB
+	lda _var_0048 ; 7:$E775  A5 48
+	sta _var_001c_indexed ; 7:$E777  85 1C
+	lda _var_0049 ; 7:$E779  A5 49
+	sta _var_001d ; 7:$E77B  85 1D
+	lda #$30 ; 7:$E77D  A9 30
 
 _label_e77f:
-	sta _var_0018_indexed          ; 7:$E77F  85 18
-	lda #$19                       ; 7:$E781  A9 19
-	sta _var_0019                  ; 7:$E783  85 19
-	ldy #$00                       ; 7:$E785  A0 00
-	jsr _func_e79e                 ; 7:$E787  20 9E E7
-	jsr _func_e879                 ; 7:$E78A  20 79 E8
-	pla                            ; 7:$E78D  68
-	tay                            ; 7:$E78E  A8
-	pha                            ; 7:$E78F  48
-	jsr _func_e73f                 ; 7:$E790  20 3F E7
-	lda _var_0018_indexed          ; 7:$E793  A5 18
-	sec                            ; 7:$E795  38
-	sbc #$10                       ; 7:$E796  E9 10
-	cmp #$F0                       ; 7:$E798  C9 F0
-	bne _label_e77f                ; 7:$E79A  D0 E3
-	pla                            ; 7:$E79C  68
-	rts                            ; 7:$E79D  60
+	sta _var_0018_indexed ; 7:$E77F  85 18
+	lda #$19 ; 7:$E781  A9 19
+	sta _var_0019 ; 7:$E783  85 19
+	ldy #$00 ; 7:$E785  A0 00
+	jsr _func_e79e ; 7:$E787  20 9E E7
+	jsr _func_e879 ; 7:$E78A  20 79 E8
+	pla ; 7:$E78D  68
+	tay ; 7:$E78E  A8
+	pha ; 7:$E78F  48
+	jsr _func_e73f ; 7:$E790  20 3F E7
+	lda _var_0018_indexed ; 7:$E793  A5 18
+	sec ; 7:$E795  38
+	sbc #$10 ; 7:$E796  E9 10
+	cmp #$F0 ; 7:$E798  C9 F0
+	bne _label_e77f ; 7:$E79A  D0 E3
+	pla ; 7:$E79C  68
+	rts ; 7:$E79D  60
 
 _func_e79e:
-	lda (_var_001c_indexed),Y      ; 7:$E79E  B1 1C
-	sec                            ; 7:$E7A0  38
-	sbc _var_0018_indexed          ; 7:$E7A1  E5 18
-	bcs _label_e7a7                ; 7:$E7A3  B0 02
-	lda #$0F                       ; 7:$E7A5  A9 0F
+	lda (_var_001c_indexed),Y ; 7:$E79E  B1 1C
+	sec ; 7:$E7A0  38
+	sbc _var_0018_indexed ; 7:$E7A1  E5 18
+	bcs _label_e7a7 ; 7:$E7A3  B0 02
+	lda #$0F ; 7:$E7A5  A9 0F
 
 _label_e7a7:
-	sta _var_00d7_indexed,Y      ; 7:$E7A7  99 D7 00
-	iny                            ; 7:$E7AA  C8
-	dec _var_0019                  ; 7:$E7AB  C6 19
-	bne _func_e79e                 ; 7:$E7AD  D0 EF
-	rts                            ; 7:$E7AF  60
+	sta _var_00d7_indexed,Y ; 7:$E7A7  99 D7 00
+	iny ; 7:$E7AA  C8
+	dec _var_0019 ; 7:$E7AB  C6 19
+	bne _func_e79e ; 7:$E7AD  D0 EF
+	rts ; 7:$E7AF  60
 
 _func_e7b0:
-	pha                            ; 7:$E7B0  48
-	jsr _func_eb08                 ; 7:$E7B1  20 08 EB
+	pha ; 7:$E7B0  48
+	jsr _func_eb08 ; 7:$E7B1  20 08 EB
 
 _label_e7b4:
-	pla                            ; 7:$E7B4  68
-	tay                            ; 7:$E7B5  A8
-	pha                            ; 7:$E7B6  48
-	jsr _func_e73f                 ; 7:$E7B7  20 3F E7
-	jsr _func_e879                 ; 7:$E7BA  20 79 E8
-	lda #$19                       ; 7:$E7BD  A9 19
-	sta _var_0019                  ; 7:$E7BF  85 19
-	ldy #$00                       ; 7:$E7C1  A0 00
-	jsr _func_e7ca                 ; 7:$E7C3  20 CA E7
-	bne _label_e7b4                ; 7:$E7C6  D0 EC
-	pla                            ; 7:$E7C8  68
-	rts                            ; 7:$E7C9  60
+	pla ; 7:$E7B4  68
+	tay ; 7:$E7B5  A8
+	pha ; 7:$E7B6  48
+	jsr _func_e73f ; 7:$E7B7  20 3F E7
+	jsr _func_e879 ; 7:$E7BA  20 79 E8
+	lda #$19 ; 7:$E7BD  A9 19
+	sta _var_0019 ; 7:$E7BF  85 19
+	ldy #$00 ; 7:$E7C1  A0 00
+	jsr _func_e7ca ; 7:$E7C3  20 CA E7
+	bne _label_e7b4 ; 7:$E7C6  D0 EC
+	pla ; 7:$E7C8  68
+	rts ; 7:$E7C9  60
 
 _func_e7ca:
-	stx _var_0018_indexed          ; 7:$E7CA  86 18
-	lda #$00                       ; 7:$E7CC  A9 00
-	sta _var_0020_indexed          ; 7:$E7CE  85 20
+	stx _var_0018_indexed ; 7:$E7CA  86 18
+	lda #$00 ; 7:$E7CC  A9 00
+	sta _var_0020_indexed ; 7:$E7CE  85 20
 
 _label_e7d0:
-	lda _var_00d7_indexed,Y      ; 7:$E7D0  B9 D7 00
-	cmp #$10                       ; 7:$E7D3  C9 10
-	bcc _label_e7db                ; 7:$E7D5  90 04
-	sbc #$10                       ; 7:$E7D7  E9 10
-	bcs _label_e7e3                ; 7:$E7D9  B0 08
+	lda _var_00d7_indexed,Y ; 7:$E7D0  B9 D7 00
+	cmp #$10 ; 7:$E7D3  C9 10
+	bcc _label_e7db ; 7:$E7D5  90 04
+	sbc #$10 ; 7:$E7D7  E9 10
+	bcs _label_e7e3 ; 7:$E7D9  B0 08
 
 _label_e7db:
-	cmp #$0F                       ; 7:$E7DB  C9 0F
-	beq _label_e7e8                ; 7:$E7DD  F0 09
-	tax                            ; 7:$E7DF  AA
-	lda _data_e7f6_indexed,X     ; 7:$E7E0  BD F6 E7
+	cmp #$0F ; 7:$E7DB  C9 0F
+	beq _label_e7e8 ; 7:$E7DD  F0 09
+	tax ; 7:$E7DF  AA
+	lda _data_e7f6_indexed,X ; 7:$E7E0  BD F6 E7
 
 _label_e7e3:
-	sta _var_00d7_indexed,Y      ; 7:$E7E3  99 D7 00
-	inc _var_0020_indexed          ; 7:$E7E6  E6 20
+	sta _var_00d7_indexed,Y ; 7:$E7E3  99 D7 00
+	inc _var_0020_indexed ; 7:$E7E6  E6 20
 
 _label_e7e8:
-	iny                            ; 7:$E7E8  C8
-	dec _var_0019                  ; 7:$E7E9  C6 19
-	bne _label_e7d0                ; 7:$E7EB  D0 E3
-	ldx _var_0018_indexed          ; 7:$E7ED  A6 18
-	lda _var_0020_indexed          ; 7:$E7EF  A5 20
-	beq _label_e7f5                ; 7:$E7F1  F0 02
-	lda #$03                       ; 7:$E7F3  A9 03
+	iny ; 7:$E7E8  C8
+	dec _var_0019 ; 7:$E7E9  C6 19
+	bne _label_e7d0 ; 7:$E7EB  D0 E3
+	ldx _var_0018_indexed ; 7:$E7ED  A6 18
+	lda _var_0020_indexed ; 7:$E7EF  A5 20
+	beq _label_e7f5 ; 7:$E7F1  F0 02
+	lda #$03 ; 7:$E7F3  A9 03
 
 _label_e7f5:
-	rts                            ; 7:$E7F5  60
+	rts ; 7:$E7F5  60
 
 _data_e7f6_indexed:
 .byte $0f, $0c, $0c, $0f, $03, $04, $07, $0f, $07, $0f, $0b, $09, $0f, $0f, $0f, $0f ; 7:$E7F6
@@ -4989,70 +4989,70 @@ _data_e7f6_indexed:
 .byte $0f, $d0, $0f, $b9, $d7, $00, $c1, $1c, $f0, $0d, $90, $04, $e9, $10, $b0, $02 ; 7:$E846
 .byte $69, $10, $99, $d7, $00, $e6, $20, $c8, $24, $19, $30, $06, $e6, $1c, $d0, $02 ; 7:$E856
 .byte $e6, $1d, $c6, $19, $a5, $19, $29, $7f, $d0, $9c, $a6, $18, $a5, $20, $f0, $02 ; 7:$E866
-.byte $a9, $03, $60              ; 7:$E876
+.byte $a9, $03, $60 ; 7:$E876
 
 _func_e879:
-	lda #$03                       ; 7:$E879  A9 03
-	sta _var_00d6                  ; 7:$E87B  85 D6
+	lda #$03 ; 7:$E879  A9 03
+	sta _var_00d6 ; 7:$E87B  85 D6
 
 _label_e87d:
-	lda _var_00d6                  ; 7:$E87D  A5 D6
-	bne _label_e87d                ; 7:$E87F  D0 FC
-	rts                            ; 7:$E881  60
+	lda _var_00d6 ; 7:$E87D  A5 D6
+	bne _label_e87d ; 7:$E87F  D0 FC
+	rts ; 7:$E881  60
 
 _func_e882:
-	sty _var_0020_indexed          ; 7:$E882  84 20
-	stx _var_0021                  ; 7:$E884  86 21
-	ldy #$00                       ; 7:$E886  A0 00
-	lda (_var_001c_indexed),Y      ; 7:$E888  B1 1C
-	iny                            ; 7:$E88A  C8
-	lsr a                          ; 7:$E88B  4A
-	bcc _label_e895                ; 7:$E88C  90 07
-	pha                            ; 7:$E88E  48
-	lda (_var_001c_indexed),Y      ; 7:$E88F  B1 1C
-	sta _var_00d7_indexed          ; 7:$E891  85 D7
-	iny                            ; 7:$E893  C8
-	pla                            ; 7:$E894  68
+	sty _var_0020_indexed ; 7:$E882  84 20
+	stx _var_0021 ; 7:$E884  86 21
+	ldy #$00 ; 7:$E886  A0 00
+	lda (_var_001c_indexed),Y ; 7:$E888  B1 1C
+	iny ; 7:$E88A  C8
+	lsr a ; 7:$E88B  4A
+	bcc _label_e895 ; 7:$E88C  90 07
+	pha ; 7:$E88E  48
+	lda (_var_001c_indexed),Y ; 7:$E88F  B1 1C
+	sta _var_00d7_indexed ; 7:$E891  85 D7
+	iny ; 7:$E893  C8
+	pla ; 7:$E894  68
 
 _label_e895:
-	lsr a                          ; 7:$E895  4A
-	bcc _label_e8a6                ; 7:$E896  90 0E
-	pha                            ; 7:$E898  48
-	ldx #$00                       ; 7:$E899  A2 00
+	lsr a ; 7:$E895  4A
+	bcc _label_e8a6 ; 7:$E896  90 0E
+	pha ; 7:$E898  48
+	ldx #$00 ; 7:$E899  A2 00
 
 _label_e89b:
-	lda (_var_001c_indexed),Y      ; 7:$E89B  B1 1C
-	sta _var_00d8_indexed,X        ; 7:$E89D  95 D8
-	iny                            ; 7:$E89F  C8
-	inx                            ; 7:$E8A0  E8
-	cpx #$0C                       ; 7:$E8A1  E0 0C
-	bne _label_e89b                ; 7:$E8A3  D0 F6
-	pla                            ; 7:$E8A5  68
+	lda (_var_001c_indexed),Y ; 7:$E89B  B1 1C
+	sta _var_00d8_indexed,X ; 7:$E89D  95 D8
+	iny ; 7:$E89F  C8
+	inx ; 7:$E8A0  E8
+	cpx #$0C ; 7:$E8A1  E0 0C
+	bne _label_e89b ; 7:$E8A3  D0 F6
+	pla ; 7:$E8A5  68
 
 _label_e8a6:
-	lsr a                          ; 7:$E8A6  4A
-	bcc _label_e8b5                ; 7:$E8A7  90 0C
-	ldx #$00                       ; 7:$E8A9  A2 00
+	lsr a ; 7:$E8A6  4A
+	bcc _label_e8b5 ; 7:$E8A7  90 0C
+	ldx #$00 ; 7:$E8A9  A2 00
 
 _label_e8ab:
-	lda (_var_001c_indexed),Y      ; 7:$E8AB  B1 1C
-	sta _var_00e4_indexed,X        ; 7:$E8AD  95 E4
-	iny                            ; 7:$E8AF  C8
-	inx                            ; 7:$E8B0  E8
-	cpx #$0C                       ; 7:$E8B1  E0 0C
-	bne _label_e8ab                ; 7:$E8B3  D0 F6
+	lda (_var_001c_indexed),Y ; 7:$E8AB  B1 1C
+	sta _var_00e4_indexed,X ; 7:$E8AD  95 E4
+	iny ; 7:$E8AF  C8
+	inx ; 7:$E8B0  E8
+	cpx #$0C ; 7:$E8B1  E0 0C
+	bne _label_e8ab ; 7:$E8B3  D0 F6
 
 _label_e8b5:
-	ldy #$00                       ; 7:$E8B5  A0 00
-	lda (_var_001c_indexed),Y      ; 7:$E8B7  B1 1C
-	ldy _var_0020_indexed          ; 7:$E8B9  A4 20
-	ldx _var_0021                  ; 7:$E8BB  A6 21
-	lsr a                          ; 7:$E8BD  4A
-	bne _label_e8c2                ; 7:$E8BE  D0 02
-	lda #$01                       ; 7:$E8C0  A9 01
+	ldy #$00 ; 7:$E8B5  A0 00
+	lda (_var_001c_indexed),Y ; 7:$E8B7  B1 1C
+	ldy _var_0020_indexed ; 7:$E8B9  A4 20
+	ldx _var_0021 ; 7:$E8BB  A6 21
+	lsr a ; 7:$E8BD  4A
+	bne _label_e8c2 ; 7:$E8BE  D0 02
+	lda #$01 ; 7:$E8C0  A9 01
 
 _label_e8c2:
-	rts                            ; 7:$E8C2  60
+	rts ; 7:$E8C2  60
 
 
 .byte $a9, $00, $85, $1d, $a5, $a4, $0a, $26, $1d, $0a, $26, $1d, $0a, $26, $1d, $0a ; 7:$E8C3
@@ -5064,33 +5064,33 @@ _label_e8c2:
 .byte $02, $e6, $1d, $4c, $f4, $e8 ; 7:$E923
 
 NMI:
-	pha                            ; 7:$E929  48
-	txa                            ; 7:$E92A  8A
-	pha                            ; 7:$E92B  48
-	tya                            ; 7:$E92C  98
-	pha                            ; 7:$E92D  48
-	lda _var_0000_indexed          ; 7:$E92E  A5 00
-	pha                            ; 7:$E930  48
-	lda _var_0029                  ; 7:$E931  A5 29
-	and #$E7                       ; 7:$E933  29 E7
-	sta PPU_MASK                   ; 7:$E935  8D 01 20
-	inc _var_002f                  ; 7:$E938  E6 2F
-	lda PPU_STATUS                 ; 7:$E93A  AD 02 20
-	sta _var_002a                  ; 7:$E93D  85 2A
-	lda #$00                       ; 7:$E93F  A9 00
-	sta OAM_ADDR                   ; 7:$E941  8D 03 20
-	lda #$02                       ; 7:$E944  A9 02
-	sta OAM_DMA                    ; 7:$E946  8D 14 40
-	jsr _jump_engine_e9ed          ; 7:$E949  20 ED E9
+	pha ; 7:$E929  48
+	txa ; 7:$E92A  8A
+	pha ; 7:$E92B  48
+	tya ; 7:$E92C  98
+	pha ; 7:$E92D  48
+	lda _var_0000_indexed ; 7:$E92E  A5 00
+	pha ; 7:$E930  48
+	lda _var_0029 ; 7:$E931  A5 29
+	and #$E7 ; 7:$E933  29 E7
+	sta PPU_MASK ; 7:$E935  8D 01 20
+	inc _var_002f ; 7:$E938  E6 2F
+	lda PPU_STATUS ; 7:$E93A  AD 02 20
+	sta _var_002a ; 7:$E93D  85 2A
+	lda #$00 ; 7:$E93F  A9 00
+	sta OAM_ADDR ; 7:$E941  8D 03 20
+	lda #$02 ; 7:$E944  A9 02
+	sta OAM_DMA ; 7:$E946  8D 14 40
+	jsr _jump_engine_e9ed ; 7:$E949  20 ED E9
 
 
 .byte $20, $7e, $e9, $a5, $29, $8d, $01, $20, $a9, $00, $8d, $06, $20, $8d, $06, $20 ; 7:$E94C
 .byte $a5, $28, $8d, $00, $20, $a5, $2b, $8d, $05, $20, $a5, $2c, $8d, $05, $20, $a9 ; 7:$E95C
 .byte $00, $20, $09, $ff, $20, $09, $80, $68, $20, $09, $ff, $68, $a8, $68, $aa, $68 ; 7:$E96C
-.byte $40                        ; 7:$E97C
+.byte $40 ; 7:$E97C
 
 IRQ:
-	rti                            ; 7:$E97D  40
+	rti ; 7:$E97D  40
 
 
 .byte $a5, $d6, $f0, $6a, $c9, $02, $f0, $12, $a0, $00, $a2, $3f, $8e, $06, $20, $8c ; 7:$E97E
@@ -5102,20 +5102,20 @@ IRQ:
 .byte $8d, $06, $20, $8e, $06, $20, $8e, $06, $20, $8e, $06, $20, $86, $d6 ; 7:$E9DE
 
 _label_e9ec:
-	rts                            ; 7:$E9EC  60
+	rts ; 7:$E9EC  60
 
-_jump_engine_e9ed:               ; jump engine detected
-	lda _var_002e                  ; 7:$E9ED  A5 2E
-	beq _label_e9ec                ; 7:$E9EF  F0 FB
-	ldx #$00                       ; 7:$E9F1  A2 00
-	stx _var_002d                  ; 7:$E9F3  86 2D
-	ldy _var_0100_indexed,X      ; 7:$E9F5  BC 00 01
-	inx                            ; 7:$E9F8  E8
-	lda _data_ea06_indexed,Y     ; 7:$E9F9  B9 06 EA
-	sta _var_001e                  ; 7:$E9FC  85 1E
-	lda _data_ea0a_indexed,Y     ; 7:$E9FE  B9 0A EA
-	sta $1F                        ; 7:$EA01  85 1F
-	jmp (_var_001e)                ; 7:$EA03  6C 1E 00
+_jump_engine_e9ed: ; jump engine detected
+	lda _var_002e ; 7:$E9ED  A5 2E
+	beq _label_e9ec ; 7:$E9EF  F0 FB
+	ldx #$00 ; 7:$E9F1  A2 00
+	stx _var_002d ; 7:$E9F3  86 2D
+	ldy _var_0100_indexed,X ; 7:$E9F5  BC 00 01
+	inx ; 7:$E9F8  E8
+	lda _data_ea06_indexed,Y ; 7:$E9F9  B9 06 EA
+	sta _var_001e ; 7:$E9FC  85 1E
+	lda _data_ea0a_indexed,Y ; 7:$E9FE  B9 0A EA
+	sta $1F ; 7:$EA01  85 1F
+	jmp (_var_001e) ; 7:$EA03  6C 1E 00
 
 _data_ea06_indexed:
 	.dl $ea15
@@ -5148,92 +5148,92 @@ _data_ea0a_indexed:
 .byte $2e, $f0, $03, $4c, $f5, $e9, $60 ; 7:$EAFA
 
 _func_eb01:
-	lda _var_0028                  ; 7:$EB01  A5 28
-	and #$7F                       ; 7:$EB03  29 7F
-	jmp _func_eb3f                 ; 7:$EB05  4C 3F EB
+	lda _var_0028 ; 7:$EB01  A5 28
+	and #$7F ; 7:$EB03  29 7F
+	jmp _func_eb3f ; 7:$EB05  4C 3F EB
 
 _func_eb08:
-	lda _var_0028                  ; 7:$EB08  A5 28
-	ora #$80                       ; 7:$EB0A  09 80
-	sta _var_0028                  ; 7:$EB0C  85 28
-	sta PPU_CTRL                   ; 7:$EB0E  8D 00 20
-	rts                            ; 7:$EB11  60
+	lda _var_0028 ; 7:$EB08  A5 28
+	ora #$80 ; 7:$EB0A  09 80
+	sta _var_0028 ; 7:$EB0C  85 28
+	sta PPU_CTRL ; 7:$EB0E  8D 00 20
+	rts ; 7:$EB11  60
 
 _func_eb12:
-	jsr _func_eb01                 ; 7:$EB12  20 01 EB
-	jmp _label_eb38                ; 7:$EB15  4C 38 EB
+	jsr _func_eb01 ; 7:$EB12  20 01 EB
+	jmp _label_eb38 ; 7:$EB15  4C 38 EB
 
 
 .byte $20, $08, $eb, $ad, $02, $20, $10, $fb, $ad, $02, $20, $10, $fb, $a5, $29, $09 ; 7:$EB18
 .byte $18, $85, $29, $ad, $02, $20, $10, $fb, $60 ; 7:$EB28
 
 _func_eb31:
-	lda _var_0029                  ; 7:$EB31  A5 29
-	ora #$18                       ; 7:$EB33  09 18
-	jmp _func_eb45                 ; 7:$EB35  4C 45 EB
+	lda _var_0029 ; 7:$EB31  A5 29
+	ora #$18 ; 7:$EB33  09 18
+	jmp _func_eb45 ; 7:$EB35  4C 45 EB
 
 _label_eb38:
-	lda _var_0029                  ; 7:$EB38  A5 29
-	and #$E7                       ; 7:$EB3A  29 E7
-	jmp _func_eb45                 ; 7:$EB3C  4C 45 EB
+	lda _var_0029 ; 7:$EB38  A5 29
+	and #$E7 ; 7:$EB3A  29 E7
+	jmp _func_eb45 ; 7:$EB3C  4C 45 EB
 
 _func_eb3f:
-	sta _var_0028                  ; 7:$EB3F  85 28
-	sta PPU_CTRL                   ; 7:$EB41  8D 00 20
-	rts                            ; 7:$EB44  60
+	sta _var_0028 ; 7:$EB3F  85 28
+	sta PPU_CTRL ; 7:$EB41  8D 00 20
+	rts ; 7:$EB44  60
 
 _func_eb45:
-	sta _var_0029                  ; 7:$EB45  85 29
-	sta PPU_MASK                   ; 7:$EB47  8D 01 20
-	rts                            ; 7:$EB4A  60
+	sta _var_0029 ; 7:$EB45  85 29
+	sta PPU_MASK ; 7:$EB47  8D 01 20
+	rts ; 7:$EB4A  60
 
 _func_eb4b:
-	jsr _func_eb12                 ; 7:$EB4B  20 12 EB
-	ldy #$00                       ; 7:$EB4E  A0 00
+	jsr _func_eb12 ; 7:$EB4B  20 12 EB
+	ldy #$00 ; 7:$EB4E  A0 00
 
 _label_eb50:
-	lda (_var_001c_indexed),Y      ; 7:$EB50  B1 1C
-	cmp #$FF                       ; 7:$EB52  C9 FF
-	beq _label_eb7f                ; 7:$EB54  F0 29
-	tax                            ; 7:$EB56  AA
-	iny                            ; 7:$EB57  C8
-	lda (_var_001c_indexed),Y      ; 7:$EB58  B1 1C
-	iny                            ; 7:$EB5A  C8
-	sty _var_0020_indexed          ; 7:$EB5B  84 20
-	asl a                          ; 7:$EB5D  0A
-	tay                            ; 7:$EB5E  A8
-	lda _var_0020_indexed          ; 7:$EB5F  A5 20
-	pha                            ; 7:$EB61  48
-	lda _var_0000_indexed          ; 7:$EB62  A5 00
-	pha                            ; 7:$EB64  48
-	txa                            ; 7:$EB65  8A
-	jsr _func_ff09                 ; 7:$EB66  20 09 FF
-	lda _data_8000_indexed,Y     ; 7:$EB69  B9 00 80
-	sta _var_0036_indexed          ; 7:$EB6C  85 36
-	lda _data_8000_indexed+1,Y   ; 7:$EB6E  B9 01 80
-	sta $37                        ; 7:$EB71  85 37
-	jsr _func_ebc3                 ; 7:$EB73  20 C3 EB
-	pla                            ; 7:$EB76  68
-	jsr _func_ff09                 ; 7:$EB77  20 09 FF
-	pla                            ; 7:$EB7A  68
-	tay                            ; 7:$EB7B  A8
-	jmp _label_eb50                ; 7:$EB7C  4C 50 EB
+	lda (_var_001c_indexed),Y ; 7:$EB50  B1 1C
+	cmp #$FF ; 7:$EB52  C9 FF
+	beq _label_eb7f ; 7:$EB54  F0 29
+	tax ; 7:$EB56  AA
+	iny ; 7:$EB57  C8
+	lda (_var_001c_indexed),Y ; 7:$EB58  B1 1C
+	iny ; 7:$EB5A  C8
+	sty _var_0020_indexed ; 7:$EB5B  84 20
+	asl a ; 7:$EB5D  0A
+	tay ; 7:$EB5E  A8
+	lda _var_0020_indexed ; 7:$EB5F  A5 20
+	pha ; 7:$EB61  48
+	lda _var_0000_indexed ; 7:$EB62  A5 00
+	pha ; 7:$EB64  48
+	txa ; 7:$EB65  8A
+	jsr _func_ff09 ; 7:$EB66  20 09 FF
+	lda _data_8000_indexed,Y ; 7:$EB69  B9 00 80
+	sta _var_0036_indexed ; 7:$EB6C  85 36
+	lda _data_8000_indexed+1,Y ; 7:$EB6E  B9 01 80
+	sta $37 ; 7:$EB71  85 37
+	jsr _func_ebc3 ; 7:$EB73  20 C3 EB
+	pla ; 7:$EB76  68
+	jsr _func_ff09 ; 7:$EB77  20 09 FF
+	pla ; 7:$EB7A  68
+	tay ; 7:$EB7B  A8
+	jmp _label_eb50 ; 7:$EB7C  4C 50 EB
 
 _label_eb7f:
-	jmp _func_e20b                 ; 7:$EB7F  4C 0B E2
+	jmp _func_e20b ; 7:$EB7F  4C 0B E2
 
 _label_eb82:
-	asl a                          ; 7:$EB82  0A
-	asl a                          ; 7:$EB83  0A
-	tay                            ; 7:$EB84  A8
-	lda _data_eb9b_indexed,Y     ; 7:$EB85  B9 9B EB
-	jsr _func_ff09                 ; 7:$EB88  20 09 FF
-	lda _data_eb9b_indexed+2,Y   ; 7:$EB8B  B9 9D EB
-	sta _var_001c_indexed          ; 7:$EB8E  85 1C
-	lda _data_eb9b_indexed+3,Y   ; 7:$EB90  B9 9E EB
-	sta _var_001d                  ; 7:$EB93  85 1D
-	jsr _func_eb12                 ; 7:$EB95  20 12 EB
-	jmp (_var_001c_indexed)        ; 7:$EB98  6C 1C 00  jump engine detected
+	asl a ; 7:$EB82  0A
+	asl a ; 7:$EB83  0A
+	tay ; 7:$EB84  A8
+	lda _data_eb9b_indexed,Y ; 7:$EB85  B9 9B EB
+	jsr _func_ff09 ; 7:$EB88  20 09 FF
+	lda _data_eb9b_indexed+2,Y ; 7:$EB8B  B9 9D EB
+	sta _var_001c_indexed ; 7:$EB8E  85 1C
+	lda _data_eb9b_indexed+3,Y ; 7:$EB90  B9 9E EB
+	sta _var_001d ; 7:$EB93  85 1D
+	jsr _func_eb12 ; 7:$EB95  20 12 EB
+	jmp (_var_001c_indexed) ; 7:$EB98  6C 1C 00  jump engine detected
 
 ; appears to be a global ROM jumptable, as it includes a 16-bit representation of any ROM
 ; bank followed by an address
@@ -5246,128 +5246,128 @@ _data_eb9b_indexed:
 
 
 .byte $60, $a0, $18, $a9, $30, $99, $d8, $00, $88, $10, $f8, $a9, $0f, $85, $d7, $a9 ; 7:$EBAF
-.byte $03, $85, $d6, $60         ; 7:$EBBF
+.byte $03, $85, $d6, $60 ; 7:$EBBF
 
 _func_ebc3:
-	ldy #$00                       ; 7:$EBC3  A0 00
+	ldy #$00 ; 7:$EBC3  A0 00
 
 _label_ebc5:
-	lda (_var_0036_indexed),Y      ; 7:$EBC5  B1 36
-	iny                            ; 7:$EBC7  C8
-	pha                            ; 7:$EBC8  48
-	lda (_var_0036_indexed),Y      ; 7:$EBC9  B1 36
-	iny                            ; 7:$EBCB  C8
-	cmp #$FF                       ; 7:$EBCC  C9 FF
-	beq _label_ec1a                ; 7:$EBCE  F0 4A
-	sta PPU_ADDR                   ; 7:$EBD0  8D 06 20
-	pla                            ; 7:$EBD3  68
-	sta PPU_ADDR                   ; 7:$EBD4  8D 06 20
-	lda (_var_0036_indexed),Y      ; 7:$EBD7  B1 36
-	sta _var_0020_indexed          ; 7:$EBD9  85 20
-	iny                            ; 7:$EBDB  C8
-	lda (_var_0036_indexed),Y      ; 7:$EBDC  B1 36
-	sta _var_0021                  ; 7:$EBDE  85 21
-	iny                            ; 7:$EBE0  C8
-	lda (_var_0036_indexed),Y      ; 7:$EBE1  B1 36
-	sta _var_0022_indexed          ; 7:$EBE3  85 22
-	iny                            ; 7:$EBE5  C8
-	lda (_var_0036_indexed),Y      ; 7:$EBE6  B1 36
-	sta _var_0023                  ; 7:$EBE8  85 23
-	iny                            ; 7:$EBEA  C8
-	tya                            ; 7:$EBEB  98
-	pha                            ; 7:$EBEC  48
-	lda _var_0020_indexed          ; 7:$EBED  A5 20
-	ora _var_0021                  ; 7:$EBEF  05 21
-	beq _label_ec1c                ; 7:$EBF1  F0 29
-	ldy #$00                       ; 7:$EBF3  A0 00
-	lda _var_0021                  ; 7:$EBF5  A5 21
-	beq _label_ec0b                ; 7:$EBF7  F0 12
+	lda (_var_0036_indexed),Y ; 7:$EBC5  B1 36
+	iny ; 7:$EBC7  C8
+	pha ; 7:$EBC8  48
+	lda (_var_0036_indexed),Y ; 7:$EBC9  B1 36
+	iny ; 7:$EBCB  C8
+	cmp #$FF ; 7:$EBCC  C9 FF
+	beq _label_ec1a ; 7:$EBCE  F0 4A
+	sta PPU_ADDR ; 7:$EBD0  8D 06 20
+	pla ; 7:$EBD3  68
+	sta PPU_ADDR ; 7:$EBD4  8D 06 20
+	lda (_var_0036_indexed),Y ; 7:$EBD7  B1 36
+	sta _var_0020_indexed ; 7:$EBD9  85 20
+	iny ; 7:$EBDB  C8
+	lda (_var_0036_indexed),Y ; 7:$EBDC  B1 36
+	sta _var_0021 ; 7:$EBDE  85 21
+	iny ; 7:$EBE0  C8
+	lda (_var_0036_indexed),Y ; 7:$EBE1  B1 36
+	sta _var_0022_indexed ; 7:$EBE3  85 22
+	iny ; 7:$EBE5  C8
+	lda (_var_0036_indexed),Y ; 7:$EBE6  B1 36
+	sta _var_0023 ; 7:$EBE8  85 23
+	iny ; 7:$EBEA  C8
+	tya ; 7:$EBEB  98
+	pha ; 7:$EBEC  48
+	lda _var_0020_indexed ; 7:$EBED  A5 20
+	ora _var_0021 ; 7:$EBEF  05 21
+	beq _label_ec1c ; 7:$EBF1  F0 29
+	ldy #$00 ; 7:$EBF3  A0 00
+	lda _var_0021 ; 7:$EBF5  A5 21
+	beq _label_ec0b ; 7:$EBF7  F0 12
 
 _label_ebf9:
-	lda (_var_0022_indexed),Y      ; 7:$EBF9  B1 22
-	sta PPU_DATA                   ; 7:$EBFB  8D 07 20
-	iny                            ; 7:$EBFE  C8
-	bne _label_ebf9                ; 7:$EBFF  D0 F8
-	inc _var_0023                  ; 7:$EC01  E6 23
-	dec _var_0021                  ; 7:$EC03  C6 21
-	bne _label_ebf9                ; 7:$EC05  D0 F2
-	lda _var_0020_indexed          ; 7:$EC07  A5 20
-	beq _label_ec15                ; 7:$EC09  F0 0A
+	lda (_var_0022_indexed),Y ; 7:$EBF9  B1 22
+	sta PPU_DATA ; 7:$EBFB  8D 07 20
+	iny ; 7:$EBFE  C8
+	bne _label_ebf9 ; 7:$EBFF  D0 F8
+	inc _var_0023 ; 7:$EC01  E6 23
+	dec _var_0021 ; 7:$EC03  C6 21
+	bne _label_ebf9 ; 7:$EC05  D0 F2
+	lda _var_0020_indexed ; 7:$EC07  A5 20
+	beq _label_ec15 ; 7:$EC09  F0 0A
 
 _label_ec0b:
-	lda (_var_0022_indexed),Y      ; 7:$EC0B  B1 22
-	sta PPU_DATA                   ; 7:$EC0D  8D 07 20
-	iny                            ; 7:$EC10  C8
-	cpy _var_0020_indexed          ; 7:$EC11  C4 20
-	bne _label_ec0b                ; 7:$EC13  D0 F6
+	lda (_var_0022_indexed),Y ; 7:$EC0B  B1 22
+	sta PPU_DATA ; 7:$EC0D  8D 07 20
+	iny ; 7:$EC10  C8
+	cpy _var_0020_indexed ; 7:$EC11  C4 20
+	bne _label_ec0b ; 7:$EC13  D0 F6
 
 _label_ec15:
-	pla                            ; 7:$EC15  68
-	tay                            ; 7:$EC16  A8
-	jmp _label_ebc5                ; 7:$EC17  4C C5 EB
+	pla ; 7:$EC15  68
+	tay ; 7:$EC16  A8
+	jmp _label_ebc5 ; 7:$EC17  4C C5 EB
 
 _label_ec1a:
-	pla                            ; 7:$EC1A  68
-	rts                            ; 7:$EC1B  60
+	pla ; 7:$EC1A  68
+	rts ; 7:$EC1B  60
 
 _label_ec1c:
-	ldy #$00                       ; 7:$EC1C  A0 00
-	ldx #$00                       ; 7:$EC1E  A2 00
+	ldy #$00 ; 7:$EC1C  A0 00
+	ldx #$00 ; 7:$EC1E  A2 00
 
 _label_ec20:
-	lda (_var_0022_indexed),Y      ; 7:$EC20  B1 22
-	bmi _label_ec41                ; 7:$EC22  30 1D
-	beq _label_ec15                ; 7:$EC24  F0 EF
-	sta _var_0020_indexed          ; 7:$EC26  85 20
-	iny                            ; 7:$EC28  C8
-	bne _label_ec2d                ; 7:$EC29  D0 02
-	inc _var_0023                  ; 7:$EC2B  E6 23
+	lda (_var_0022_indexed),Y ; 7:$EC20  B1 22
+	bmi _label_ec41 ; 7:$EC22  30 1D
+	beq _label_ec15 ; 7:$EC24  F0 EF
+	sta _var_0020_indexed ; 7:$EC26  85 20
+	iny ; 7:$EC28  C8
+	bne _label_ec2d ; 7:$EC29  D0 02
+	inc _var_0023 ; 7:$EC2B  E6 23
 
 _label_ec2d:
-	lda (_var_0022_indexed),Y      ; 7:$EC2D  B1 22
-	sta _var_0200_indexed,X      ; 7:$EC2F  9D 00 02
-	sta PPU_DATA                   ; 7:$EC32  8D 07 20
-	inx                            ; 7:$EC35  E8
-	iny                            ; 7:$EC36  C8
-	bne _label_ec3b                ; 7:$EC37  D0 02
-	inc _var_0023                  ; 7:$EC39  E6 23
+	lda (_var_0022_indexed),Y ; 7:$EC2D  B1 22
+	sta _var_0200_indexed,X ; 7:$EC2F  9D 00 02
+	sta PPU_DATA ; 7:$EC32  8D 07 20
+	inx ; 7:$EC35  E8
+	iny ; 7:$EC36  C8
+	bne _label_ec3b ; 7:$EC37  D0 02
+	inc _var_0023 ; 7:$EC39  E6 23
 
 _label_ec3b:
-	dec _var_0020_indexed          ; 7:$EC3B  C6 20
-	bne _label_ec2d                ; 7:$EC3D  D0 EE
-	beq _label_ec20                ; 7:$EC3F  F0 DF
+	dec _var_0020_indexed ; 7:$EC3B  C6 20
+	bne _label_ec2d ; 7:$EC3D  D0 EE
+	beq _label_ec20 ; 7:$EC3F  F0 DF
 
 _label_ec41:
-	iny                            ; 7:$EC41  C8
-	bne _label_ec46                ; 7:$EC42  D0 02
-	inc _var_0023                  ; 7:$EC44  E6 23
+	iny ; 7:$EC41  C8
+	bne _label_ec46 ; 7:$EC42  D0 02
+	inc _var_0023 ; 7:$EC44  E6 23
 
 _label_ec46:
-	and #$7F                       ; 7:$EC46  29 7F
-	clc                            ; 7:$EC48  18
-	adc #$03                       ; 7:$EC49  69 03
-	sta _var_0020_indexed          ; 7:$EC4B  85 20
-	lda (_var_0022_indexed),Y      ; 7:$EC4D  B1 22
-	sta _var_0021                  ; 7:$EC4F  85 21
-	txa                            ; 7:$EC51  8A
-	clc                            ; 7:$EC52  18
-	sbc _var_0021                  ; 7:$EC53  E5 21
-	sty _var_0021                  ; 7:$EC55  84 21
-	tay                            ; 7:$EC57  A8
+	and #$7F ; 7:$EC46  29 7F
+	clc ; 7:$EC48  18
+	adc #$03 ; 7:$EC49  69 03
+	sta _var_0020_indexed ; 7:$EC4B  85 20
+	lda (_var_0022_indexed),Y ; 7:$EC4D  B1 22
+	sta _var_0021 ; 7:$EC4F  85 21
+	txa ; 7:$EC51  8A
+	clc ; 7:$EC52  18
+	sbc _var_0021 ; 7:$EC53  E5 21
+	sty _var_0021 ; 7:$EC55  84 21
+	tay ; 7:$EC57  A8
 
 _label_ec58:
-	lda _var_0200_indexed,Y      ; 7:$EC58  B9 00 02
-	sta _var_0200_indexed,X      ; 7:$EC5B  9D 00 02
-	sta PPU_DATA                   ; 7:$EC5E  8D 07 20
-	inx                            ; 7:$EC61  E8
-	iny                            ; 7:$EC62  C8
-	dec _var_0020_indexed          ; 7:$EC63  C6 20
-	bne _label_ec58                ; 7:$EC65  D0 F1
-	ldy _var_0021                  ; 7:$EC67  A4 21
-	iny                            ; 7:$EC69  C8
-	bne _label_ec20                ; 7:$EC6A  D0 B4
-	inc _var_0023                  ; 7:$EC6C  E6 23
-	jmp _label_ec20                ; 7:$EC6E  4C 20 EC
+	lda _var_0200_indexed,Y ; 7:$EC58  B9 00 02
+	sta _var_0200_indexed,X ; 7:$EC5B  9D 00 02
+	sta PPU_DATA ; 7:$EC5E  8D 07 20
+	inx ; 7:$EC61  E8
+	iny ; 7:$EC62  C8
+	dec _var_0020_indexed ; 7:$EC63  C6 20
+	bne _label_ec58 ; 7:$EC65  D0 F1
+	ldy _var_0021 ; 7:$EC67  A4 21
+	iny ; 7:$EC69  C8
+	bne _label_ec20 ; 7:$EC6A  D0 B4
+	inc _var_0023 ; 7:$EC6C  E6 23
+	jmp _label_ec20 ; 7:$EC6E  4C 20 EC
 
 
 .byte $bd, $4c, $06, $85, $3d, $bd, $44, $06, $85, $3c, $bd, $1c, $06, $85, $3f, $bd ; 7:$EC71
@@ -5401,134 +5401,134 @@ _label_ec58:
 .byte $10, $f0, $02, $38, $60, $68, $68, $4c, $9b, $ee ; 7:$EE31
 
 _func_ee3b:
-	jsr _func_e20b                 ; 7:$EE3B  20 0B E2
-	lda _var_0039                  ; 7:$EE3E  A5 39
-	and #$3D                       ; 7:$EE40  29 3D
-	sta _var_0039                  ; 7:$EE42  85 39
-	lda #$00                       ; 7:$EE44  A9 00
-	sta $38                        ; 7:$EE46  85 38
-	rts                            ; 7:$EE48  60
+	jsr _func_e20b ; 7:$EE3B  20 0B E2
+	lda _var_0039 ; 7:$EE3E  A5 39
+	and #$3D ; 7:$EE40  29 3D
+	sta _var_0039 ; 7:$EE42  85 39
+	lda #$00 ; 7:$EE44  A9 00
+	sta $38 ; 7:$EE46  85 38
+	rts ; 7:$EE48  60
 
 _func_ee49:
-	lda _var_0039                  ; 7:$EE49  A5 39
-	and #$7E                       ; 7:$EE4B  29 7E
-	sta _var_0039                  ; 7:$EE4D  85 39
-	and #$40                       ; 7:$EE4F  29 40
-	bne _label_ee58                ; 7:$EE51  D0 05
-	lda #$10                       ; 7:$EE53  A9 10
-	sta _var_003a                  ; 7:$EE55  85 3A
-	rts                            ; 7:$EE57  60
+	lda _var_0039 ; 7:$EE49  A5 39
+	and #$7E ; 7:$EE4B  29 7E
+	sta _var_0039 ; 7:$EE4D  85 39
+	and #$40 ; 7:$EE4F  29 40
+	bne _label_ee58 ; 7:$EE51  D0 05
+	lda #$10 ; 7:$EE53  A9 10
+	sta _var_003a ; 7:$EE55  85 3A
+	rts ; 7:$EE57  60
 
 _label_ee58:
-	lda #$F0                       ; 7:$EE58  A9 F0
-	sta _var_003a                  ; 7:$EE5A  85 3A
-	rts                            ; 7:$EE5C  60
+	lda #$F0 ; 7:$EE58  A9 F0
+	sta _var_003a ; 7:$EE5A  85 3A
+	rts ; 7:$EE5C  60
 
 _func_ee5d:
-	ldx _var_003a                  ; 7:$EE5D  A6 3A
-	bit _var_0039                  ; 7:$EE5F  24 39
-	bvs _label_ee85                ; 7:$EE61  70 22
-	bmi _label_ee94                ; 7:$EE63  30 2F
-	lda #$F8                       ; 7:$EE65  A9 F8
+	ldx _var_003a ; 7:$EE5D  A6 3A
+	bit _var_0039 ; 7:$EE5F  24 39
+	bvs _label_ee85 ; 7:$EE61  70 22
+	bmi _label_ee94 ; 7:$EE63  30 2F
+	lda #$F8 ; 7:$EE65  A9 F8
 
 _label_ee67:
-	sta _var_0200_indexed,X      ; 7:$EE67  9D 00 02
-	inx                            ; 7:$EE6A  E8
-	inx                            ; 7:$EE6B  E8
-	inx                            ; 7:$EE6C  E8
-	inx                            ; 7:$EE6D  E8
-	cpx #$F4                       ; 7:$EE6E  E0 F4
-	bne _label_ee67                ; 7:$EE70  D0 F5
-	lda _var_0039                  ; 7:$EE72  A5 39
-	and #$08                       ; 7:$EE74  29 08
-	bne _label_ee84                ; 7:$EE76  D0 0C
-	lda _var_0039                  ; 7:$EE78  A5 39
-	and #$04                       ; 7:$EE7A  29 04
-	beq _label_ee94                ; 7:$EE7C  F0 16
-	lda _var_002a                  ; 7:$EE7E  A5 2A
-	and #$A0                       ; 7:$EE80  29 A0
-	bne _label_ee94                ; 7:$EE82  D0 10
+	sta _var_0200_indexed,X ; 7:$EE67  9D 00 02
+	inx ; 7:$EE6A  E8
+	inx ; 7:$EE6B  E8
+	inx ; 7:$EE6C  E8
+	inx ; 7:$EE6D  E8
+	cpx #$F4 ; 7:$EE6E  E0 F4
+	bne _label_ee67 ; 7:$EE70  D0 F5
+	lda _var_0039 ; 7:$EE72  A5 39
+	and #$08 ; 7:$EE74  29 08
+	bne _label_ee84 ; 7:$EE76  D0 0C
+	lda _var_0039 ; 7:$EE78  A5 39
+	and #$04 ; 7:$EE7A  29 04
+	beq _label_ee94 ; 7:$EE7C  F0 16
+	lda _var_002a ; 7:$EE7E  A5 2A
+	and #$A0 ; 7:$EE80  29 A0
+	bne _label_ee94 ; 7:$EE82  D0 10
 
 _label_ee84:
-	rts                            ; 7:$EE84  60
+	rts ; 7:$EE84  60
 
 _label_ee85:
-	bmi _label_ee94                ; 7:$EE85  30 0D
-	lda #$F8                       ; 7:$EE87  A9 F8
+	bmi _label_ee94 ; 7:$EE85  30 0D
+	lda #$F8 ; 7:$EE87  A9 F8
 
 _label_ee89:
-	sta _var_0200_indexed,X      ; 7:$EE89  9D 00 02
-	dex                            ; 7:$EE8C  CA
-	dex                            ; 7:$EE8D  CA
-	dex                            ; 7:$EE8E  CA
-	dex                            ; 7:$EE8F  CA
-	cpx #$0C                       ; 7:$EE90  E0 0C
-	bne _label_ee89                ; 7:$EE92  D0 F5
+	sta _var_0200_indexed,X ; 7:$EE89  9D 00 02
+	dex ; 7:$EE8C  CA
+	dex ; 7:$EE8D  CA
+	dex ; 7:$EE8E  CA
+	dex ; 7:$EE8F  CA
+	cpx #$0C ; 7:$EE90  E0 0C
+	bne _label_ee89 ; 7:$EE92  D0 F5
 
 _label_ee94:
-	lda _var_0039                  ; 7:$EE94  A5 39
-	eor #$40                       ; 7:$EE96  49 40
-	sta _var_0039                  ; 7:$EE98  85 39
-	rts                            ; 7:$EE9A  60
+	lda _var_0039 ; 7:$EE94  A5 39
+	eor #$40 ; 7:$EE96  49 40
+	sta _var_0039 ; 7:$EE98  85 39
+	rts ; 7:$EE9A  60
 
 
 .byte $a9, $00, $9d, $00, $06, $9d, $04, $06, $9d, $40, $06, $9d, $48, $06, $9d, $0c ; 7:$EE9B
-.byte $06, $9d, $10, $06, $60    ; 7:$EEAB
+.byte $06, $9d, $10, $06, $60 ; 7:$EEAB
 
 _func_eeb0:
-	ldx #$00                       ; 7:$EEB0  A2 00
-	stx _var_0032                  ; 7:$EEB2  86 32
+	ldx #$00 ; 7:$EEB0  A2 00
+	stx _var_0032 ; 7:$EEB2  86 32
 
 _label_eeb4:
-	ldx _var_0032                  ; 7:$EEB4  A6 32
-	lda _var_0600_indexed,X      ; 7:$EEB6  BD 00 06
-	beq _label_eebe                ; 7:$EEB9  F0 03
-	jsr _jump_engine_eec7          ; 7:$EEBB  20 C7 EE
+	ldx _var_0032 ; 7:$EEB4  A6 32
+	lda _var_0600_indexed,X ; 7:$EEB6  BD 00 06
+	beq _label_eebe ; 7:$EEB9  F0 03
+	jsr _jump_engine_eec7 ; 7:$EEBB  20 C7 EE
 
 _label_eebe:
-	inc _var_0032                  ; 7:$EEBE  E6 32
-	lda _var_0032                  ; 7:$EEC0  A5 32
-	cmp #$04                       ; 7:$EEC2  C9 04
-	bne _label_eeb4                ; 7:$EEC4  D0 EE
-	rts                            ; 7:$EEC6  60
+	inc _var_0032 ; 7:$EEBE  E6 32
+	lda _var_0032 ; 7:$EEC0  A5 32
+	cmp #$04 ; 7:$EEC2  C9 04
+	bne _label_eeb4 ; 7:$EEC4  D0 EE
+	rts ; 7:$EEC6  60
 
-_jump_engine_eec7:               ; jump engine detected
-	ldy _var_0604_indexed,X      ; 7:$EEC7  BC 04 06
-	beq _label_eed6                ; 7:$EECA  F0 0A
-	sty _var_001d                  ; 7:$EECC  84 1D
-	lda _var_0608_indexed,X      ; 7:$EECE  BD 08 06
-	sta _var_001c_indexed          ; 7:$EED1  85 1C
-	jmp (_var_001c_indexed)        ; 7:$EED3  6C 1C 00
+_jump_engine_eec7: ; jump engine detected
+	ldy _var_0604_indexed,X ; 7:$EEC7  BC 04 06
+	beq _label_eed6 ; 7:$EECA  F0 0A
+	sty _var_001d ; 7:$EECC  84 1D
+	lda _var_0608_indexed,X ; 7:$EECE  BD 08 06
+	sta _var_001c_indexed ; 7:$EED1  85 1C
+	jmp (_var_001c_indexed) ; 7:$EED3  6C 1C 00
 
 _label_eed6:
-	asl a                          ; 7:$EED6  0A
-	tay                            ; 7:$EED7  A8
-	lda (_var_0006_indexed),Y      ; 7:$EED8  B1 06
-	sta _var_001c_indexed          ; 7:$EEDA  85 1C
-	iny                            ; 7:$EEDC  C8
-	lda (_var_0006_indexed),Y      ; 7:$EEDD  B1 06
-	sta _var_001d                  ; 7:$EEDF  85 1D
-	jmp (_var_001c_indexed)        ; 7:$EEE1  6C 1C 00
+	asl a ; 7:$EED6  0A
+	tay ; 7:$EED7  A8
+	lda (_var_0006_indexed),Y ; 7:$EED8  B1 06
+	sta _var_001c_indexed ; 7:$EEDA  85 1C
+	iny ; 7:$EEDC  C8
+	lda (_var_0006_indexed),Y ; 7:$EEDD  B1 06
+	sta _var_001d ; 7:$EEDF  85 1D
+	jmp (_var_001c_indexed) ; 7:$EEE1  6C 1C 00
 
 _func_eee4:
-	ldy #$00                       ; 7:$EEE4  A0 00
-	pha                            ; 7:$EEE6  48
+	ldy #$00 ; 7:$EEE4  A0 00
+	pha ; 7:$EEE6  48
 
 _label_eee7:
-	lda _var_0600_indexed,Y      ; 7:$EEE7  B9 00 06
-	beq _label_eef4                ; 7:$EEEA  F0 08
-	iny                            ; 7:$EEEC  C8
-	cpy $04                        ; 7:$EEED  C4 04
-	bne _label_eee7                ; 7:$EEEF  D0 F6
-	pla                            ; 7:$EEF1  68
-	sec                            ; 7:$EEF2  38
-	rts                            ; 7:$EEF3  60
+	lda _var_0600_indexed,Y ; 7:$EEE7  B9 00 06
+	beq _label_eef4 ; 7:$EEEA  F0 08
+	iny ; 7:$EEEC  C8
+	cpy $04 ; 7:$EEED  C4 04
+	bne _label_eee7 ; 7:$EEEF  D0 F6
+	pla ; 7:$EEF1  68
+	sec ; 7:$EEF2  38
+	rts ; 7:$EEF3  60
 
 _label_eef4:
-	pla                            ; 7:$EEF4  68
-	sta _var_0600_indexed,Y      ; 7:$EEF5  99 00 06
-	clc                            ; 7:$EEF8  18
-	rts                            ; 7:$EEF9  60
+	pla ; 7:$EEF4  68
+	sta _var_0600_indexed,Y ; 7:$EEF5  99 00 06
+	clc ; 7:$EEF8  18
+	rts ; 7:$EEF9  60
 
 
 .byte $9d, $14, $06, $68, $18, $69, $01, $9d, $08, $06, $85, $30, $68, $69, $00, $9d ; 7:$EEFA
@@ -5539,14 +5539,14 @@ _label_eef4:
 .byte $1d, $c6, $19, $d0, $eb, $60 ; 7:$EF4A
 
 _func_ef50:
-	lda #$00                       ; 7:$EF50  A9 00
-	tax                            ; 7:$EF52  AA
+	lda #$00 ; 7:$EF50  A9 00
+	tax ; 7:$EF52  AA
 
 _label_ef53:
-	sta _var_0600_indexed,X      ; 7:$EF53  9D 00 06
-	dex                            ; 7:$EF56  CA
-	bne _label_ef53                ; 7:$EF57  D0 FA
-	rts                            ; 7:$EF59  60
+	sta _var_0600_indexed,X ; 7:$EF53  9D 00 06
+	dex ; 7:$EF56  CA
+	bne _label_ef53 ; 7:$EF57  D0 FA
+	rts ; 7:$EF59  60
 
 .byte $ce, $d3, $d8, $dd, $e2, $e7, $ec, $f1, $f6, $fb, $00, $05, $0a, $0f, $14, $19 ; 7:$EF5A
 .byte $1e, $23, $28, $2d, $32, $37, $3c, $41, $46, $4b, $50, $55, $5a, $5f, $64, $69 ; 7:$EF6A
@@ -5573,7 +5573,7 @@ _label_ef53:
 .byte $00, $00, $f9, $03, $fa, $00, $8d, $fa, $03, $00, $fb, $fb, $8c, $03, $fa, $00 ; 7:$F0BA
 .byte $8c, $f8, $03, $f8, $00, $bc, $f8, $03, $00, $f9, $f9, $8d, $03, $00, $fb, $f9 ; 7:$F0CA
 .byte $8d, $03, $8d, $fa, $bc, $8d, $03, $00, $00, $00, $fb, $03, $fb, $8d, $8d, $8c ; 7:$F0DA
-.byte $03                        ; 7:$F0EA
+.byte $03 ; 7:$F0EA
 
 _data_f0eb_indexed:
 .byte $17, $13, $1e, $1f, $11, $13, $ff, $45, $01, $00, $52, $00, $13, $18, $1f, $15 ; 7:$F0EB
@@ -5583,7 +5583,7 @@ _data_f0eb_indexed:
 
 .pad $f700, $ff
 
-.incbin "dmc.bin"
+.incbin "src/dmc.bin"
 
 ; appears to represent the available ROM banks, as the routine responsible reads and pokes
 ; this table
@@ -5591,16 +5591,16 @@ _data_ff00_indexed:
 .byte $00, $01, $02, $03, $04, $05, $06, $07 ; 7:$FF00
 
 _data_ff08:
-.byte $00                        ; 7:$FF08
+.byte $00 ; 7:$FF08
 
 _func_ff09:
-	sta _var_0000_indexed          ; 7:$FF09  85 00
-	sty _var_0020_indexed          ; 7:$FF0B  84 20
-	tay                            ; 7:$FF0D  A8
-	lda _data_ff00_indexed,Y       ; 7:$FF0E  B9 00 FF
-	sta _data_ff00_indexed,Y       ; 7:$FF11  99 00 FF
-	ldy _var_0020_indexed          ; 7:$FF14  A4 20
-	rts                            ; 7:$FF16  60
+	sta _var_0000_indexed ; 7:$FF09  85 00
+	sty _var_0020_indexed ; 7:$FF0B  84 20
+	tay ; 7:$FF0D  A8
+	lda _data_ff00_indexed,Y ; 7:$FF0E  B9 00 FF
+	sta _data_ff00_indexed,Y ; 7:$FF11  99 00 FF
+	ldy _var_0020_indexed ; 7:$FF14  A4 20
+	rts ; 7:$FF16  60
 
 .pad $ffe0, $ff
 
