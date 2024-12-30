@@ -47,16 +47,16 @@ _var_071b_indexed = $071B
 _var_0773_indexed = $0773
 
 _data_8000_indexed:
-  jmp _label_8891                ; $8000  4C 91 88
+	jmp _label_8891                ; $8000  4C 91 88
 
 _func_8003:
-  jmp _label_8895                ; $8003  4C 95 88
+	jmp _label_8895                ; $8003  4C 95 88
 
 
 .byte $4c, $f9, $88, $4c, $16, $80, $4c, $82, $88, $4c, $89, $88 ; $8006
 
 _func_8012:
-  jmp _label_8e7c                ; $8012  4C 7C 8E
+	jmp _label_8e7c                ; $8012  4C 7C 8E
 
 
 .byte $60, $a5, $16, $29, $fb, $c5, $16, $d0, $f7, $09, $04, $85, $16, $20, $ef, $81 ; $8015
@@ -197,57 +197,57 @@ _func_8012:
 .byte $03, $85, $16, $60, $a5, $16, $29, $fc, $09, $01, $d0, $f5 ; $8885
 
 _label_8891:
-  lda #$00                       ; $8891  A9 00
-  sta _var_0016                  ; $8893  85 16
+	lda #$00                       ; $8891  A9 00
+	sta _var_0016                  ; $8893  85 16
 
 _label_8895:
-  txa                            ; $8895  8A
-  pha                            ; $8896  48
-  ldx #$07                       ; $8897  A2 07
+	txa                            ; $8895  8A
+	pha                            ; $8896  48
+	ldx #$07                       ; $8897  A2 07
 
 _label_8899:
-  lda #$00                       ; $8899  A9 00
-  sta a:_var_071b_indexed,X      ; $889B  9D 1B 07
-  dex                            ; $889E  CA
-  bpl _label_8899                ; $889F  10 F8
-  lda _var_0016                  ; $88A1  A5 16
-  and #$DF                       ; $88A3  29 DF
-  sta _var_0016                  ; $88A5  85 16
-  lda #$0F                       ; $88A7  A9 0F
-  sta a:_var_0708                ; $88A9  8D 08 07
-  ldx #$03                       ; $88AC  A2 03
-  lda #$00                       ; $88AE  A9 00
+	lda #$00                       ; $8899  A9 00
+	sta a:_var_071b_indexed,X      ; $889B  9D 1B 07
+	dex                            ; $889E  CA
+	bpl _label_8899                ; $889F  10 F8
+	lda _var_0016                  ; $88A1  A5 16
+	and #$DF                       ; $88A3  29 DF
+	sta _var_0016                  ; $88A5  85 16
+	lda #$0F                       ; $88A7  A9 0F
+	sta a:_var_0708                ; $88A9  8D 08 07
+	ldx #$03                       ; $88AC  A2 03
+	lda #$00                       ; $88AE  A9 00
 
 _label_88b0:
-  sta a:_var_0702_indexed,X      ; $88B0  9D 02 07
-  dex                            ; $88B3  CA
-  bpl _label_88b0                ; $88B4  10 FA
-  pla                            ; $88B6  68
-  tax                            ; $88B7  AA
-  lda #$30                       ; $88B8  A9 30
-  sta APU_PL1_VOL                ; $88BA  8D 00 40
-  sta APU_PL2_VOL                ; $88BD  8D 04 40
-  sta APU_NOISE_VOL              ; $88C0  8D 0C 40
-  lda #$80                       ; $88C3  A9 80
-  sta APU_TRI_LINEAR             ; $88C5  8D 08 40
-  lda #$FF                       ; $88C8  A9 FF
-  sta APU_PL1_HI                 ; $88CA  8D 03 40
-  sta APU_PL2_HI                 ; $88CD  8D 07 40
-  sta APU_TRI_HI                 ; $88D0  8D 0B 40
-  sta APU_NOISE_HI               ; $88D3  8D 0F 40
-  sta a:$070C                    ; $88D6  8D 0C 07
-  sta a:$0710                    ; $88D9  8D 10 07
-  lda #$00                       ; $88DC  A9 00
-  sta APU_DMC_FREQ               ; $88DE  8D 10 40
-  sta APU_PL1_SWEEP              ; $88E1  8D 01 40
-  sta APU_PL2_SWEEP              ; $88E4  8D 05 40
-  sta a:$070A                    ; $88E7  8D 0A 07
-  sta a:$070E                    ; $88EA  8D 0E 07
-  sta APU_DMC_RAW                ; $88ED  8D 11 40
-  lda #$0F                       ; $88F0  A9 0F
-  sta APU_SND_CHN                ; $88F2  8D 15 40
-  sta a:$071A                    ; $88F5  8D 1A 07
-  rts                            ; $88F8  60
+	sta a:_var_0702_indexed,X      ; $88B0  9D 02 07
+	dex                            ; $88B3  CA
+	bpl _label_88b0                ; $88B4  10 FA
+	pla                            ; $88B6  68
+	tax                            ; $88B7  AA
+	lda #$30                       ; $88B8  A9 30
+	sta APU_PL1_VOL                ; $88BA  8D 00 40
+	sta APU_PL2_VOL                ; $88BD  8D 04 40
+	sta APU_NOISE_VOL              ; $88C0  8D 0C 40
+	lda #$80                       ; $88C3  A9 80
+	sta APU_TRI_LINEAR             ; $88C5  8D 08 40
+	lda #$FF                       ; $88C8  A9 FF
+	sta APU_PL1_HI                 ; $88CA  8D 03 40
+	sta APU_PL2_HI                 ; $88CD  8D 07 40
+	sta APU_TRI_HI                 ; $88D0  8D 0B 40
+	sta APU_NOISE_HI               ; $88D3  8D 0F 40
+	sta a:$070C                    ; $88D6  8D 0C 07
+	sta a:$0710                    ; $88D9  8D 10 07
+	lda #$00                       ; $88DC  A9 00
+	sta APU_DMC_FREQ               ; $88DE  8D 10 40
+	sta APU_PL1_SWEEP              ; $88E1  8D 01 40
+	sta APU_PL2_SWEEP              ; $88E4  8D 05 40
+	sta a:$070A                    ; $88E7  8D 0A 07
+	sta a:$070E                    ; $88EA  8D 0E 07
+	sta APU_DMC_RAW                ; $88ED  8D 11 40
+	lda #$0F                       ; $88F0  A9 0F
+	sta APU_SND_CHN                ; $88F2  8D 15 40
+	sta a:$071A                    ; $88F5  8D 1A 07
+	rts                            ; $88F8  60
 
 
 .byte $48, $84, $12, $a0, $03, $b9, $02, $07, $f0, $12, $88, $10, $f8, $a5, $12, $48 ; $88F9
@@ -341,26 +341,26 @@ _label_88b0:
 .byte $31, $82, $00              ; $8E79
 
 _label_8e7c:
-  lda #$00                       ; $8E7C  A9 00
-  sta a:$0718                    ; $8E7E  8D 18 07
-  lda #$0F                       ; $8E81  A9 0F
-  sta a:_var_0708                ; $8E83  8D 08 07
-  lda _var_0016                  ; $8E86  A5 16
-  ora #$30                       ; $8E88  09 30
-  ldy #$20                       ; $8E8A  A0 20
-  sty a:$0706                    ; $8E8C  8C 06 07
-  ldy #$00                       ; $8E8F  A0 00
-  sty a:$0707                    ; $8E91  8C 07 07
-  sta _var_0016                  ; $8E94  85 16
-  ldy #$04                       ; $8E96  A0 04
+	lda #$00                       ; $8E7C  A9 00
+	sta a:$0718                    ; $8E7E  8D 18 07
+	lda #$0F                       ; $8E81  A9 0F
+	sta a:_var_0708                ; $8E83  8D 08 07
+	lda _var_0016                  ; $8E86  A5 16
+	ora #$30                       ; $8E88  09 30
+	ldy #$20                       ; $8E8A  A0 20
+	sty a:$0706                    ; $8E8C  8C 06 07
+	ldy #$00                       ; $8E8F  A0 00
+	sty a:$0707                    ; $8E91  8C 07 07
+	sta _var_0016                  ; $8E94  85 16
+	ldy #$04                       ; $8E96  A0 04
 
 _label_8e98:
-  lda a:_var_0773_indexed,Y      ; $8E98  B9 73 07
-  ora #$08                       ; $8E9B  09 08
-  sta a:_var_0773_indexed,Y      ; $8E9D  99 73 07
-  dey                            ; $8EA0  88
-  bpl _label_8e98                ; $8EA1  10 F5
-  rts                            ; $8EA3  60
+	lda a:_var_0773_indexed,Y      ; $8E98  B9 73 07
+	ora #$08                       ; $8E9B  09 08
+	sta a:_var_0773_indexed,Y      ; $8E9D  99 73 07
+	dey                            ; $8EA0  88
+	bpl _label_8e98                ; $8EA1  10 F5
+	rts                            ; $8EA3  60
 
 ; dummy
 .byte $00 ; $8EA4
@@ -3740,180 +3740,180 @@ _var_0702_indexed = $0702
 .align $1000, $ff
 
 _label_d000:
-  sei                            ; $D000  78
-  ldx #$FF                       ; $D001  A2 FF
-  txs                            ; $D003  9A
-  lda #$30                       ; $D004  A9 30
-  jsr _func_eb3f                 ; $D006  20 3F EB
-  lda #$06                       ; $D009  A9 06
-  jsr _func_eb45                 ; $D00B  20 45 EB
-  lda #$00                       ; $D00E  A9 00
-  ldx #$EF                       ; $D010  A2 EF
+	sei                            ; $D000  78
+	ldx #$FF                       ; $D001  A2 FF
+	txs                            ; $D003  9A
+	lda #$30                       ; $D004  A9 30
+	jsr _func_eb3f                 ; $D006  20 3F EB
+	lda #$06                       ; $D009  A9 06
+	jsr _func_eb45                 ; $D00B  20 45 EB
+	lda #$00                       ; $D00E  A9 00
+	ldx #$EF                       ; $D010  A2 EF
 
 _label_d012:
-  sta _var_0000_indexed,X        ; $D012  95 00
-  dex                            ; $D014  CA
-  cpx #$0F                       ; $D015  E0 0F
-  bne _label_d012                ; $D017  D0 F9
-  lda #$FF                       ; $D019  A9 FF
-  sta _var_0056                  ; $D01B  85 56
-  lda #$01                       ; $D01D  A9 01
-  sta _var_00a6                  ; $D01F  85 A6
-  lda #$30                       ; $D021  A9 30
-  jsr _func_eb3f                 ; $D023  20 3F EB
-  lda #$06                       ; $D026  A9 06
-  jsr _func_eb45                 ; $D028  20 45 EB
-  jsr _func_e131                 ; $D02B  20 31 E1
-  jsr _func_eb12                 ; $D02E  20 12 EB
-  jsr _func_e728                 ; $D031  20 28 E7
-  jsr _func_ee3b                 ; $D034  20 3B EE
-  jsr _func_e20b                 ; $D037  20 0B E2
-  ldy #$18                       ; $D03A  A0 18
-  jsr _func_e750                 ; $D03C  20 50 E7
-  lda #$1E                       ; $D03F  A9 1E
-  sta $08                        ; $D041  85 08
-  lda #$D3                       ; $D043  A9 D3
-  sta $09                        ; $D045  85 09
-  lda #$D9                       ; $D047  A9 D9
-  sta $0A                        ; $D049  85 0A
-  lda #$D2                       ; $D04B  A9 D2
-  sta $0B                        ; $D04D  85 0B
-  lda #$DD                       ; $D04F  A9 DD
-  sta _var_0006_indexed          ; $D051  85 06
-  lda #$D1                       ; $D053  A9 D1
-  sta $07                        ; $D055  85 07
-  lda #$DB                       ; $D057  A9 DB
-  sta _var_001c_indexed          ; $D059  85 1C
-  lda #$D1                       ; $D05B  A9 D1
-  sta _var_001d                  ; $D05D  85 1D
-  jsr _func_eb4b                 ; $D05F  20 4B EB
-  lda #$02                       ; $D062  A9 02
-  ldy #$00                       ; $D064  A0 00
-  jsr _func_e2bc                 ; $D066  20 BC E2
-  jsr _func_ef50                 ; $D069  20 50 EF
-  lda #$65                       ; $D06C  A9 65
-  ldy #$D1                       ; $D06E  A0 D1
-  jsr _func_e55c                 ; $D070  20 5C E5
-  lda #$8E                       ; $D073  A9 8E
-  sta _var_0048                  ; $D075  85 48
-  lda #$D1                       ; $D077  A9 D1
-  sta _var_0049                  ; $D079  85 49
-  lda #$07                       ; $D07B  A9 07
-  jsr _func_e75d                 ; $D07D  20 5D E7
-  ldy #$B4                       ; $D080  A0 B4
+	sta _var_0000_indexed,X        ; $D012  95 00
+	dex                            ; $D014  CA
+	cpx #$0F                       ; $D015  E0 0F
+	bne _label_d012                ; $D017  D0 F9
+	lda #$FF                       ; $D019  A9 FF
+	sta _var_0056                  ; $D01B  85 56
+	lda #$01                       ; $D01D  A9 01
+	sta _var_00a6                  ; $D01F  85 A6
+	lda #$30                       ; $D021  A9 30
+	jsr _func_eb3f                 ; $D023  20 3F EB
+	lda #$06                       ; $D026  A9 06
+	jsr _func_eb45                 ; $D028  20 45 EB
+	jsr _func_e131                 ; $D02B  20 31 E1
+	jsr _func_eb12                 ; $D02E  20 12 EB
+	jsr _func_e728                 ; $D031  20 28 E7
+	jsr _func_ee3b                 ; $D034  20 3B EE
+	jsr _func_e20b                 ; $D037  20 0B E2
+	ldy #$18                       ; $D03A  A0 18
+	jsr _func_e750                 ; $D03C  20 50 E7
+	lda #$1E                       ; $D03F  A9 1E
+	sta $08                        ; $D041  85 08
+	lda #$D3                       ; $D043  A9 D3
+	sta $09                        ; $D045  85 09
+	lda #$D9                       ; $D047  A9 D9
+	sta $0A                        ; $D049  85 0A
+	lda #$D2                       ; $D04B  A9 D2
+	sta $0B                        ; $D04D  85 0B
+	lda #$DD                       ; $D04F  A9 DD
+	sta _var_0006_indexed          ; $D051  85 06
+	lda #$D1                       ; $D053  A9 D1
+	sta $07                        ; $D055  85 07
+	lda #$DB                       ; $D057  A9 DB
+	sta _var_001c_indexed          ; $D059  85 1C
+	lda #$D1                       ; $D05B  A9 D1
+	sta _var_001d                  ; $D05D  85 1D
+	jsr _func_eb4b                 ; $D05F  20 4B EB
+	lda #$02                       ; $D062  A9 02
+	ldy #$00                       ; $D064  A0 00
+	jsr _func_e2bc                 ; $D066  20 BC E2
+	jsr _func_ef50                 ; $D069  20 50 EF
+	lda #$65                       ; $D06C  A9 65
+	ldy #$D1                       ; $D06E  A0 D1
+	jsr _func_e55c                 ; $D070  20 5C E5
+	lda #$8E                       ; $D073  A9 8E
+	sta _var_0048                  ; $D075  85 48
+	lda #$D1                       ; $D077  A9 D1
+	sta _var_0049                  ; $D079  85 49
+	lda #$07                       ; $D07B  A9 07
+	jsr _func_e75d                 ; $D07D  20 5D E7
+	ldy #$B4                       ; $D080  A0 B4
 
 _label_d082:
-  tya                            ; $D082  98
-  pha                            ; $D083  48
-  jsr _func_e736                 ; $D084  20 36 E7
-  jsr _func_e1a3                 ; $D087  20 A3 E1
-  pla                            ; $D08A  68
-  tay                            ; $D08B  A8
-  lda _var_0024_indexed          ; $D08C  A5 24
-  and #$F0                       ; $D08E  29 F0
-  bne _label_d095                ; $D090  D0 03
-  dey                            ; $D092  88
-  bne _label_d082                ; $D093  D0 ED
+	tya                            ; $D082  98
+	pha                            ; $D083  48
+	jsr _func_e736                 ; $D084  20 36 E7
+	jsr _func_e1a3                 ; $D087  20 A3 E1
+	pla                            ; $D08A  68
+	tay                            ; $D08B  A8
+	lda _var_0024_indexed          ; $D08C  A5 24
+	and #$F0                       ; $D08E  29 F0
+	bne _label_d095                ; $D090  D0 03
+	dey                            ; $D092  88
+	bne _label_d082                ; $D093  D0 ED
 
 _label_d095:
-  lda #$05                       ; $D095  A9 05
-  jsr _func_e7b0                 ; $D097  20 B0 E7
-  lda #$03                       ; $D09A  A9 03
-  ldy #$00                       ; $D09C  A0 00
-  jsr _func_e2bc                 ; $D09E  20 BC E2
-  jsr _func_e20b                 ; $D0A1  20 0B E2
-  ldy #$D1                       ; $D0A4  A0 D1
-  lda #$78                       ; $D0A6  A9 78
-  jsr _func_e587                 ; $D0A8  20 87 E5
-  lda #$1E                       ; $D0AB  A9 1E
-  sta _var_0018_indexed          ; $D0AD  85 18
-  lda #$20                       ; $D0AF  A9 20
-  sta _var_0019                  ; $D0B1  85 19
-  lda #$86                       ; $D0B3  A9 86
-  sta _var_001a_indexed          ; $D0B5  85 1A
-  lda #$D4                       ; $D0B7  A9 D4
-  sta _var_001b                  ; $D0B9  85 1B
-  lda #$00                       ; $D0BB  A9 00
-  sta _var_001c_indexed          ; $D0BD  85 1C
-  lda #$20                       ; $D0BF  A9 20
-  sta _var_001d                  ; $D0C1  85 1D
-  jsr _func_e357                 ; $D0C3  20 57 E3
-  lda #$8E                       ; $D0C6  A9 8E
-  sta _var_0048                  ; $D0C8  85 48
-  lda #$D1                       ; $D0CA  A9 D1
-  sta _var_0049                  ; $D0CC  85 49
-  lda _var_0001                  ; $D0CE  A5 01
-  bpl _label_d0da                ; $D0D0  10 08
-  lda #$C2                       ; $D0D2  A9 C2
-  sta _var_0048                  ; $D0D4  85 48
-  lda #$D1                       ; $D0D6  A9 D1
-  sta _var_0049                  ; $D0D8  85 49
+	lda #$05                       ; $D095  A9 05
+	jsr _func_e7b0                 ; $D097  20 B0 E7
+	lda #$03                       ; $D09A  A9 03
+	ldy #$00                       ; $D09C  A0 00
+	jsr _func_e2bc                 ; $D09E  20 BC E2
+	jsr _func_e20b                 ; $D0A1  20 0B E2
+	ldy #$D1                       ; $D0A4  A0 D1
+	lda #$78                       ; $D0A6  A9 78
+	jsr _func_e587                 ; $D0A8  20 87 E5
+	lda #$1E                       ; $D0AB  A9 1E
+	sta _var_0018_indexed          ; $D0AD  85 18
+	lda #$20                       ; $D0AF  A9 20
+	sta _var_0019                  ; $D0B1  85 19
+	lda #$86                       ; $D0B3  A9 86
+	sta _var_001a_indexed          ; $D0B5  85 1A
+	lda #$D4                       ; $D0B7  A9 D4
+	sta _var_001b                  ; $D0B9  85 1B
+	lda #$00                       ; $D0BB  A9 00
+	sta _var_001c_indexed          ; $D0BD  85 1C
+	lda #$20                       ; $D0BF  A9 20
+	sta _var_001d                  ; $D0C1  85 1D
+	jsr _func_e357                 ; $D0C3  20 57 E3
+	lda #$8E                       ; $D0C6  A9 8E
+	sta _var_0048                  ; $D0C8  85 48
+	lda #$D1                       ; $D0CA  A9 D1
+	sta _var_0049                  ; $D0CC  85 49
+	lda _var_0001                  ; $D0CE  A5 01
+	bpl _label_d0da                ; $D0D0  10 08
+	lda #$C2                       ; $D0D2  A9 C2
+	sta _var_0048                  ; $D0D4  85 48
+	lda #$D1                       ; $D0D6  A9 D1
+	sta _var_0049                  ; $D0D8  85 49
 
 _label_d0da:
-  lda #$05                       ; $D0DA  A9 05
-  jsr _func_e75d                 ; $D0DC  20 5D E7
-  lda #$01                       ; $D0DF  A9 01
-  jsr _func_eee4                 ; $D0E1  20 E4 EE
-  lda #$02                       ; $D0E4  A9 02
-  jsr _func_eee4                 ; $D0E6  20 E4 EE
-  lda #$01                       ; $D0E9  A9 01
-  jsr _func_e18b                 ; $D0EB  20 8B E1
-  lda #$00                       ; $D0EE  A9 00
-  sta _var_00c9                  ; $D0F0  85 C9
-  sta _var_00ca                  ; $D0F2  85 CA
+	lda #$05                       ; $D0DA  A9 05
+	jsr _func_e75d                 ; $D0DC  20 5D E7
+	lda #$01                       ; $D0DF  A9 01
+	jsr _func_eee4                 ; $D0E1  20 E4 EE
+	lda #$02                       ; $D0E4  A9 02
+	jsr _func_eee4                 ; $D0E6  20 E4 EE
+	lda #$01                       ; $D0E9  A9 01
+	jsr _func_e18b                 ; $D0EB  20 8B E1
+	lda #$00                       ; $D0EE  A9 00
+	sta _var_00c9                  ; $D0F0  85 C9
+	sta _var_00ca                  ; $D0F2  85 CA
 
 _label_d0f4:
-  jsr _func_e736                 ; $D0F4  20 36 E7
-  jsr _func_e1a3                 ; $D0F7  20 A3 E1
-  jsr _func_ee49                 ; $D0FA  20 49 EE
-  jsr _func_eeb0                 ; $D0FD  20 B0 EE
-  jsr _func_ee5d                 ; $D100  20 5D EE
-  inc _var_00c9                  ; $D103  E6 C9
-  lda _var_00c9                  ; $D105  A5 C9
-  cmp #$3C                       ; $D107  C9 3C
-  bne _label_d11d                ; $D109  D0 12
-  lda #$00                       ; $D10B  A9 00
-  sta _var_00c9                  ; $D10D  85 C9
-  inc _var_00ca                  ; $D10F  E6 CA
-  lda _var_00ca                  ; $D111  A5 CA
-  cmp #$28                       ; $D113  C9 28
-  bne _label_d11d                ; $D115  D0 06
-  lda #$00                       ; $D117  A9 00
-  sta _var_00ca                  ; $D119  85 CA
-  beq _label_d13d                ; $D11B  F0 20
+	jsr _func_e736                 ; $D0F4  20 36 E7
+	jsr _func_e1a3                 ; $D0F7  20 A3 E1
+	jsr _func_ee49                 ; $D0FA  20 49 EE
+	jsr _func_eeb0                 ; $D0FD  20 B0 EE
+	jsr _func_ee5d                 ; $D100  20 5D EE
+	inc _var_00c9                  ; $D103  E6 C9
+	lda _var_00c9                  ; $D105  A5 C9
+	cmp #$3C                       ; $D107  C9 3C
+	bne _label_d11d                ; $D109  D0 12
+	lda #$00                       ; $D10B  A9 00
+	sta _var_00c9                  ; $D10D  85 C9
+	inc _var_00ca                  ; $D10F  E6 CA
+	lda _var_00ca                  ; $D111  A5 CA
+	cmp #$28                       ; $D113  C9 28
+	bne _label_d11d                ; $D115  D0 06
+	lda #$00                       ; $D117  A9 00
+	sta _var_00ca                  ; $D119  85 CA
+	beq _label_d13d                ; $D11B  F0 20
 
 _label_d11d:
-  lda _var_0024_indexed          ; $D11D  A5 24
-  and #$F0                       ; $D11F  29 F0
-  beq _label_d0f4                ; $D121  F0 D1
-  jsr _func_e17c                 ; $D123  20 7C E1
-  lda #$05                       ; $D126  A9 05
-  jsr _func_e7b0                 ; $D128  20 B0 E7
-  jsr _func_e140                 ; $D12B  20 40 E1
-  jsr _func_e20b                 ; $D12E  20 0B E2
-  lda #$00                       ; $D131  A9 00
-  ldy #$00                       ; $D133  A0 00
-  jsr _func_e2bc                 ; $D135  20 BC E2
-  lda #$02                       ; $D138  A9 02
-  jmp _label_eb82                ; $D13A  4C 82 EB
+	lda _var_0024_indexed          ; $D11D  A5 24
+	and #$F0                       ; $D11F  29 F0
+	beq _label_d0f4                ; $D121  F0 D1
+	jsr _func_e17c                 ; $D123  20 7C E1
+	lda #$05                       ; $D126  A9 05
+	jsr _func_e7b0                 ; $D128  20 B0 E7
+	jsr _func_e140                 ; $D12B  20 40 E1
+	jsr _func_e20b                 ; $D12E  20 0B E2
+	lda #$00                       ; $D131  A9 00
+	ldy #$00                       ; $D133  A0 00
+	jsr _func_e2bc                 ; $D135  20 BC E2
+	lda #$02                       ; $D138  A9 02
+	jmp _label_eb82                ; $D13A  4C 82 EB
 
 _label_d13d:
-  jsr _func_e17c                 ; $D13D  20 7C E1
-  jsr _func_ef50                 ; $D140  20 50 EF
-  lda #$05                       ; $D143  A9 05
-  jsr _func_e7b0                 ; $D145  20 B0 E7
-  jsr _func_e140                 ; $D148  20 40 E1
-  jsr _func_e20b                 ; $D14B  20 0B E2
-  lda #$00                       ; $D14E  A9 00
-  ldy #$00                       ; $D150  A0 00
-  jsr _func_e2bc                 ; $D152  20 BC E2
-  lda #$D1                       ; $D155  A9 D1
-  sta _var_001d                  ; $D157  85 1D
-  lda #$A7                       ; $D159  A9 A7
-  sta _var_001c_indexed          ; $D15B  85 1C
-  jsr _func_e74a                 ; $D15D  20 4A E7
-  lda #$04                       ; $D160  A9 04
-  jmp _label_eb82                ; $D162  4C 82 EB
+	jsr _func_e17c                 ; $D13D  20 7C E1
+	jsr _func_ef50                 ; $D140  20 50 EF
+	lda #$05                       ; $D143  A9 05
+	jsr _func_e7b0                 ; $D145  20 B0 E7
+	jsr _func_e140                 ; $D148  20 40 E1
+	jsr _func_e20b                 ; $D14B  20 0B E2
+	lda #$00                       ; $D14E  A9 00
+	ldy #$00                       ; $D150  A0 00
+	jsr _func_e2bc                 ; $D152  20 BC E2
+	lda #$D1                       ; $D155  A9 D1
+	sta _var_001d                  ; $D157  85 1D
+	lda #$A7                       ; $D159  A9 A7
+	sta _var_001c_indexed          ; $D15B  85 1C
+	jsr _func_e74a                 ; $D15D  20 4A E7
+	lda #$04                       ; $D160  A9 04
+	jmp _label_eb82                ; $D162  4C 82 EB
 
 .byte $01, $0a, $4a, $d4, $0b, $21, $03, $0d, $5f, $d4, $89, $21, $01, $0b, $54, $d4 ; $D165
 .byte $4a, $22, $00, $06, $0e, $c2, $20, $01, $03, $0e, $82, $22, $01, $04, $0c, $04 ; $D175
@@ -4030,82 +4030,82 @@ _label_d13d:
 .align $1000, $ff
 
 Reset:
-  sei                            ; $E000  78
-  cld                            ; $E001  D8
-  ldx #$FF                       ; $E002  A2 FF
-  txs                            ; $E004  9A
-  lda #$30                       ; $E005  A9 30
-  jsr _func_eb3f                 ; $E007  20 3F EB
-  lda #$06                       ; $E00A  A9 06
-  jsr _func_eb45                 ; $E00C  20 45 EB
-  ldx #$03                       ; $E00F  A2 03
+	sei                            ; $E000  78
+	cld                            ; $E001  D8
+	ldx #$FF                       ; $E002  A2 FF
+	txs                            ; $E004  9A
+	lda #$30                       ; $E005  A9 30
+	jsr _func_eb3f                 ; $E007  20 3F EB
+	lda #$06                       ; $E00A  A9 06
+	jsr _func_eb45                 ; $E00C  20 45 EB
+	ldx #$03                       ; $E00F  A2 03
 
 _label_e011:
-  lda PPU_STATUS                 ; $E011  AD 02 20
-  bpl _label_e011                ; $E014  10 FB
-  dex                            ; $E016  CA
-  bne _label_e011                ; $E017  D0 F8
-  ldx #$EF                       ; $E019  A2 EF
+	lda PPU_STATUS                 ; $E011  AD 02 20
+	bpl _label_e011                ; $E014  10 FB
+	dex                            ; $E016  CA
+	bne _label_e011                ; $E017  D0 F8
+	ldx #$EF                       ; $E019  A2 EF
 
 _label_e01b:
-  sta _var_0000_indexed,X        ; $E01B  95 00
-  dex                            ; $E01D  CA
-  cpx #$0F                       ; $E01E  E0 0F
-  bne _label_e01b                ; $E020  D0 F9
-  lda #$FF                       ; $E022  A9 FF
-  sta _var_0056                  ; $E024  85 56
-  lda #$01                       ; $E026  A9 01
-  sta _var_00a6                  ; $E028  85 A6
-  ldx a:_var_01b0                ; $E02A  AE B0 01
-  ldy a:_var_01b1                ; $E02D  AC B1 01
-  cpx #$AC                       ; $E030  E0 AC
-  bne _label_e038                ; $E032  D0 04
-  cpy #$53                       ; $E034  C0 53
-  beq _label_e06c                ; $E036  F0 34
+	sta _var_0000_indexed,X        ; $E01B  95 00
+	dex                            ; $E01D  CA
+	cpx #$0F                       ; $E01E  E0 0F
+	bne _label_e01b                ; $E020  D0 F9
+	lda #$FF                       ; $E022  A9 FF
+	sta _var_0056                  ; $E024  85 56
+	lda #$01                       ; $E026  A9 01
+	sta _var_00a6                  ; $E028  85 A6
+	ldx a:_var_01b0                ; $E02A  AE B0 01
+	ldy a:_var_01b1                ; $E02D  AC B1 01
+	cpx #$AC                       ; $E030  E0 AC
+	bne _label_e038                ; $E032  D0 04
+	cpy #$53                       ; $E034  C0 53
+	beq _label_e06c                ; $E036  F0 34
 
 _label_e038:
-  lda #$00                       ; $E038  A9 00
-  sta a:$019D                    ; $E03A  8D 9D 01
-  sta _var_0001                  ; $E03D  85 01
-  sta $F4                        ; $E03F  85 F4
-  sta $F5                        ; $E041  85 F5
-  lda #$02                       ; $E043  A9 02
-  sta _var_0003                  ; $E045  85 03
-  ldy #$00                       ; $E047  A0 00
+	lda #$00                       ; $E038  A9 00
+	sta a:$019D                    ; $E03A  8D 9D 01
+	sta _var_0001                  ; $E03D  85 01
+	sta $F4                        ; $E03F  85 F4
+	sta $F5                        ; $E041  85 F5
+	lda #$02                       ; $E043  A9 02
+	sta _var_0003                  ; $E045  85 03
+	ldy #$00                       ; $E047  A0 00
 
 _label_e049:
-  lda a:_data_f0eb_indexed,Y     ; $E049  B9 EB F0
-  sta a:_var_0161_indexed,Y      ; $E04C  99 61 01
-  iny                            ; $E04F  C8
-  cpy #$3C                       ; $E050  C0 3C
-  bcc _label_e049                ; $E052  90 F5
-  lda #$3F                       ; $E054  A9 3F
-  sta a:$01A2                    ; $E056  8D A2 01
-  sta a:$01A3                    ; $E059  8D A3 01
-  sta a:$01A4                    ; $E05C  8D A4 01
-  sta a:$01A5                    ; $E05F  8D A5 01
-  lda #$AC                       ; $E062  A9 AC
-  sta a:_var_01b0                ; $E064  8D B0 01
-  lda #$53                       ; $E067  A9 53
-  sta a:_var_01b1                ; $E069  8D B1 01
+	lda a:_data_f0eb_indexed,Y     ; $E049  B9 EB F0
+	sta a:_var_0161_indexed,Y      ; $E04C  99 61 01
+	iny                            ; $E04F  C8
+	cpy #$3C                       ; $E050  C0 3C
+	bcc _label_e049                ; $E052  90 F5
+	lda #$3F                       ; $E054  A9 3F
+	sta a:$01A2                    ; $E056  8D A2 01
+	sta a:$01A3                    ; $E059  8D A3 01
+	sta a:$01A4                    ; $E05C  8D A4 01
+	sta a:$01A5                    ; $E05F  8D A5 01
+	lda #$AC                       ; $E062  A9 AC
+	sta a:_var_01b0                ; $E064  8D B0 01
+	lda #$53                       ; $E067  A9 53
+	sta a:_var_01b1                ; $E069  8D B1 01
 
 _label_e06c:
-  jsr _func_e5cb                 ; $E06C  20 CB E5
-  lda #$00                       ; $E06F  A9 00
-  sta $2B                        ; $E071  85 2B
-  sta $2C                        ; $E073  85 2C
-  jsr _func_e131                 ; $E075  20 31 E1
-  lda #$07                       ; $E078  A9 07
-  jsr _func_ff09                 ; $E07A  20 09 FF
-  jsr _func_e1a3                 ; $E07D  20 A3 E1
-  lda _var_0026_indexed          ; $E080  A5 26
-  cmp #$F8                       ; $E082  C9 F8
-  bne _label_e08b                ; $E084  D0 05
-  lda a:_data_ff08               ; $E086  AD 08 FF
-  sta _var_0001                  ; $E089  85 01
+	jsr _func_e5cb                 ; $E06C  20 CB E5
+	lda #$00                       ; $E06F  A9 00
+	sta $2B                        ; $E071  85 2B
+	sta $2C                        ; $E073  85 2C
+	jsr _func_e131                 ; $E075  20 31 E1
+	lda #$07                       ; $E078  A9 07
+	jsr _func_ff09                 ; $E07A  20 09 FF
+	jsr _func_e1a3                 ; $E07D  20 A3 E1
+	lda _var_0026_indexed          ; $E080  A5 26
+	cmp #$F8                       ; $E082  C9 F8
+	bne _label_e08b                ; $E084  D0 05
+	lda a:_data_ff08               ; $E086  AD 08 FF
+	sta _var_0001                  ; $E089  85 01
 
 _label_e08b:
-  jmp _label_d000                ; $E08B  4C 00 D0
+	jmp _label_d000                ; $E08B  4C 00 D0
 
 
 .byte $a9, $0e, $85, $1c, $a9, $20, $85, $1d, $a0, $00, $a5, $1d, $8d, $06, $20, $a5 ; $E08E
@@ -4121,22 +4121,22 @@ _label_e08b:
 .byte $8c, $8d, $8e              ; $E12E
 
 _func_e131:
-  lda _var_0000_indexed          ; $E131  A5 00
-  pha                            ; $E133  48
-  lda #$00                       ; $E134  A9 00
-  jsr _func_ff09                 ; $E136  20 09 FF
-  jsr _data_8000_indexed         ; $E139  20 00 80
-  pla                            ; $E13C  68
-  jmp _func_ff09                 ; $E13D  4C 09 FF
+	lda _var_0000_indexed          ; $E131  A5 00
+	pha                            ; $E133  48
+	lda #$00                       ; $E134  A9 00
+	jsr _func_ff09                 ; $E136  20 09 FF
+	jsr _data_8000_indexed         ; $E139  20 00 80
+	pla                            ; $E13C  68
+	jmp _func_ff09                 ; $E13D  4C 09 FF
 
 _func_e140:
-  lda _var_0000_indexed          ; $E140  A5 00
-  pha                            ; $E142  48
-  lda #$00                       ; $E143  A9 00
-  jsr _func_ff09                 ; $E145  20 09 FF
-  jsr _func_8003                 ; $E148  20 03 80
-  pla                            ; $E14B  68
-  jmp _func_ff09                 ; $E14C  4C 09 FF
+	lda _var_0000_indexed          ; $E140  A5 00
+	pha                            ; $E142  48
+	lda #$00                       ; $E143  A9 00
+	jsr _func_ff09                 ; $E145  20 09 FF
+	jsr _func_8003                 ; $E148  20 03 80
+	pla                            ; $E14B  68
+	jmp _func_ff09                 ; $E14C  4C 09 FF
 
 
 .byte $a5, $00, $48, $a9, $00, $20, $09, $ff, $20, $09, $80, $68, $4c, $09, $ff, $a5 ; $E14F
@@ -4144,394 +4144,394 @@ _func_e140:
 .byte $48, $a9, $00, $20, $09, $ff, $20, $0f, $80, $68, $4c, $09, $ff ; $E16F
 
 _func_e17c:
-  lda _var_0000_indexed          ; $E17C  A5 00
-  pha                            ; $E17E  48
-  lda #$00                       ; $E17F  A9 00
-  jsr _func_ff09                 ; $E181  20 09 FF
-  jsr _func_8012                 ; $E184  20 12 80
-  pla                            ; $E187  68
-  jmp _func_ff09                 ; $E188  4C 09 FF
+	lda _var_0000_indexed          ; $E17C  A5 00
+	pha                            ; $E17E  48
+	lda #$00                       ; $E17F  A9 00
+	jsr _func_ff09                 ; $E181  20 09 FF
+	jsr _func_8012                 ; $E184  20 12 80
+	pla                            ; $E187  68
+	jmp _func_ff09                 ; $E188  4C 09 FF
 
 _func_e18b:
-  sty _var_0020_indexed          ; $E18B  84 20
-  sta _var_0021                  ; $E18D  85 21
-  ldy #$03                       ; $E18F  A0 03
+	sty _var_0020_indexed          ; $E18B  84 20
+	sta _var_0021                  ; $E18D  85 21
+	ldy #$03                       ; $E18F  A0 03
 
 _label_e191:
-  lda a:_var_0702_indexed,Y      ; $E191  B9 02 07
-  beq _label_e19b                ; $E194  F0 05
-  dey                            ; $E196  88
-  bpl _label_e191                ; $E197  10 F8
-  bmi _label_e1a0                ; $E199  30 05
+	lda a:_var_0702_indexed,Y      ; $E191  B9 02 07
+	beq _label_e19b                ; $E194  F0 05
+	dey                            ; $E196  88
+	bpl _label_e191                ; $E197  10 F8
+	bmi _label_e1a0                ; $E199  30 05
 
 _label_e19b:
-  lda _var_0021                  ; $E19B  A5 21
-  sta a:_var_0702_indexed,Y      ; $E19D  99 02 07
+	lda _var_0021                  ; $E19B  A5 21
+	sta a:_var_0702_indexed,Y      ; $E19D  99 02 07
 
 _label_e1a0:
-  ldy _var_0020_indexed          ; $E1A0  A4 20
-  rts                            ; $E1A2  60
+	ldy _var_0020_indexed          ; $E1A0  A4 20
+	rts                            ; $E1A2  60
 
 _func_e1a3:
-  jsr _func_e1e9                 ; $E1A3  20 E9 E1
+	jsr _func_e1e9                 ; $E1A3  20 E9 E1
 
 _label_e1a6:
-  lda _var_0020_indexed          ; $E1A6  A5 20
-  sta _var_0022_indexed          ; $E1A8  85 22
-  lda _var_0021                  ; $E1AA  A5 21
-  sta _var_0023                  ; $E1AC  85 23
-  lda _var_0024_indexed          ; $E1AE  A5 24
-  pha                            ; $E1B0  48
-  lda _var_0025                  ; $E1B1  A5 25
-  pha                            ; $E1B3  48
-  jsr _func_e1e9                 ; $E1B4  20 E9 E1
-  pla                            ; $E1B7  68
-  cmp _var_0025                  ; $E1B8  C5 25
-  bne _label_e1d0                ; $E1BA  D0 14
-  pla                            ; $E1BC  68
-  cmp _var_0024_indexed          ; $E1BD  C5 24
-  bne _label_e1a6                ; $E1BF  D0 E5
-  lda _var_0020_indexed          ; $E1C1  A5 20
-  cmp _var_0022_indexed          ; $E1C3  C5 22
-  bne _label_e1a6                ; $E1C5  D0 DF
-  lda _var_0021                  ; $E1C7  A5 21
-  cmp _var_0023                  ; $E1C9  C5 23
-  bne _label_e1a6                ; $E1CB  D0 D9
-  jmp _label_e1d4                ; $E1CD  4C D4 E1
+	lda _var_0020_indexed          ; $E1A6  A5 20
+	sta _var_0022_indexed          ; $E1A8  85 22
+	lda _var_0021                  ; $E1AA  A5 21
+	sta _var_0023                  ; $E1AC  85 23
+	lda _var_0024_indexed          ; $E1AE  A5 24
+	pha                            ; $E1B0  48
+	lda _var_0025                  ; $E1B1  A5 25
+	pha                            ; $E1B3  48
+	jsr _func_e1e9                 ; $E1B4  20 E9 E1
+	pla                            ; $E1B7  68
+	cmp _var_0025                  ; $E1B8  C5 25
+	bne _label_e1d0                ; $E1BA  D0 14
+	pla                            ; $E1BC  68
+	cmp _var_0024_indexed          ; $E1BD  C5 24
+	bne _label_e1a6                ; $E1BF  D0 E5
+	lda _var_0020_indexed          ; $E1C1  A5 20
+	cmp _var_0022_indexed          ; $E1C3  C5 22
+	bne _label_e1a6                ; $E1C5  D0 DF
+	lda _var_0021                  ; $E1C7  A5 21
+	cmp _var_0023                  ; $E1C9  C5 23
+	bne _label_e1a6                ; $E1CB  D0 D9
+	jmp _label_e1d4                ; $E1CD  4C D4 E1
 
 _label_e1d0:
-  pla                            ; $E1D0  68
-  jmp _label_e1a6                ; $E1D1  4C A6 E1
+	pla                            ; $E1D0  68
+	jmp _label_e1a6                ; $E1D1  4C A6 E1
 
 _label_e1d4:
-  ldx #$01                       ; $E1D4  A2 01
+	ldx #$01                       ; $E1D4  A2 01
 
 _label_e1d6:
-  ldy _var_0026_indexed,X        ; $E1D6  B4 26
-  lda _var_0024_indexed,X        ; $E1D8  B5 24
-  ora _var_0020_indexed,X        ; $E1DA  15 20
-  sta _var_0026_indexed,X        ; $E1DC  95 26
-  tya                            ; $E1DE  98
-  eor _var_0026_indexed,X        ; $E1DF  55 26
-  and _var_0026_indexed,X        ; $E1E1  35 26
-  sta _var_0024_indexed,X        ; $E1E3  95 24
-  dex                            ; $E1E5  CA
-  bpl _label_e1d6                ; $E1E6  10 EE
-  rts                            ; $E1E8  60
+	ldy _var_0026_indexed,X        ; $E1D6  B4 26
+	lda _var_0024_indexed,X        ; $E1D8  B5 24
+	ora _var_0020_indexed,X        ; $E1DA  15 20
+	sta _var_0026_indexed,X        ; $E1DC  95 26
+	tya                            ; $E1DE  98
+	eor _var_0026_indexed,X        ; $E1DF  55 26
+	and _var_0026_indexed,X        ; $E1E1  35 26
+	sta _var_0024_indexed,X        ; $E1E3  95 24
+	dex                            ; $E1E5  CA
+	bpl _label_e1d6                ; $E1E6  10 EE
+	rts                            ; $E1E8  60
 
 _func_e1e9:
-  lda #$01                       ; $E1E9  A9 01
-  sta JOYPAD1                    ; $E1EB  8D 16 40
-  lda #$00                       ; $E1EE  A9 00
-  sta JOYPAD1                    ; $E1F0  8D 16 40
-  ldx #$08                       ; $E1F3  A2 08
+	lda #$01                       ; $E1E9  A9 01
+	sta JOYPAD1                    ; $E1EB  8D 16 40
+	lda #$00                       ; $E1EE  A9 00
+	sta JOYPAD1                    ; $E1F0  8D 16 40
+	ldx #$08                       ; $E1F3  A2 08
 
 _label_e1f5:
-  lda JOYPAD1                    ; $E1F5  AD 16 40
-  lsr a                          ; $E1F8  4A
-  rol _var_0024_indexed          ; $E1F9  26 24
-  lsr a                          ; $E1FB  4A
-  rol _var_0020_indexed          ; $E1FC  26 20
-  lda JOYPAD2                    ; $E1FE  AD 17 40
-  lsr a                          ; $E201  4A
-  rol _var_0025                  ; $E202  26 25
-  lsr a                          ; $E204  4A
-  rol _var_0021                  ; $E205  26 21
-  dex                            ; $E207  CA
-  bne _label_e1f5                ; $E208  D0 EB
-  rts                            ; $E20A  60
+	lda JOYPAD1                    ; $E1F5  AD 16 40
+	lsr a                          ; $E1F8  4A
+	rol _var_0024_indexed          ; $E1F9  26 24
+	lsr a                          ; $E1FB  4A
+	rol _var_0020_indexed          ; $E1FC  26 20
+	lda JOYPAD2                    ; $E1FE  AD 17 40
+	lsr a                          ; $E201  4A
+	rol _var_0025                  ; $E202  26 25
+	lsr a                          ; $E204  4A
+	rol _var_0021                  ; $E205  26 21
+	dex                            ; $E207  CA
+	bne _label_e1f5                ; $E208  D0 EB
+	rts                            ; $E20A  60
 
 _func_e20b:
-  ldx #$00                       ; $E20B  A2 00
-  lda #$F8                       ; $E20D  A9 F8
+	ldx #$00                       ; $E20B  A2 00
+	lda #$F8                       ; $E20D  A9 F8
 
 _label_e20f:
-  sta a:_var_0200_indexed,X      ; $E20F  9D 00 02
-  inx                            ; $E212  E8
-  bne _label_e20f                ; $E213  D0 FA
-  rts                            ; $E215  60
+	sta a:_var_0200_indexed,X      ; $E20F  9D 00 02
+	inx                            ; $E212  E8
+	bne _label_e20f                ; $E213  D0 FA
+	rts                            ; $E215  60
 
 _func_e216:
-  lda _var_0028                  ; $E216  A5 28
-  bpl _label_e223                ; $E218  10 09
-  sta PPU_CTRL                   ; $E21A  8D 00 20
-  lda _var_002f                  ; $E21D  A5 2F
+	lda _var_0028                  ; $E216  A5 28
+	bpl _label_e223                ; $E218  10 09
+	sta PPU_CTRL                   ; $E21A  8D 00 20
+	lda _var_002f                  ; $E21D  A5 2F
 
 _label_e21f:
-  cmp _var_002f                  ; $E21F  C5 2F
-  beq _label_e21f                ; $E221  F0 FC
+	cmp _var_002f                  ; $E21F  C5 2F
+	beq _label_e21f                ; $E221  F0 FC
 
 _label_e223:
-  rts                            ; $E223  60
+	rts                            ; $E223  60
 
 _label_e224:
-  lda _var_002e                  ; $E224  A5 2E
-  bne _func_e229                 ; $E226  D0 01
-  rts                            ; $E228  60
+	lda _var_002e                  ; $E224  A5 2E
+	bne _func_e229                 ; $E226  D0 01
+	rts                            ; $E228  60
 
 _func_e229:
-  tya                            ; $E229  98
-  pha                            ; $E22A  48
-  txa                            ; $E22B  8A
-  pha                            ; $E22C  48
-  jsr _func_e235                 ; $E22D  20 35 E2
-  pla                            ; $E230  68
-  tax                            ; $E231  AA
-  pla                            ; $E232  68
-  tay                            ; $E233  A8
-  rts                            ; $E234  60
+	tya                            ; $E229  98
+	pha                            ; $E22A  48
+	txa                            ; $E22B  8A
+	pha                            ; $E22C  48
+	jsr _func_e235                 ; $E22D  20 35 E2
+	pla                            ; $E230  68
+	tax                            ; $E231  AA
+	pla                            ; $E232  68
+	tay                            ; $E233  A8
+	rts                            ; $E234  60
 
 _func_e235:
-  jsr _func_e216                 ; $E235  20 16 E2
-  lda _var_0029                  ; $E238  A5 29
-  and #$18                       ; $E23A  29 18
-  bne _label_e245                ; $E23C  D0 07
-  lda _var_0028                  ; $E23E  A5 28
-  bmi _label_e245                ; $E240  30 03
-  jmp _jump_engine_e9ed          ; $E242  4C ED E9
+	jsr _func_e216                 ; $E235  20 16 E2
+	lda _var_0029                  ; $E238  A5 29
+	and #$18                       ; $E23A  29 18
+	bne _label_e245                ; $E23C  D0 07
+	lda _var_0028                  ; $E23E  A5 28
+	bmi _label_e245                ; $E240  30 03
+	jmp _jump_engine_e9ed          ; $E242  4C ED E9
 
 _label_e245:
-  rts                            ; $E245  60
+	rts                            ; $E245  60
 
 _label_e246:
-  jsr _func_e24c                 ; $E246  20 4C E2
-  jmp _label_e224                ; $E249  4C 24 E2
+	jsr _func_e24c                 ; $E246  20 4C E2
+	jmp _label_e224                ; $E249  4C 24 E2
 
 _func_e24c:
-  sta _var_001b                  ; $E24C  85 1B
-  lda _var_0019                  ; $E24E  A5 19
-  eor #$FF                       ; $E250  49 FF
-  sta _var_0019                  ; $E252  85 19
-  lda _var_0018_indexed          ; $E254  A5 18
-  eor #$FF                       ; $E256  49 FF
-  clc                            ; $E258  18
-  adc #$01                       ; $E259  69 01
-  sta _var_0018_indexed          ; $E25B  85 18
-  bcc _label_e261                ; $E25D  90 02
-  inc _var_0019                  ; $E25F  E6 19
+	sta _var_001b                  ; $E24C  85 1B
+	lda _var_0019                  ; $E24E  A5 19
+	eor #$FF                       ; $E250  49 FF
+	sta _var_0019                  ; $E252  85 19
+	lda _var_0018_indexed          ; $E254  A5 18
+	eor #$FF                       ; $E256  49 FF
+	clc                            ; $E258  18
+	adc #$01                       ; $E259  69 01
+	sta _var_0018_indexed          ; $E25B  85 18
+	bcc _label_e261                ; $E25D  90 02
+	inc _var_0019                  ; $E25F  E6 19
 
 _label_e261:
-  jsr _func_e2f1                 ; $E261  20 F1 E2
-  lda #$00                       ; $E264  A9 00
-  sta a:_var_0100_indexed,X      ; $E266  9D 00 01
-  lda _var_001c_indexed          ; $E269  A5 1C
-  sta a:_var_0103_indexed,X      ; $E26B  9D 03 01
-  clc                            ; $E26E  18
-  adc _var_0020_indexed          ; $E26F  65 20
-  sta _var_001c_indexed          ; $E271  85 1C
-  lda _var_001d                  ; $E273  A5 1D
-  sta a:_var_0102_indexed,X      ; $E275  9D 02 01
-  adc #$00                       ; $E278  69 00
-  sta _var_001d                  ; $E27A  85 1D
-  lda _var_001b                  ; $E27C  A5 1B
-  ldy #$00                       ; $E27E  A0 00
+	jsr _func_e2f1                 ; $E261  20 F1 E2
+	lda #$00                       ; $E264  A9 00
+	sta a:_var_0100_indexed,X      ; $E266  9D 00 01
+	lda _var_001c_indexed          ; $E269  A5 1C
+	sta a:_var_0103_indexed,X      ; $E26B  9D 03 01
+	clc                            ; $E26E  18
+	adc _var_0020_indexed          ; $E26F  65 20
+	sta _var_001c_indexed          ; $E271  85 1C
+	lda _var_001d                  ; $E273  A5 1D
+	sta a:_var_0102_indexed,X      ; $E275  9D 02 01
+	adc #$00                       ; $E278  69 00
+	sta _var_001d                  ; $E27A  85 1D
+	lda _var_001b                  ; $E27C  A5 1B
+	ldy #$00                       ; $E27E  A0 00
 
 _label_e280:
-  sta a:_var_0104_indexed,X      ; $E280  9D 04 01
-  iny                            ; $E283  C8
-  inx                            ; $E284  E8
-  inc _var_0018_indexed          ; $E285  E6 18
-  bne _label_e28d                ; $E287  D0 04
-  inc _var_0019                  ; $E289  E6 19
-  beq _label_e2a9                ; $E28B  F0 1C
+	sta a:_var_0104_indexed,X      ; $E280  9D 04 01
+	iny                            ; $E283  C8
+	inx                            ; $E284  E8
+	inc _var_0018_indexed          ; $E285  E6 18
+	bne _label_e28d                ; $E287  D0 04
+	inc _var_0019                  ; $E289  E6 19
+	beq _label_e2a9                ; $E28B  F0 1C
 
 _label_e28d:
-  cpy _var_0020_indexed          ; $E28D  C4 20
-  bne _label_e280                ; $E28F  D0 EF
-  txa                            ; $E291  8A
-  clc                            ; $E292  18
-  adc #$04                       ; $E293  69 04
-  ldx _var_002d                  ; $E295  A6 2D
-  sta _var_002d                  ; $E297  85 2D
-  tya                            ; $E299  98
-  sta a:_var_0101_indexed,X      ; $E29A  9D 01 01
-  ldx _var_0021                  ; $E29D  A6 21
-  lda _var_0022_indexed          ; $E29F  A5 22
-  sta _var_002e                  ; $E2A1  85 2E
-  jsr _func_e229                 ; $E2A3  20 29 E2
-  jmp _label_e261                ; $E2A6  4C 61 E2
+	cpy _var_0020_indexed          ; $E28D  C4 20
+	bne _label_e280                ; $E28F  D0 EF
+	txa                            ; $E291  8A
+	clc                            ; $E292  18
+	adc #$04                       ; $E293  69 04
+	ldx _var_002d                  ; $E295  A6 2D
+	sta _var_002d                  ; $E297  85 2D
+	tya                            ; $E299  98
+	sta a:_var_0101_indexed,X      ; $E29A  9D 01 01
+	ldx _var_0021                  ; $E29D  A6 21
+	lda _var_0022_indexed          ; $E29F  A5 22
+	sta _var_002e                  ; $E2A1  85 2E
+	jsr _func_e229                 ; $E2A3  20 29 E2
+	jmp _label_e261                ; $E2A6  4C 61 E2
 
 _label_e2a9:
-  txa                            ; $E2A9  8A
-  clc                            ; $E2AA  18
-  adc #$04                       ; $E2AB  69 04
-  ldx _var_002d                  ; $E2AD  A6 2D
-  sta _var_002d                  ; $E2AF  85 2D
-  tya                            ; $E2B1  98
-  sta a:_var_0101_indexed,X      ; $E2B2  9D 01 01
-  ldx _var_0021                  ; $E2B5  A6 21
-  lda _var_0022_indexed          ; $E2B7  A5 22
-  sta _var_002e                  ; $E2B9  85 2E
-  rts                            ; $E2BB  60
+	txa                            ; $E2A9  8A
+	clc                            ; $E2AA  18
+	adc #$04                       ; $E2AB  69 04
+	ldx _var_002d                  ; $E2AD  A6 2D
+	sta _var_002d                  ; $E2AF  85 2D
+	tya                            ; $E2B1  98
+	sta a:_var_0101_indexed,X      ; $E2B2  9D 01 01
+	ldx _var_0021                  ; $E2B5  A6 21
+	lda _var_0022_indexed          ; $E2B7  A5 22
+	sta _var_002e                  ; $E2B9  85 2E
+	rts                            ; $E2BB  60
 
 _func_e2bc:
-  pha                            ; $E2BC  48
-  lsr a                          ; $E2BD  4A
-  lsr a                          ; $E2BE  4A
-  lsr a                          ; $E2BF  4A
-  lsr a                          ; $E2C0  4A
-  ora #$20                       ; $E2C1  09 20
-  pha                            ; $E2C3  48
-  sta _var_001d                  ; $E2C4  85 1D
-  lda #$00                       ; $E2C6  A9 00
-  sta _var_001c_indexed          ; $E2C8  85 1C
-  lda #$03                       ; $E2CA  A9 03
-  sta _var_0019                  ; $E2CC  85 19
-  lda #$C0                       ; $E2CE  A9 C0
-  sta _var_0018_indexed          ; $E2D0  85 18
-  tya                            ; $E2D2  98
-  jsr _func_e24c                 ; $E2D3  20 4C E2
-  pla                            ; $E2D6  68
-  ora #$03                       ; $E2D7  09 03
-  sta _var_001d                  ; $E2D9  85 1D
-  lda #$C0                       ; $E2DB  A9 C0
-  sta _var_001c_indexed          ; $E2DD  85 1C
-  lda #$00                       ; $E2DF  A9 00
-  sta _var_0019                  ; $E2E1  85 19
-  lda #$40                       ; $E2E3  A9 40
-  sta _var_0018_indexed          ; $E2E5  85 18
-  pla                            ; $E2E7  68
-  and #$03                       ; $E2E8  29 03
-  tay                            ; $E2EA  A8
-  lda a:_data_e5c7_indexed,Y     ; $E2EB  B9 C7 E5
-  jmp _label_e246                ; $E2EE  4C 46 E2
+	pha                            ; $E2BC  48
+	lsr a                          ; $E2BD  4A
+	lsr a                          ; $E2BE  4A
+	lsr a                          ; $E2BF  4A
+	lsr a                          ; $E2C0  4A
+	ora #$20                       ; $E2C1  09 20
+	pha                            ; $E2C3  48
+	sta _var_001d                  ; $E2C4  85 1D
+	lda #$00                       ; $E2C6  A9 00
+	sta _var_001c_indexed          ; $E2C8  85 1C
+	lda #$03                       ; $E2CA  A9 03
+	sta _var_0019                  ; $E2CC  85 19
+	lda #$C0                       ; $E2CE  A9 C0
+	sta _var_0018_indexed          ; $E2D0  85 18
+	tya                            ; $E2D2  98
+	jsr _func_e24c                 ; $E2D3  20 4C E2
+	pla                            ; $E2D6  68
+	ora #$03                       ; $E2D7  09 03
+	sta _var_001d                  ; $E2D9  85 1D
+	lda #$C0                       ; $E2DB  A9 C0
+	sta _var_001c_indexed          ; $E2DD  85 1C
+	lda #$00                       ; $E2DF  A9 00
+	sta _var_0019                  ; $E2E1  85 19
+	lda #$40                       ; $E2E3  A9 40
+	sta _var_0018_indexed          ; $E2E5  85 18
+	pla                            ; $E2E7  68
+	and #$03                       ; $E2E8  29 03
+	tay                            ; $E2EA  A8
+	lda a:_data_e5c7_indexed,Y     ; $E2EB  B9 C7 E5
+	jmp _label_e246                ; $E2EE  4C 46 E2
 
 _func_e2f1:
-  lda _var_004d                  ; $E2F1  A5 4D
-  beq _label_e2f9                ; $E2F3  F0 04
-  lda #$30                       ; $E2F5  A9 30
-  bne _label_e2fb                ; $E2F7  D0 02
+	lda _var_004d                  ; $E2F1  A5 4D
+	beq _label_e2f9                ; $E2F3  F0 04
+	lda #$30                       ; $E2F5  A9 30
+	bne _label_e2fb                ; $E2F7  D0 02
 
 _label_e2f9:
-  lda #$50                       ; $E2F9  A9 50
+	lda #$50                       ; $E2F9  A9 50
 
 _label_e2fb:
-  sec                            ; $E2FB  38
-  sbc _var_002d                  ; $E2FC  E5 2D
-  cmp #$05                       ; $E2FE  C9 05
-  bcs _label_e308                ; $E300  B0 06
-  jsr _func_e229                 ; $E302  20 29 E2
-  jmp _func_e2f1                 ; $E305  4C F1 E2
+	sec                            ; $E2FB  38
+	sbc _var_002d                  ; $E2FC  E5 2D
+	cmp #$05                       ; $E2FE  C9 05
+	bcs _label_e308                ; $E300  B0 06
+	jsr _func_e229                 ; $E302  20 29 E2
+	jmp _func_e2f1                 ; $E305  4C F1 E2
 
 _label_e308:
-  sbc #$04                       ; $E308  E9 04
-  sta _var_0020_indexed          ; $E30A  85 20
-  stx _var_0021                  ; $E30C  86 21
-  lda _var_002e                  ; $E30E  A5 2E
-  ldx #$00                       ; $E310  A2 00
-  stx _var_002e                  ; $E312  86 2E
-  ldx _var_002d                  ; $E314  A6 2D
-  sta _var_0022_indexed          ; $E316  85 22
-  inc _var_0022_indexed          ; $E318  E6 22
-  rts                            ; $E31A  60
+	sbc #$04                       ; $E308  E9 04
+	sta _var_0020_indexed          ; $E30A  85 20
+	stx _var_0021                  ; $E30C  86 21
+	lda _var_002e                  ; $E30E  A5 2E
+	ldx #$00                       ; $E310  A2 00
+	stx _var_002e                  ; $E312  86 2E
+	ldx _var_002d                  ; $E314  A6 2D
+	sta _var_0022_indexed          ; $E316  85 22
+	inc _var_0022_indexed          ; $E318  E6 22
+	rts                            ; $E31A  60
 
 _func_e31b:
-  pha                            ; $E31B  48
-  jsr _func_e334                 ; $E31C  20 34 E3
-  bcc _label_e324                ; $E31F  90 03
-  jsr _func_e229                 ; $E321  20 29 E2
+	pha                            ; $E31B  48
+	jsr _func_e334                 ; $E31C  20 34 E3
+	bcc _label_e324                ; $E31F  90 03
+	jsr _func_e229                 ; $E321  20 29 E2
 
 _label_e324:
-  stx _var_0021                  ; $E324  86 21
-  lda _var_002d                  ; $E326  A5 2D
-  ldx _var_002e                  ; $E328  A6 2E
-  inx                            ; $E32A  E8
-  stx _var_0020_indexed          ; $E32B  86 20
-  ldx #$00                       ; $E32D  A2 00
-  stx _var_002e                  ; $E32F  86 2E
-  tax                            ; $E331  AA
-  pla                            ; $E332  68
-  rts                            ; $E333  60
+	stx _var_0021                  ; $E324  86 21
+	lda _var_002d                  ; $E326  A5 2D
+	ldx _var_002e                  ; $E328  A6 2E
+	inx                            ; $E32A  E8
+	stx _var_0020_indexed          ; $E32B  86 20
+	ldx #$00                       ; $E32D  A2 00
+	stx _var_002e                  ; $E32F  86 2E
+	tax                            ; $E331  AA
+	pla                            ; $E332  68
+	rts                            ; $E333  60
 
 _func_e334:
-  pha                            ; $E334  48
-  clc                            ; $E335  18
-  adc _var_002d                  ; $E336  65 2D
-  cmp #$47                       ; $E338  C9 47
-  bcs _label_e345                ; $E33A  B0 09
-  cmp #$31                       ; $E33C  C9 31
-  bcc _label_e345                ; $E33E  90 05
-  lda _var_004d                  ; $E340  A5 4D
-  bne _label_e345                ; $E342  D0 01
-  clc                            ; $E344  18
+	pha                            ; $E334  48
+	clc                            ; $E335  18
+	adc _var_002d                  ; $E336  65 2D
+	cmp #$47                       ; $E338  C9 47
+	bcs _label_e345                ; $E33A  B0 09
+	cmp #$31                       ; $E33C  C9 31
+	bcc _label_e345                ; $E33E  90 05
+	lda _var_004d                  ; $E340  A5 4D
+	bne _label_e345                ; $E342  D0 01
+	clc                            ; $E344  18
 
 _label_e345:
-  pla                            ; $E345  68
-  rts                            ; $E346  60
+	pla                            ; $E345  68
+	rts                            ; $E346  60
 
 
 .byte $a5, $4d, $d0, $04, $a9, $46, $f0, $02, $a9, $30, $38, $e5, $2d, $e9, $04, $60 ; $E347
 
 _func_e357:
-  txa                            ; $E357  8A
-  pha                            ; $E358  48
-  ldy #$00                       ; $E359  A0 00
+	txa                            ; $E357  8A
+	pha                            ; $E358  48
+	ldy #$00                       ; $E359  A0 00
 
 _label_e35b:
-  lda _var_0019                  ; $E35B  A5 19
-  clc                            ; $E35D  18
-  adc #$04                       ; $E35E  69 04
-  jsr _func_e31b                 ; $E360  20 1B E3
-  lda #$00                       ; $E363  A9 00
-  sta a:_var_0100_indexed,X      ; $E365  9D 00 01
-  lda _var_0019                  ; $E368  A5 19
-  sta a:_var_0101_indexed,X      ; $E36A  9D 01 01
-  sta _var_0022_indexed          ; $E36D  85 22
-  lda _var_001d                  ; $E36F  A5 1D
-  sta a:_var_0102_indexed,X      ; $E371  9D 02 01
-  lda _var_001c_indexed          ; $E374  A5 1C
-  sta a:_var_0103_indexed,X      ; $E376  9D 03 01
+	lda _var_0019                  ; $E35B  A5 19
+	clc                            ; $E35D  18
+	adc #$04                       ; $E35E  69 04
+	jsr _func_e31b                 ; $E360  20 1B E3
+	lda #$00                       ; $E363  A9 00
+	sta a:_var_0100_indexed,X      ; $E365  9D 00 01
+	lda _var_0019                  ; $E368  A5 19
+	sta a:_var_0101_indexed,X      ; $E36A  9D 01 01
+	sta _var_0022_indexed          ; $E36D  85 22
+	lda _var_001d                  ; $E36F  A5 1D
+	sta a:_var_0102_indexed,X      ; $E371  9D 02 01
+	lda _var_001c_indexed          ; $E374  A5 1C
+	sta a:_var_0103_indexed,X      ; $E376  9D 03 01
 
 _label_e379:
-  lda (_var_001a_indexed),Y      ; $E379  B1 1A
-  sta a:_var_0104_indexed,X      ; $E37B  9D 04 01
-  bit _var_0018_indexed          ; $E37E  24 18
-  bmi _label_e387                ; $E380  30 05
-  iny                            ; $E382  C8
-  bne _label_e387                ; $E383  D0 02
-  inc _var_001b                  ; $E385  E6 1B
+	lda (_var_001a_indexed),Y      ; $E379  B1 1A
+	sta a:_var_0104_indexed,X      ; $E37B  9D 04 01
+	bit _var_0018_indexed          ; $E37E  24 18
+	bmi _label_e387                ; $E380  30 05
+	iny                            ; $E382  C8
+	bne _label_e387                ; $E383  D0 02
+	inc _var_001b                  ; $E385  E6 1B
 
 _label_e387:
-  inx                            ; $E387  E8
-  dec _var_0022_indexed          ; $E388  C6 22
-  bne _label_e379                ; $E38A  D0 ED
-  txa                            ; $E38C  8A
-  clc                            ; $E38D  18
-  adc #$04                       ; $E38E  69 04
-  sta _var_002d                  ; $E390  85 2D
-  lda _var_0020_indexed          ; $E392  A5 20
-  sta _var_002e                  ; $E394  85 2E
-  lda _var_001c_indexed          ; $E396  A5 1C
-  clc                            ; $E398  18
-  adc #$20                       ; $E399  69 20
-  sta _var_001c_indexed          ; $E39B  85 1C
-  bcs _label_e3bb                ; $E39D  B0 1C
-  cmp #$C0                       ; $E39F  C9 C0
-  bcc _label_e3bd                ; $E3A1  90 1A
-  lda _var_001d                  ; $E3A3  A5 1D
-  and #$23                       ; $E3A5  29 23
-  cmp #$23                       ; $E3A7  C9 23
-  bne _label_e3bd                ; $E3A9  D0 12
-  lda _var_001d                  ; $E3AB  A5 1D
-  sbc #$03                       ; $E3AD  E9 03
-  eor #$08                       ; $E3AF  49 08
-  sta _var_001d                  ; $E3B1  85 1D
-  lda _var_001c_indexed          ; $E3B3  A5 1C
-  and #$1F                       ; $E3B5  29 1F
-  sta _var_001c_indexed          ; $E3B7  85 1C
-  bpl _label_e3bd                ; $E3B9  10 02
+	inx                            ; $E387  E8
+	dec _var_0022_indexed          ; $E388  C6 22
+	bne _label_e379                ; $E38A  D0 ED
+	txa                            ; $E38C  8A
+	clc                            ; $E38D  18
+	adc #$04                       ; $E38E  69 04
+	sta _var_002d                  ; $E390  85 2D
+	lda _var_0020_indexed          ; $E392  A5 20
+	sta _var_002e                  ; $E394  85 2E
+	lda _var_001c_indexed          ; $E396  A5 1C
+	clc                            ; $E398  18
+	adc #$20                       ; $E399  69 20
+	sta _var_001c_indexed          ; $E39B  85 1C
+	bcs _label_e3bb                ; $E39D  B0 1C
+	cmp #$C0                       ; $E39F  C9 C0
+	bcc _label_e3bd                ; $E3A1  90 1A
+	lda _var_001d                  ; $E3A3  A5 1D
+	and #$23                       ; $E3A5  29 23
+	cmp #$23                       ; $E3A7  C9 23
+	bne _label_e3bd                ; $E3A9  D0 12
+	lda _var_001d                  ; $E3AB  A5 1D
+	sbc #$03                       ; $E3AD  E9 03
+	eor #$08                       ; $E3AF  49 08
+	sta _var_001d                  ; $E3B1  85 1D
+	lda _var_001c_indexed          ; $E3B3  A5 1C
+	and #$1F                       ; $E3B5  29 1F
+	sta _var_001c_indexed          ; $E3B7  85 1C
+	bpl _label_e3bd                ; $E3B9  10 02
 
 _label_e3bb:
-  inc _var_001d                  ; $E3BB  E6 1D
+	inc _var_001d                  ; $E3BB  E6 1D
 
 _label_e3bd:
-  dec _var_0018_indexed          ; $E3BD  C6 18
-  lda _var_0018_indexed          ; $E3BF  A5 18
-  and #$7F                       ; $E3C1  29 7F
-  bne _label_e35b                ; $E3C3  D0 96
-  pla                            ; $E3C5  68
-  tax                            ; $E3C6  AA
-  rts                            ; $E3C7  60
+	dec _var_0018_indexed          ; $E3BD  C6 18
+	lda _var_0018_indexed          ; $E3BF  A5 18
+	and #$7F                       ; $E3C1  29 7F
+	bne _label_e35b                ; $E3C3  D0 96
+	pla                            ; $E3C5  68
+	tax                            ; $E3C6  AA
+	rts                            ; $E3C7  60
 
 
 .byte $a5, $1c, $48, $98, $48, $a5, $19, $48, $a0, $00, $b1, $1a, $f0, $11, $a8, $b9 ; $E3C8
@@ -4548,230 +4548,230 @@ _label_e3bd:
 .byte $85, $2e, $60              ; $E478
 
 _func_e47b:
-  lda _var_001c_indexed          ; $E47B  A5 1C
-  pha                            ; $E47D  48
-  tya                            ; $E47E  98
-  pha                            ; $E47F  48
-  lda _var_0019                  ; $E480  A5 19
-  pha                            ; $E482  48
+	lda _var_001c_indexed          ; $E47B  A5 1C
+	pha                            ; $E47D  48
+	tya                            ; $E47E  98
+	pha                            ; $E47F  48
+	lda _var_0019                  ; $E480  A5 19
+	pha                            ; $E482  48
 
 _label_e483:
-  tya                            ; $E483  98
-  pha                            ; $E484  48
-  lda #$07                       ; $E485  A9 07
-  jsr _func_e31b                 ; $E487  20 1B E3
-  lda #$03                       ; $E48A  A9 03
-  sta a:_var_0100_indexed,X      ; $E48C  9D 00 01
-  lda _var_001d                  ; $E48F  A5 1D
-  sta a:_var_0101_indexed,X      ; $E491  9D 01 01
-  tya                            ; $E494  98
-  sta a:_var_0102_indexed,X      ; $E495  9D 02 01
-  ldy _var_001a_indexed          ; $E498  A4 1A
-  lda a:_data_e5c7_indexed,Y     ; $E49A  B9 C7 E5
-  sta a:_var_0103_indexed,X      ; $E49D  9D 03 01
-  lda _var_001c_indexed          ; $E4A0  A5 1C
-  and #$02                       ; $E4A2  29 02
-  lsr a                          ; $E4A4  4A
-  tay                            ; $E4A5  A8
-  lda _var_001c_indexed          ; $E4A6  A5 1C
-  and #$40                       ; $E4A8  29 40
-  beq _label_e4ae                ; $E4AA  F0 02
-  iny                            ; $E4AC  C8
-  iny                            ; $E4AD  C8
+	tya                            ; $E483  98
+	pha                            ; $E484  48
+	lda #$07                       ; $E485  A9 07
+	jsr _func_e31b                 ; $E487  20 1B E3
+	lda #$03                       ; $E48A  A9 03
+	sta a:_var_0100_indexed,X      ; $E48C  9D 00 01
+	lda _var_001d                  ; $E48F  A5 1D
+	sta a:_var_0101_indexed,X      ; $E491  9D 01 01
+	tya                            ; $E494  98
+	sta a:_var_0102_indexed,X      ; $E495  9D 02 01
+	ldy _var_001a_indexed          ; $E498  A4 1A
+	lda a:_data_e5c7_indexed,Y     ; $E49A  B9 C7 E5
+	sta a:_var_0103_indexed,X      ; $E49D  9D 03 01
+	lda _var_001c_indexed          ; $E4A0  A5 1C
+	and #$02                       ; $E4A2  29 02
+	lsr a                          ; $E4A4  4A
+	tay                            ; $E4A5  A8
+	lda _var_001c_indexed          ; $E4A6  A5 1C
+	and #$40                       ; $E4A8  29 40
+	beq _label_e4ae                ; $E4AA  F0 02
+	iny                            ; $E4AC  C8
+	iny                            ; $E4AD  C8
 
 _label_e4ae:
-  lda a:_data_e5bf_indexed,Y     ; $E4AE  B9 BF E5
-  sta a:_var_0104_indexed,X      ; $E4B1  9D 04 01
-  lda a:_data_e5c3_indexed,Y     ; $E4B4  B9 C3 E5
-  and a:_var_0103_indexed,X      ; $E4B7  3D 03 01
-  sta a:_var_0103_indexed,X      ; $E4BA  9D 03 01
-  txa                            ; $E4BD  8A
-  clc                            ; $E4BE  18
-  adc #$07                       ; $E4BF  69 07
-  sta _var_002d                  ; $E4C1  85 2D
-  ldx _var_0021                  ; $E4C3  A6 21
-  lda _var_0020_indexed          ; $E4C5  A5 20
-  sta _var_002e                  ; $E4C7  85 2E
-  pla                            ; $E4C9  68
-  tay                            ; $E4CA  A8
-  jsr _func_e4e8                 ; $E4CB  20 E8 E4
-  dec _var_0019                  ; $E4CE  C6 19
-  beq _label_e4d5                ; $E4D0  F0 03
-  jmp _label_e483                ; $E4D2  4C 83 E4
+	lda a:_data_e5bf_indexed,Y     ; $E4AE  B9 BF E5
+	sta a:_var_0104_indexed,X      ; $E4B1  9D 04 01
+	lda a:_data_e5c3_indexed,Y     ; $E4B4  B9 C3 E5
+	and a:_var_0103_indexed,X      ; $E4B7  3D 03 01
+	sta a:_var_0103_indexed,X      ; $E4BA  9D 03 01
+	txa                            ; $E4BD  8A
+	clc                            ; $E4BE  18
+	adc #$07                       ; $E4BF  69 07
+	sta _var_002d                  ; $E4C1  85 2D
+	ldx _var_0021                  ; $E4C3  A6 21
+	lda _var_0020_indexed          ; $E4C5  A5 20
+	sta _var_002e                  ; $E4C7  85 2E
+	pla                            ; $E4C9  68
+	tay                            ; $E4CA  A8
+	jsr _func_e4e8                 ; $E4CB  20 E8 E4
+	dec _var_0019                  ; $E4CE  C6 19
+	beq _label_e4d5                ; $E4D0  F0 03
+	jmp _label_e483                ; $E4D2  4C 83 E4
 
 _label_e4d5:
-  pla                            ; $E4D5  68
-  sta _var_0019                  ; $E4D6  85 19
-  dec _var_0018_indexed          ; $E4D8  C6 18
-  beq _label_e4e5                ; $E4DA  F0 09
-  pla                            ; $E4DC  68
-  tay                            ; $E4DD  A8
-  pla                            ; $E4DE  68
-  jsr _func_e4fb                 ; $E4DF  20 FB E4
-  jmp _func_e47b                 ; $E4E2  4C 7B E4
+	pla                            ; $E4D5  68
+	sta _var_0019                  ; $E4D6  85 19
+	dec _var_0018_indexed          ; $E4D8  C6 18
+	beq _label_e4e5                ; $E4DA  F0 09
+	pla                            ; $E4DC  68
+	tay                            ; $E4DD  A8
+	pla                            ; $E4DE  68
+	jsr _func_e4fb                 ; $E4DF  20 FB E4
+	jmp _func_e47b                 ; $E4E2  4C 7B E4
 
 _label_e4e5:
-  pla                            ; $E4E5  68
-  pla                            ; $E4E6  68
-  rts                            ; $E4E7  60
+	pla                            ; $E4E5  68
+	pla                            ; $E4E6  68
+	rts                            ; $E4E7  60
 
 _func_e4e8:
-  lda _var_001c_indexed          ; $E4E8  A5 1C
-  and #$FE                       ; $E4EA  29 FE
-  clc                            ; $E4EC  18
-  adc #$02                       ; $E4ED  69 02
-  sta _var_001c_indexed          ; $E4EF  85 1C
-  and #$03                       ; $E4F1  29 03
-  bne _label_e4fa                ; $E4F3  D0 05
-  cpy #$00                       ; $E4F5  C0 00
-  beq _label_e4fa                ; $E4F7  F0 01
-  iny                            ; $E4F9  C8
+	lda _var_001c_indexed          ; $E4E8  A5 1C
+	and #$FE                       ; $E4EA  29 FE
+	clc                            ; $E4EC  18
+	adc #$02                       ; $E4ED  69 02
+	sta _var_001c_indexed          ; $E4EF  85 1C
+	and #$03                       ; $E4F1  29 03
+	bne _label_e4fa                ; $E4F3  D0 05
+	cpy #$00                       ; $E4F5  C0 00
+	beq _label_e4fa                ; $E4F7  F0 01
+	iny                            ; $E4F9  C8
 
 _label_e4fa:
-  rts                            ; $E4FA  60
+	rts                            ; $E4FA  60
 
 _func_e4fb:
-  sta _var_001c_indexed          ; $E4FB  85 1C
-  and #$FE                       ; $E4FD  29 FE
-  clc                            ; $E4FF  18
-  adc #$40                       ; $E500  69 40
-  sta _var_001c_indexed          ; $E502  85 1C
-  bcs _label_e52b                ; $E504  B0 25
-  cmp #$C0                       ; $E506  C9 C0
-  bcc _label_e531                ; $E508  90 27
-  lda _var_001d                  ; $E50A  A5 1D
-  and #$03                       ; $E50C  29 03
-  cmp #$03                       ; $E50E  C9 03
-  bne _label_e52f                ; $E510  D0 1D
-  lda _var_001d                  ; $E512  A5 1D
-  eor #$08                       ; $E514  49 08
-  and #$28                       ; $E516  29 28
-  sta _var_001d                  ; $E518  85 1D
-  lda _var_001c_indexed          ; $E51A  A5 1C
-  and #$1F                       ; $E51C  29 1F
-  sta _var_001c_indexed          ; $E51E  85 1C
-  cpy #$00                       ; $E520  C0 00
-  beq _label_e53e                ; $E522  F0 1A
-  lsr a                          ; $E524  4A
-  lsr a                          ; $E525  4A
-  ora #$C0                       ; $E526  09 C0
-  tay                            ; $E528  A8
-  bmi _label_e53e                ; $E529  30 13
+	sta _var_001c_indexed          ; $E4FB  85 1C
+	and #$FE                       ; $E4FD  29 FE
+	clc                            ; $E4FF  18
+	adc #$40                       ; $E500  69 40
+	sta _var_001c_indexed          ; $E502  85 1C
+	bcs _label_e52b                ; $E504  B0 25
+	cmp #$C0                       ; $E506  C9 C0
+	bcc _label_e531                ; $E508  90 27
+	lda _var_001d                  ; $E50A  A5 1D
+	and #$03                       ; $E50C  29 03
+	cmp #$03                       ; $E50E  C9 03
+	bne _label_e52f                ; $E510  D0 1D
+	lda _var_001d                  ; $E512  A5 1D
+	eor #$08                       ; $E514  49 08
+	and #$28                       ; $E516  29 28
+	sta _var_001d                  ; $E518  85 1D
+	lda _var_001c_indexed          ; $E51A  A5 1C
+	and #$1F                       ; $E51C  29 1F
+	sta _var_001c_indexed          ; $E51E  85 1C
+	cpy #$00                       ; $E520  C0 00
+	beq _label_e53e                ; $E522  F0 1A
+	lsr a                          ; $E524  4A
+	lsr a                          ; $E525  4A
+	ora #$C0                       ; $E526  09 C0
+	tay                            ; $E528  A8
+	bmi _label_e53e                ; $E529  30 13
 
 _label_e52b:
-  inc _var_001d                  ; $E52B  E6 1D
-  bne _label_e535                ; $E52D  D0 06
+	inc _var_001d                  ; $E52B  E6 1D
+	bne _label_e535                ; $E52D  D0 06
 
 _label_e52f:
-  lda _var_001c_indexed          ; $E52F  A5 1C
+	lda _var_001c_indexed          ; $E52F  A5 1C
 
 _label_e531:
-  and #$60                       ; $E531  29 60
-  bne _label_e53e                ; $E533  D0 09
+	and #$60                       ; $E531  29 60
+	bne _label_e53e                ; $E533  D0 09
 
 _label_e535:
-  cpy #$00                       ; $E535  C0 00
-  beq _label_e53e                ; $E537  F0 05
-  tya                            ; $E539  98
-  clc                            ; $E53A  18
-  adc #$08                       ; $E53B  69 08
-  tay                            ; $E53D  A8
+	cpy #$00                       ; $E535  C0 00
+	beq _label_e53e                ; $E537  F0 05
+	tya                            ; $E539  98
+	clc                            ; $E53A  18
+	adc #$08                       ; $E53B  69 08
+	tay                            ; $E53D  A8
 
 _label_e53e:
-  rts                            ; $E53E  60
+	rts                            ; $E53E  60
 
 _func_e53f:
-  lda _var_001d                  ; $E53F  A5 1D
-  and #$03                       ; $E541  29 03
-  sta _var_0020_indexed          ; $E543  85 20
-  lda _var_001c_indexed          ; $E545  A5 1C
-  asl a                          ; $E547  0A
-  rol _var_0020_indexed          ; $E548  26 20
-  lsr a                          ; $E54A  4A
-  and #$1F                       ; $E54B  29 1F
-  lsr a                          ; $E54D  4A
-  lsr a                          ; $E54E  4A
-  sta _var_0021                  ; $E54F  85 21
-  lda _var_0020_indexed          ; $E551  A5 20
-  asl a                          ; $E553  0A
-  asl a                          ; $E554  0A
-  asl a                          ; $E555  0A
-  ora _var_0021                  ; $E556  05 21
-  ora #$C0                       ; $E558  09 C0
-  tay                            ; $E55A  A8
-  rts                            ; $E55B  60
+	lda _var_001d                  ; $E53F  A5 1D
+	and #$03                       ; $E541  29 03
+	sta _var_0020_indexed          ; $E543  85 20
+	lda _var_001c_indexed          ; $E545  A5 1C
+	asl a                          ; $E547  0A
+	rol _var_0020_indexed          ; $E548  26 20
+	lsr a                          ; $E54A  4A
+	and #$1F                       ; $E54B  29 1F
+	lsr a                          ; $E54D  4A
+	lsr a                          ; $E54E  4A
+	sta _var_0021                  ; $E54F  85 21
+	lda _var_0020_indexed          ; $E551  A5 20
+	asl a                          ; $E553  0A
+	asl a                          ; $E554  0A
+	asl a                          ; $E555  0A
+	ora _var_0021                  ; $E556  05 21
+	ora #$C0                       ; $E558  09 C0
+	tay                            ; $E55A  A8
+	rts                            ; $E55B  60
 
 _func_e55c:
-  sta _var_0020_indexed          ; $E55C  85 20
-  pha                            ; $E55E  48
-  sty _var_0021                  ; $E55F  84 21
-  tya                            ; $E561  98
-  pha                            ; $E562  48
-  ldy #$00                       ; $E563  A0 00
-  lda (_var_0020_indexed),Y      ; $E565  B1 20
-  beq _label_e584                ; $E567  F0 1B
-  sta _var_0018_indexed          ; $E569  85 18
-  iny                            ; $E56B  C8
+	sta _var_0020_indexed          ; $E55C  85 20
+	pha                            ; $E55E  48
+	sty _var_0021                  ; $E55F  84 21
+	tya                            ; $E561  98
+	pha                            ; $E562  48
+	ldy #$00                       ; $E563  A0 00
+	lda (_var_0020_indexed),Y      ; $E565  B1 20
+	beq _label_e584                ; $E567  F0 1B
+	sta _var_0018_indexed          ; $E569  85 18
+	iny                            ; $E56B  C8
 
 _label_e56c:
-  lda (_var_0020_indexed),Y      ; $E56C  B1 20
-  sta a:_var_0018_indexed,Y      ; $E56E  99 18 00
-  iny                            ; $E571  C8
-  cpy #$06                       ; $E572  C0 06
-  bne _label_e56c                ; $E574  D0 F6
-  jsr _func_e357                 ; $E576  20 57 E3
-  pla                            ; $E579  68
-  tay                            ; $E57A  A8
-  pla                            ; $E57B  68
-  clc                            ; $E57C  18
-  adc #$06                       ; $E57D  69 06
-  bcc _func_e55c                 ; $E57F  90 DB
-  iny                            ; $E581  C8
-  bne _func_e55c                 ; $E582  D0 D8
+	lda (_var_0020_indexed),Y      ; $E56C  B1 20
+	sta a:_var_0018_indexed,Y      ; $E56E  99 18 00
+	iny                            ; $E571  C8
+	cpy #$06                       ; $E572  C0 06
+	bne _label_e56c                ; $E574  D0 F6
+	jsr _func_e357                 ; $E576  20 57 E3
+	pla                            ; $E579  68
+	tay                            ; $E57A  A8
+	pla                            ; $E57B  68
+	clc                            ; $E57C  18
+	adc #$06                       ; $E57D  69 06
+	bcc _func_e55c                 ; $E57F  90 DB
+	iny                            ; $E581  C8
+	bne _func_e55c                 ; $E582  D0 D8
 
 _label_e584:
-  pla                            ; $E584  68
-  pla                            ; $E585  68
-  rts                            ; $E586  60
+	pla                            ; $E584  68
+	pla                            ; $E585  68
+	rts                            ; $E586  60
 
 _func_e587:
-  sta _var_0022_indexed          ; $E587  85 22
-  pha                            ; $E589  48
-  sty _var_0023                  ; $E58A  84 23
-  tya                            ; $E58C  98
-  pha                            ; $E58D  48
-  ldy #$00                       ; $E58E  A0 00
-  lda (_var_0022_indexed),Y      ; $E590  B1 22
-  beq _label_e5bc                ; $E592  F0 28
-  sta _var_0018_indexed          ; $E594  85 18
-  iny                            ; $E596  C8
-  lda (_var_0022_indexed),Y      ; $E597  B1 22
-  sta _var_0019                  ; $E599  85 19
-  iny                            ; $E59B  C8
-  lda (_var_0022_indexed),Y      ; $E59C  B1 22
-  sta _var_001c_indexed          ; $E59E  85 1C
-  iny                            ; $E5A0  C8
-  lda (_var_0022_indexed),Y      ; $E5A1  B1 22
-  sta _var_001d                  ; $E5A3  85 1D
-  iny                            ; $E5A5  C8
-  lda (_var_0022_indexed),Y      ; $E5A6  B1 22
-  sta _var_001a_indexed          ; $E5A8  85 1A
-  iny                            ; $E5AA  C8
-  jsr _func_e53f                 ; $E5AB  20 3F E5
-  jsr _func_e47b                 ; $E5AE  20 7B E4
-  pla                            ; $E5B1  68
-  tay                            ; $E5B2  A8
-  pla                            ; $E5B3  68
-  clc                            ; $E5B4  18
-  adc #$05                       ; $E5B5  69 05
-  bcc _func_e587                 ; $E5B7  90 CE
-  iny                            ; $E5B9  C8
-  bne _func_e587                 ; $E5BA  D0 CB
+	sta _var_0022_indexed          ; $E587  85 22
+	pha                            ; $E589  48
+	sty _var_0023                  ; $E58A  84 23
+	tya                            ; $E58C  98
+	pha                            ; $E58D  48
+	ldy #$00                       ; $E58E  A0 00
+	lda (_var_0022_indexed),Y      ; $E590  B1 22
+	beq _label_e5bc                ; $E592  F0 28
+	sta _var_0018_indexed          ; $E594  85 18
+	iny                            ; $E596  C8
+	lda (_var_0022_indexed),Y      ; $E597  B1 22
+	sta _var_0019                  ; $E599  85 19
+	iny                            ; $E59B  C8
+	lda (_var_0022_indexed),Y      ; $E59C  B1 22
+	sta _var_001c_indexed          ; $E59E  85 1C
+	iny                            ; $E5A0  C8
+	lda (_var_0022_indexed),Y      ; $E5A1  B1 22
+	sta _var_001d                  ; $E5A3  85 1D
+	iny                            ; $E5A5  C8
+	lda (_var_0022_indexed),Y      ; $E5A6  B1 22
+	sta _var_001a_indexed          ; $E5A8  85 1A
+	iny                            ; $E5AA  C8
+	jsr _func_e53f                 ; $E5AB  20 3F E5
+	jsr _func_e47b                 ; $E5AE  20 7B E4
+	pla                            ; $E5B1  68
+	tay                            ; $E5B2  A8
+	pla                            ; $E5B3  68
+	clc                            ; $E5B4  18
+	adc #$05                       ; $E5B5  69 05
+	bcc _func_e587                 ; $E5B7  90 CE
+	iny                            ; $E5B9  C8
+	bne _func_e587                 ; $E5BA  D0 CB
 
 _label_e5bc:
-  pla                            ; $E5BC  68
-  pla                            ; $E5BD  68
-  rts                            ; $E5BE  60
+	pla                            ; $E5BC  68
+	pla                            ; $E5BD  68
+	rts                            ; $E5BE  60
 
 ; appear to be crumb masks
 _data_e5bf_indexed:
@@ -4784,19 +4784,19 @@ _data_e5c7_indexed:
 .byte $00, $55, $aa, $ff         ; $E5C7
 
 _func_e5cb:
-  tya                            ; $E5CB  98
-  pha                            ; $E5CC  48
-  ldy _var_0003                  ; $E5CD  A4 03
-  lda a:_data_e5de_indexed,Y     ; $E5CF  B9 DE E5
-  bit _var_0001                  ; $E5D2  24 01
-  bpl _label_e5d9                ; $E5D4  10 03
-  lda a:_data_e5e4_indexed,Y     ; $E5D6  B9 E4 E5
+	tya                            ; $E5CB  98
+	pha                            ; $E5CC  48
+	ldy _var_0003                  ; $E5CD  A4 03
+	lda a:_data_e5de_indexed,Y     ; $E5CF  B9 DE E5
+	bit _var_0001                  ; $E5D2  24 01
+	bpl _label_e5d9                ; $E5D4  10 03
+	lda a:_data_e5e4_indexed,Y     ; $E5D6  B9 E4 E5
 
 _label_e5d9:
-  sta $02                        ; $E5D9  85 02
-  pla                            ; $E5DB  68
-  tay                            ; $E5DC  A8
-  rts                            ; $E5DD  60
+	sta $02                        ; $E5D9  85 02
+	pla                            ; $E5DB  68
+	tay                            ; $E5DC  A8
+	rts                            ; $E5DD  60
 
 _data_e5de_indexed:
 .byte $12, $18, $1e, $2a, $3c, $ff ; $E5DE
@@ -4828,153 +4828,153 @@ _data_e5e4_indexed:
 .byte $33, $e6, $34, $60         ; $E724
 
 _func_e728:
-  lda #$00                       ; $E728  A9 00
-  sta _var_002e                  ; $E72A  85 2E
-  sta _var_002d                  ; $E72C  85 2D
-  sta _var_00d6                  ; $E72E  85 D6
-  sta _var_004d                  ; $E730  85 4D
-  sta a:$0160                    ; $E732  8D 60 01
-  rts                            ; $E735  60
+	lda #$00                       ; $E728  A9 00
+	sta _var_002e                  ; $E72A  85 2E
+	sta _var_002d                  ; $E72C  85 2D
+	sta _var_00d6                  ; $E72E  85 D6
+	sta _var_004d                  ; $E730  85 4D
+	sta a:$0160                    ; $E732  8D 60 01
+	rts                            ; $E735  60
 
 _func_e736:
-  lda #$00                       ; $E736  A9 00
-  sta _var_002f                  ; $E738  85 2F
+	lda #$00                       ; $E736  A9 00
+	sta _var_002f                  ; $E738  85 2F
 
 _label_e73a:
-  lda _var_002f                  ; $E73A  A5 2F
-  beq _label_e73a                ; $E73C  F0 FC
-  rts                            ; $E73E  60
+	lda _var_002f                  ; $E73A  A5 2F
+	beq _label_e73a                ; $E73C  F0 FC
+	rts                            ; $E73E  60
 
 _func_e73f:
-  lda #$00                       ; $E73F  A9 00
-  sta _var_002f                  ; $E741  85 2F
+	lda #$00                       ; $E73F  A9 00
+	sta _var_002f                  ; $E741  85 2F
 
 _label_e743:
-  jsr _func_e736                 ; $E743  20 36 E7
-  dey                            ; $E746  88
-  bne _label_e743                ; $E747  D0 FA
-  rts                            ; $E749  60
+	jsr _func_e736                 ; $E743  20 36 E7
+	dey                            ; $E746  88
+	bne _label_e743                ; $E747  D0 FA
+	rts                            ; $E749  60
 
 _func_e74a:
-  jsr _func_e882                 ; $E74A  20 82 E8
-  sta _var_00d6                  ; $E74D  85 D6
-  rts                            ; $E74F  60
+	jsr _func_e882                 ; $E74A  20 82 E8
+	sta _var_00d6                  ; $E74D  85 D6
+	rts                            ; $E74F  60
 
 _func_e750:
-  lda #$0F                       ; $E750  A9 0F
-  sta a:_var_00d7_indexed,Y      ; $E752  99 D7 00
-  dey                            ; $E755  88
-  bpl _func_e750                 ; $E756  10 F8
-  lda #$03                       ; $E758  A9 03
-  sta _var_00d6                  ; $E75A  85 D6
-  rts                            ; $E75C  60
+	lda #$0F                       ; $E750  A9 0F
+	sta a:_var_00d7_indexed,Y      ; $E752  99 D7 00
+	dey                            ; $E755  88
+	bpl _func_e750                 ; $E756  10 F8
+	lda #$03                       ; $E758  A9 03
+	sta _var_00d6                  ; $E75A  85 D6
+	rts                            ; $E75C  60
 
 _func_e75d:
-  pha                            ; $E75D  48
-  lda #$0F                       ; $E75E  A9 0F
-  ldy #$18                       ; $E760  A0 18
+	pha                            ; $E75D  48
+	lda #$0F                       ; $E75E  A9 0F
+	ldy #$18                       ; $E760  A0 18
 
 _label_e762:
-  sta a:_var_00d7_indexed,Y      ; $E762  99 D7 00
-  dey                            ; $E765  88
-  bpl _label_e762                ; $E766  10 FA
-  lda _var_0028                  ; $E768  A5 28
-  bmi _label_e76f                ; $E76A  30 03
-  jsr _func_eb08                 ; $E76C  20 08 EB
+	sta a:_var_00d7_indexed,Y      ; $E762  99 D7 00
+	dey                            ; $E765  88
+	bpl _label_e762                ; $E766  10 FA
+	lda _var_0028                  ; $E768  A5 28
+	bmi _label_e76f                ; $E76A  30 03
+	jsr _func_eb08                 ; $E76C  20 08 EB
 
 _label_e76f:
-  jsr _func_e879                 ; $E76F  20 79 E8
-  jsr _func_eb31                 ; $E772  20 31 EB
-  lda _var_0048                  ; $E775  A5 48
-  sta _var_001c_indexed          ; $E777  85 1C
-  lda _var_0049                  ; $E779  A5 49
-  sta _var_001d                  ; $E77B  85 1D
-  lda #$30                       ; $E77D  A9 30
+	jsr _func_e879                 ; $E76F  20 79 E8
+	jsr _func_eb31                 ; $E772  20 31 EB
+	lda _var_0048                  ; $E775  A5 48
+	sta _var_001c_indexed          ; $E777  85 1C
+	lda _var_0049                  ; $E779  A5 49
+	sta _var_001d                  ; $E77B  85 1D
+	lda #$30                       ; $E77D  A9 30
 
 _label_e77f:
-  sta _var_0018_indexed          ; $E77F  85 18
-  lda #$19                       ; $E781  A9 19
-  sta _var_0019                  ; $E783  85 19
-  ldy #$00                       ; $E785  A0 00
-  jsr _func_e79e                 ; $E787  20 9E E7
-  jsr _func_e879                 ; $E78A  20 79 E8
-  pla                            ; $E78D  68
-  tay                            ; $E78E  A8
-  pha                            ; $E78F  48
-  jsr _func_e73f                 ; $E790  20 3F E7
-  lda _var_0018_indexed          ; $E793  A5 18
-  sec                            ; $E795  38
-  sbc #$10                       ; $E796  E9 10
-  cmp #$F0                       ; $E798  C9 F0
-  bne _label_e77f                ; $E79A  D0 E3
-  pla                            ; $E79C  68
-  rts                            ; $E79D  60
+	sta _var_0018_indexed          ; $E77F  85 18
+	lda #$19                       ; $E781  A9 19
+	sta _var_0019                  ; $E783  85 19
+	ldy #$00                       ; $E785  A0 00
+	jsr _func_e79e                 ; $E787  20 9E E7
+	jsr _func_e879                 ; $E78A  20 79 E8
+	pla                            ; $E78D  68
+	tay                            ; $E78E  A8
+	pha                            ; $E78F  48
+	jsr _func_e73f                 ; $E790  20 3F E7
+	lda _var_0018_indexed          ; $E793  A5 18
+	sec                            ; $E795  38
+	sbc #$10                       ; $E796  E9 10
+	cmp #$F0                       ; $E798  C9 F0
+	bne _label_e77f                ; $E79A  D0 E3
+	pla                            ; $E79C  68
+	rts                            ; $E79D  60
 
 _func_e79e:
-  lda (_var_001c_indexed),Y      ; $E79E  B1 1C
-  sec                            ; $E7A0  38
-  sbc _var_0018_indexed          ; $E7A1  E5 18
-  bcs _label_e7a7                ; $E7A3  B0 02
-  lda #$0F                       ; $E7A5  A9 0F
+	lda (_var_001c_indexed),Y      ; $E79E  B1 1C
+	sec                            ; $E7A0  38
+	sbc _var_0018_indexed          ; $E7A1  E5 18
+	bcs _label_e7a7                ; $E7A3  B0 02
+	lda #$0F                       ; $E7A5  A9 0F
 
 _label_e7a7:
-  sta a:_var_00d7_indexed,Y      ; $E7A7  99 D7 00
-  iny                            ; $E7AA  C8
-  dec _var_0019                  ; $E7AB  C6 19
-  bne _func_e79e                 ; $E7AD  D0 EF
-  rts                            ; $E7AF  60
+	sta a:_var_00d7_indexed,Y      ; $E7A7  99 D7 00
+	iny                            ; $E7AA  C8
+	dec _var_0019                  ; $E7AB  C6 19
+	bne _func_e79e                 ; $E7AD  D0 EF
+	rts                            ; $E7AF  60
 
 _func_e7b0:
-  pha                            ; $E7B0  48
-  jsr _func_eb08                 ; $E7B1  20 08 EB
+	pha                            ; $E7B0  48
+	jsr _func_eb08                 ; $E7B1  20 08 EB
 
 _label_e7b4:
-  pla                            ; $E7B4  68
-  tay                            ; $E7B5  A8
-  pha                            ; $E7B6  48
-  jsr _func_e73f                 ; $E7B7  20 3F E7
-  jsr _func_e879                 ; $E7BA  20 79 E8
-  lda #$19                       ; $E7BD  A9 19
-  sta _var_0019                  ; $E7BF  85 19
-  ldy #$00                       ; $E7C1  A0 00
-  jsr _func_e7ca                 ; $E7C3  20 CA E7
-  bne _label_e7b4                ; $E7C6  D0 EC
-  pla                            ; $E7C8  68
-  rts                            ; $E7C9  60
+	pla                            ; $E7B4  68
+	tay                            ; $E7B5  A8
+	pha                            ; $E7B6  48
+	jsr _func_e73f                 ; $E7B7  20 3F E7
+	jsr _func_e879                 ; $E7BA  20 79 E8
+	lda #$19                       ; $E7BD  A9 19
+	sta _var_0019                  ; $E7BF  85 19
+	ldy #$00                       ; $E7C1  A0 00
+	jsr _func_e7ca                 ; $E7C3  20 CA E7
+	bne _label_e7b4                ; $E7C6  D0 EC
+	pla                            ; $E7C8  68
+	rts                            ; $E7C9  60
 
 _func_e7ca:
-  stx _var_0018_indexed          ; $E7CA  86 18
-  lda #$00                       ; $E7CC  A9 00
-  sta _var_0020_indexed          ; $E7CE  85 20
+	stx _var_0018_indexed          ; $E7CA  86 18
+	lda #$00                       ; $E7CC  A9 00
+	sta _var_0020_indexed          ; $E7CE  85 20
 
 _label_e7d0:
-  lda a:_var_00d7_indexed,Y      ; $E7D0  B9 D7 00
-  cmp #$10                       ; $E7D3  C9 10
-  bcc _label_e7db                ; $E7D5  90 04
-  sbc #$10                       ; $E7D7  E9 10
-  bcs _label_e7e3                ; $E7D9  B0 08
+	lda a:_var_00d7_indexed,Y      ; $E7D0  B9 D7 00
+	cmp #$10                       ; $E7D3  C9 10
+	bcc _label_e7db                ; $E7D5  90 04
+	sbc #$10                       ; $E7D7  E9 10
+	bcs _label_e7e3                ; $E7D9  B0 08
 
 _label_e7db:
-  cmp #$0F                       ; $E7DB  C9 0F
-  beq _label_e7e8                ; $E7DD  F0 09
-  tax                            ; $E7DF  AA
-  lda a:_data_e7f6_indexed,X     ; $E7E0  BD F6 E7
+	cmp #$0F                       ; $E7DB  C9 0F
+	beq _label_e7e8                ; $E7DD  F0 09
+	tax                            ; $E7DF  AA
+	lda a:_data_e7f6_indexed,X     ; $E7E0  BD F6 E7
 
 _label_e7e3:
-  sta a:_var_00d7_indexed,Y      ; $E7E3  99 D7 00
-  inc _var_0020_indexed          ; $E7E6  E6 20
+	sta a:_var_00d7_indexed,Y      ; $E7E3  99 D7 00
+	inc _var_0020_indexed          ; $E7E6  E6 20
 
 _label_e7e8:
-  iny                            ; $E7E8  C8
-  dec _var_0019                  ; $E7E9  C6 19
-  bne _label_e7d0                ; $E7EB  D0 E3
-  ldx _var_0018_indexed          ; $E7ED  A6 18
-  lda _var_0020_indexed          ; $E7EF  A5 20
-  beq _label_e7f5                ; $E7F1  F0 02
-  lda #$03                       ; $E7F3  A9 03
+	iny                            ; $E7E8  C8
+	dec _var_0019                  ; $E7E9  C6 19
+	bne _label_e7d0                ; $E7EB  D0 E3
+	ldx _var_0018_indexed          ; $E7ED  A6 18
+	lda _var_0020_indexed          ; $E7EF  A5 20
+	beq _label_e7f5                ; $E7F1  F0 02
+	lda #$03                       ; $E7F3  A9 03
 
 _label_e7f5:
-  rts                            ; $E7F5  60
+	rts                            ; $E7F5  60
 
 _data_e7f6_indexed:
 .byte $0f, $0c, $0c, $0f, $03, $04, $07, $0f, $07, $0f, $0b, $09, $0f, $0f, $0f, $0f ; $E7F6
@@ -4990,67 +4990,67 @@ _data_e7f6_indexed:
 .byte $a9, $03, $60              ; $E876
 
 _func_e879:
-  lda #$03                       ; $E879  A9 03
-  sta _var_00d6                  ; $E87B  85 D6
+	lda #$03                       ; $E879  A9 03
+	sta _var_00d6                  ; $E87B  85 D6
 
 _label_e87d:
-  lda _var_00d6                  ; $E87D  A5 D6
-  bne _label_e87d                ; $E87F  D0 FC
-  rts                            ; $E881  60
+	lda _var_00d6                  ; $E87D  A5 D6
+	bne _label_e87d                ; $E87F  D0 FC
+	rts                            ; $E881  60
 
 _func_e882:
-  sty _var_0020_indexed          ; $E882  84 20
-  stx _var_0021                  ; $E884  86 21
-  ldy #$00                       ; $E886  A0 00
-  lda (_var_001c_indexed),Y      ; $E888  B1 1C
-  iny                            ; $E88A  C8
-  lsr a                          ; $E88B  4A
-  bcc _label_e895                ; $E88C  90 07
-  pha                            ; $E88E  48
-  lda (_var_001c_indexed),Y      ; $E88F  B1 1C
-  sta _var_00d7_indexed          ; $E891  85 D7
-  iny                            ; $E893  C8
-  pla                            ; $E894  68
+	sty _var_0020_indexed          ; $E882  84 20
+	stx _var_0021                  ; $E884  86 21
+	ldy #$00                       ; $E886  A0 00
+	lda (_var_001c_indexed),Y      ; $E888  B1 1C
+	iny                            ; $E88A  C8
+	lsr a                          ; $E88B  4A
+	bcc _label_e895                ; $E88C  90 07
+	pha                            ; $E88E  48
+	lda (_var_001c_indexed),Y      ; $E88F  B1 1C
+	sta _var_00d7_indexed          ; $E891  85 D7
+	iny                            ; $E893  C8
+	pla                            ; $E894  68
 
 _label_e895:
-  lsr a                          ; $E895  4A
-  bcc _label_e8a6                ; $E896  90 0E
-  pha                            ; $E898  48
-  ldx #$00                       ; $E899  A2 00
+	lsr a                          ; $E895  4A
+	bcc _label_e8a6                ; $E896  90 0E
+	pha                            ; $E898  48
+	ldx #$00                       ; $E899  A2 00
 
 _label_e89b:
-  lda (_var_001c_indexed),Y      ; $E89B  B1 1C
-  sta _var_00d8_indexed,X        ; $E89D  95 D8
-  iny                            ; $E89F  C8
-  inx                            ; $E8A0  E8
-  cpx #$0C                       ; $E8A1  E0 0C
-  bne _label_e89b                ; $E8A3  D0 F6
-  pla                            ; $E8A5  68
+	lda (_var_001c_indexed),Y      ; $E89B  B1 1C
+	sta _var_00d8_indexed,X        ; $E89D  95 D8
+	iny                            ; $E89F  C8
+	inx                            ; $E8A0  E8
+	cpx #$0C                       ; $E8A1  E0 0C
+	bne _label_e89b                ; $E8A3  D0 F6
+	pla                            ; $E8A5  68
 
 _label_e8a6:
-  lsr a                          ; $E8A6  4A
-  bcc _label_e8b5                ; $E8A7  90 0C
-  ldx #$00                       ; $E8A9  A2 00
+	lsr a                          ; $E8A6  4A
+	bcc _label_e8b5                ; $E8A7  90 0C
+	ldx #$00                       ; $E8A9  A2 00
 
 _label_e8ab:
-  lda (_var_001c_indexed),Y      ; $E8AB  B1 1C
-  sta _var_00e4_indexed,X        ; $E8AD  95 E4
-  iny                            ; $E8AF  C8
-  inx                            ; $E8B0  E8
-  cpx #$0C                       ; $E8B1  E0 0C
-  bne _label_e8ab                ; $E8B3  D0 F6
+	lda (_var_001c_indexed),Y      ; $E8AB  B1 1C
+	sta _var_00e4_indexed,X        ; $E8AD  95 E4
+	iny                            ; $E8AF  C8
+	inx                            ; $E8B0  E8
+	cpx #$0C                       ; $E8B1  E0 0C
+	bne _label_e8ab                ; $E8B3  D0 F6
 
 _label_e8b5:
-  ldy #$00                       ; $E8B5  A0 00
-  lda (_var_001c_indexed),Y      ; $E8B7  B1 1C
-  ldy _var_0020_indexed          ; $E8B9  A4 20
-  ldx _var_0021                  ; $E8BB  A6 21
-  lsr a                          ; $E8BD  4A
-  bne _label_e8c2                ; $E8BE  D0 02
-  lda #$01                       ; $E8C0  A9 01
+	ldy #$00                       ; $E8B5  A0 00
+	lda (_var_001c_indexed),Y      ; $E8B7  B1 1C
+	ldy _var_0020_indexed          ; $E8B9  A4 20
+	ldx _var_0021                  ; $E8BB  A6 21
+	lsr a                          ; $E8BD  4A
+	bne _label_e8c2                ; $E8BE  D0 02
+	lda #$01                       ; $E8C0  A9 01
 
 _label_e8c2:
-  rts                            ; $E8C2  60
+	rts                            ; $E8C2  60
 
 
 .byte $a9, $00, $85, $1d, $a5, $a4, $0a, $26, $1d, $0a, $26, $1d, $0a, $26, $1d, $0a ; $E8C3
@@ -5062,24 +5062,24 @@ _label_e8c2:
 .byte $02, $e6, $1d, $4c, $f4, $e8 ; $E923
 
 NMI:
-  pha                            ; $E929  48
-  txa                            ; $E92A  8A
-  pha                            ; $E92B  48
-  tya                            ; $E92C  98
-  pha                            ; $E92D  48
-  lda _var_0000_indexed          ; $E92E  A5 00
-  pha                            ; $E930  48
-  lda _var_0029                  ; $E931  A5 29
-  and #$E7                       ; $E933  29 E7
-  sta PPU_MASK                   ; $E935  8D 01 20
-  inc _var_002f                  ; $E938  E6 2F
-  lda PPU_STATUS                 ; $E93A  AD 02 20
-  sta _var_002a                  ; $E93D  85 2A
-  lda #$00                       ; $E93F  A9 00
-  sta OAM_ADDR                   ; $E941  8D 03 20
-  lda #$02                       ; $E944  A9 02
-  sta OAM_DMA                    ; $E946  8D 14 40
-  jsr _jump_engine_e9ed          ; $E949  20 ED E9
+	pha                            ; $E929  48
+	txa                            ; $E92A  8A
+	pha                            ; $E92B  48
+	tya                            ; $E92C  98
+	pha                            ; $E92D  48
+	lda _var_0000_indexed          ; $E92E  A5 00
+	pha                            ; $E930  48
+	lda _var_0029                  ; $E931  A5 29
+	and #$E7                       ; $E933  29 E7
+	sta PPU_MASK                   ; $E935  8D 01 20
+	inc _var_002f                  ; $E938  E6 2F
+	lda PPU_STATUS                 ; $E93A  AD 02 20
+	sta _var_002a                  ; $E93D  85 2A
+	lda #$00                       ; $E93F  A9 00
+	sta OAM_ADDR                   ; $E941  8D 03 20
+	lda #$02                       ; $E944  A9 02
+	sta OAM_DMA                    ; $E946  8D 14 40
+	jsr _jump_engine_e9ed          ; $E949  20 ED E9
 
 
 .byte $20, $7e, $e9, $a5, $29, $8d, $01, $20, $a9, $00, $8d, $06, $20, $8d, $06, $20 ; $E94C
@@ -5088,7 +5088,7 @@ NMI:
 .byte $40                        ; $E97C
 
 IRQ:
-  rti                            ; $E97D  40
+	rti                            ; $E97D  40
 
 
 .byte $a5, $d6, $f0, $6a, $c9, $02, $f0, $12, $a0, $00, $a2, $3f, $8e, $06, $20, $8c ; $E97E
@@ -5100,20 +5100,20 @@ IRQ:
 .byte $8d, $06, $20, $8e, $06, $20, $8e, $06, $20, $8e, $06, $20, $86, $d6 ; $E9DE
 
 _label_e9ec:
-  rts                            ; $E9EC  60
+	rts                            ; $E9EC  60
 
 _jump_engine_e9ed:               ; jump engine detected
-  lda _var_002e                  ; $E9ED  A5 2E
-  beq _label_e9ec                ; $E9EF  F0 FB
-  ldx #$00                       ; $E9F1  A2 00
-  stx _var_002d                  ; $E9F3  86 2D
-  ldy a:_var_0100_indexed,X      ; $E9F5  BC 00 01
-  inx                            ; $E9F8  E8
-  lda a:_data_ea06_indexed,Y     ; $E9F9  B9 06 EA
-  sta _var_001e                  ; $E9FC  85 1E
-  lda a:_data_ea0a_indexed,Y     ; $E9FE  B9 0A EA
-  sta $1F                        ; $EA01  85 1F
-  jmp (_var_001e)                ; $EA03  6C 1E 00
+	lda _var_002e                  ; $E9ED  A5 2E
+	beq _label_e9ec                ; $E9EF  F0 FB
+	ldx #$00                       ; $E9F1  A2 00
+	stx _var_002d                  ; $E9F3  86 2D
+	ldy a:_var_0100_indexed,X      ; $E9F5  BC 00 01
+	inx                            ; $E9F8  E8
+	lda a:_data_ea06_indexed,Y     ; $E9F9  B9 06 EA
+	sta _var_001e                  ; $E9FC  85 1E
+	lda a:_data_ea0a_indexed,Y     ; $E9FE  B9 0A EA
+	sta $1F                        ; $EA01  85 1F
+	jmp (_var_001e)                ; $EA03  6C 1E 00
 
 _data_ea06_indexed:
 	.dl $ea15
@@ -5146,92 +5146,92 @@ _data_ea0a_indexed:
 .byte $2e, $f0, $03, $4c, $f5, $e9, $60 ; $EAFA
 
 _func_eb01:
-  lda _var_0028                  ; $EB01  A5 28
-  and #$7F                       ; $EB03  29 7F
-  jmp _func_eb3f                 ; $EB05  4C 3F EB
+	lda _var_0028                  ; $EB01  A5 28
+	and #$7F                       ; $EB03  29 7F
+	jmp _func_eb3f                 ; $EB05  4C 3F EB
 
 _func_eb08:
-  lda _var_0028                  ; $EB08  A5 28
-  ora #$80                       ; $EB0A  09 80
-  sta _var_0028                  ; $EB0C  85 28
-  sta PPU_CTRL                   ; $EB0E  8D 00 20
-  rts                            ; $EB11  60
+	lda _var_0028                  ; $EB08  A5 28
+	ora #$80                       ; $EB0A  09 80
+	sta _var_0028                  ; $EB0C  85 28
+	sta PPU_CTRL                   ; $EB0E  8D 00 20
+	rts                            ; $EB11  60
 
 _func_eb12:
-  jsr _func_eb01                 ; $EB12  20 01 EB
-  jmp _label_eb38                ; $EB15  4C 38 EB
+	jsr _func_eb01                 ; $EB12  20 01 EB
+	jmp _label_eb38                ; $EB15  4C 38 EB
 
 
 .byte $20, $08, $eb, $ad, $02, $20, $10, $fb, $ad, $02, $20, $10, $fb, $a5, $29, $09 ; $EB18
 .byte $18, $85, $29, $ad, $02, $20, $10, $fb, $60 ; $EB28
 
 _func_eb31:
-  lda _var_0029                  ; $EB31  A5 29
-  ora #$18                       ; $EB33  09 18
-  jmp _func_eb45                 ; $EB35  4C 45 EB
+	lda _var_0029                  ; $EB31  A5 29
+	ora #$18                       ; $EB33  09 18
+	jmp _func_eb45                 ; $EB35  4C 45 EB
 
 _label_eb38:
-  lda _var_0029                  ; $EB38  A5 29
-  and #$E7                       ; $EB3A  29 E7
-  jmp _func_eb45                 ; $EB3C  4C 45 EB
+	lda _var_0029                  ; $EB38  A5 29
+	and #$E7                       ; $EB3A  29 E7
+	jmp _func_eb45                 ; $EB3C  4C 45 EB
 
 _func_eb3f:
-  sta _var_0028                  ; $EB3F  85 28
-  sta PPU_CTRL                   ; $EB41  8D 00 20
-  rts                            ; $EB44  60
+	sta _var_0028                  ; $EB3F  85 28
+	sta PPU_CTRL                   ; $EB41  8D 00 20
+	rts                            ; $EB44  60
 
 _func_eb45:
-  sta _var_0029                  ; $EB45  85 29
-  sta PPU_MASK                   ; $EB47  8D 01 20
-  rts                            ; $EB4A  60
+	sta _var_0029                  ; $EB45  85 29
+	sta PPU_MASK                   ; $EB47  8D 01 20
+	rts                            ; $EB4A  60
 
 _func_eb4b:
-  jsr _func_eb12                 ; $EB4B  20 12 EB
-  ldy #$00                       ; $EB4E  A0 00
+	jsr _func_eb12                 ; $EB4B  20 12 EB
+	ldy #$00                       ; $EB4E  A0 00
 
 _label_eb50:
-  lda (_var_001c_indexed),Y      ; $EB50  B1 1C
-  cmp #$FF                       ; $EB52  C9 FF
-  beq _label_eb7f                ; $EB54  F0 29
-  tax                            ; $EB56  AA
-  iny                            ; $EB57  C8
-  lda (_var_001c_indexed),Y      ; $EB58  B1 1C
-  iny                            ; $EB5A  C8
-  sty _var_0020_indexed          ; $EB5B  84 20
-  asl a                          ; $EB5D  0A
-  tay                            ; $EB5E  A8
-  lda _var_0020_indexed          ; $EB5F  A5 20
-  pha                            ; $EB61  48
-  lda _var_0000_indexed          ; $EB62  A5 00
-  pha                            ; $EB64  48
-  txa                            ; $EB65  8A
-  jsr _func_ff09                 ; $EB66  20 09 FF
-  lda a:_data_8000_indexed,Y     ; $EB69  B9 00 80
-  sta _var_0036_indexed          ; $EB6C  85 36
-  lda a:_data_8000_indexed+1,Y   ; $EB6E  B9 01 80
-  sta $37                        ; $EB71  85 37
-  jsr _func_ebc3                 ; $EB73  20 C3 EB
-  pla                            ; $EB76  68
-  jsr _func_ff09                 ; $EB77  20 09 FF
-  pla                            ; $EB7A  68
-  tay                            ; $EB7B  A8
-  jmp _label_eb50                ; $EB7C  4C 50 EB
+	lda (_var_001c_indexed),Y      ; $EB50  B1 1C
+	cmp #$FF                       ; $EB52  C9 FF
+	beq _label_eb7f                ; $EB54  F0 29
+	tax                            ; $EB56  AA
+	iny                            ; $EB57  C8
+	lda (_var_001c_indexed),Y      ; $EB58  B1 1C
+	iny                            ; $EB5A  C8
+	sty _var_0020_indexed          ; $EB5B  84 20
+	asl a                          ; $EB5D  0A
+	tay                            ; $EB5E  A8
+	lda _var_0020_indexed          ; $EB5F  A5 20
+	pha                            ; $EB61  48
+	lda _var_0000_indexed          ; $EB62  A5 00
+	pha                            ; $EB64  48
+	txa                            ; $EB65  8A
+	jsr _func_ff09                 ; $EB66  20 09 FF
+	lda a:_data_8000_indexed,Y     ; $EB69  B9 00 80
+	sta _var_0036_indexed          ; $EB6C  85 36
+	lda a:_data_8000_indexed+1,Y   ; $EB6E  B9 01 80
+	sta $37                        ; $EB71  85 37
+	jsr _func_ebc3                 ; $EB73  20 C3 EB
+	pla                            ; $EB76  68
+	jsr _func_ff09                 ; $EB77  20 09 FF
+	pla                            ; $EB7A  68
+	tay                            ; $EB7B  A8
+	jmp _label_eb50                ; $EB7C  4C 50 EB
 
 _label_eb7f:
-  jmp _func_e20b                 ; $EB7F  4C 0B E2
+	jmp _func_e20b                 ; $EB7F  4C 0B E2
 
 _label_eb82:
-  asl a                          ; $EB82  0A
-  asl a                          ; $EB83  0A
-  tay                            ; $EB84  A8
-  lda a:_data_eb9b_indexed,Y     ; $EB85  B9 9B EB
-  jsr _func_ff09                 ; $EB88  20 09 FF
-  lda a:_data_eb9b_indexed+2,Y   ; $EB8B  B9 9D EB
-  sta _var_001c_indexed          ; $EB8E  85 1C
-  lda a:_data_eb9b_indexed+3,Y   ; $EB90  B9 9E EB
-  sta _var_001d                  ; $EB93  85 1D
-  jsr _func_eb12                 ; $EB95  20 12 EB
-  jmp (_var_001c_indexed)        ; $EB98  6C 1C 00  jump engine detected
+	asl a                          ; $EB82  0A
+	asl a                          ; $EB83  0A
+	tay                            ; $EB84  A8
+	lda a:_data_eb9b_indexed,Y     ; $EB85  B9 9B EB
+	jsr _func_ff09                 ; $EB88  20 09 FF
+	lda a:_data_eb9b_indexed+2,Y   ; $EB8B  B9 9D EB
+	sta _var_001c_indexed          ; $EB8E  85 1C
+	lda a:_data_eb9b_indexed+3,Y   ; $EB90  B9 9E EB
+	sta _var_001d                  ; $EB93  85 1D
+	jsr _func_eb12                 ; $EB95  20 12 EB
+	jmp (_var_001c_indexed)        ; $EB98  6C 1C 00  jump engine detected
 
 ; appears to be a global ROM jumptable, as it includes a 16-bit representation of any ROM
 ; bank followed by an address
@@ -5247,125 +5247,125 @@ _data_eb9b_indexed:
 .byte $03, $85, $d6, $60         ; $EBBF
 
 _func_ebc3:
-  ldy #$00                       ; $EBC3  A0 00
+	ldy #$00                       ; $EBC3  A0 00
 
 _label_ebc5:
-  lda (_var_0036_indexed),Y      ; $EBC5  B1 36
-  iny                            ; $EBC7  C8
-  pha                            ; $EBC8  48
-  lda (_var_0036_indexed),Y      ; $EBC9  B1 36
-  iny                            ; $EBCB  C8
-  cmp #$FF                       ; $EBCC  C9 FF
-  beq _label_ec1a                ; $EBCE  F0 4A
-  sta PPU_ADDR                   ; $EBD0  8D 06 20
-  pla                            ; $EBD3  68
-  sta PPU_ADDR                   ; $EBD4  8D 06 20
-  lda (_var_0036_indexed),Y      ; $EBD7  B1 36
-  sta _var_0020_indexed          ; $EBD9  85 20
-  iny                            ; $EBDB  C8
-  lda (_var_0036_indexed),Y      ; $EBDC  B1 36
-  sta _var_0021                  ; $EBDE  85 21
-  iny                            ; $EBE0  C8
-  lda (_var_0036_indexed),Y      ; $EBE1  B1 36
-  sta _var_0022_indexed          ; $EBE3  85 22
-  iny                            ; $EBE5  C8
-  lda (_var_0036_indexed),Y      ; $EBE6  B1 36
-  sta _var_0023                  ; $EBE8  85 23
-  iny                            ; $EBEA  C8
-  tya                            ; $EBEB  98
-  pha                            ; $EBEC  48
-  lda _var_0020_indexed          ; $EBED  A5 20
-  ora _var_0021                  ; $EBEF  05 21
-  beq _label_ec1c                ; $EBF1  F0 29
-  ldy #$00                       ; $EBF3  A0 00
-  lda _var_0021                  ; $EBF5  A5 21
-  beq _label_ec0b                ; $EBF7  F0 12
+	lda (_var_0036_indexed),Y      ; $EBC5  B1 36
+	iny                            ; $EBC7  C8
+	pha                            ; $EBC8  48
+	lda (_var_0036_indexed),Y      ; $EBC9  B1 36
+	iny                            ; $EBCB  C8
+	cmp #$FF                       ; $EBCC  C9 FF
+	beq _label_ec1a                ; $EBCE  F0 4A
+	sta PPU_ADDR                   ; $EBD0  8D 06 20
+	pla                            ; $EBD3  68
+	sta PPU_ADDR                   ; $EBD4  8D 06 20
+	lda (_var_0036_indexed),Y      ; $EBD7  B1 36
+	sta _var_0020_indexed          ; $EBD9  85 20
+	iny                            ; $EBDB  C8
+	lda (_var_0036_indexed),Y      ; $EBDC  B1 36
+	sta _var_0021                  ; $EBDE  85 21
+	iny                            ; $EBE0  C8
+	lda (_var_0036_indexed),Y      ; $EBE1  B1 36
+	sta _var_0022_indexed          ; $EBE3  85 22
+	iny                            ; $EBE5  C8
+	lda (_var_0036_indexed),Y      ; $EBE6  B1 36
+	sta _var_0023                  ; $EBE8  85 23
+	iny                            ; $EBEA  C8
+	tya                            ; $EBEB  98
+	pha                            ; $EBEC  48
+	lda _var_0020_indexed          ; $EBED  A5 20
+	ora _var_0021                  ; $EBEF  05 21
+	beq _label_ec1c                ; $EBF1  F0 29
+	ldy #$00                       ; $EBF3  A0 00
+	lda _var_0021                  ; $EBF5  A5 21
+	beq _label_ec0b                ; $EBF7  F0 12
 
 _label_ebf9:
-  lda (_var_0022_indexed),Y      ; $EBF9  B1 22
-  sta PPU_DATA                   ; $EBFB  8D 07 20
-  iny                            ; $EBFE  C8
-  bne _label_ebf9                ; $EBFF  D0 F8
-  inc _var_0023                  ; $EC01  E6 23
-  dec _var_0021                  ; $EC03  C6 21
-  bne _label_ebf9                ; $EC05  D0 F2
-  lda _var_0020_indexed          ; $EC07  A5 20
-  beq _label_ec15                ; $EC09  F0 0A
+	lda (_var_0022_indexed),Y      ; $EBF9  B1 22
+	sta PPU_DATA                   ; $EBFB  8D 07 20
+	iny                            ; $EBFE  C8
+	bne _label_ebf9                ; $EBFF  D0 F8
+	inc _var_0023                  ; $EC01  E6 23
+	dec _var_0021                  ; $EC03  C6 21
+	bne _label_ebf9                ; $EC05  D0 F2
+	lda _var_0020_indexed          ; $EC07  A5 20
+	beq _label_ec15                ; $EC09  F0 0A
 
 _label_ec0b:
-  lda (_var_0022_indexed),Y      ; $EC0B  B1 22
-  sta PPU_DATA                   ; $EC0D  8D 07 20
-  iny                            ; $EC10  C8
-  cpy _var_0020_indexed          ; $EC11  C4 20
-  bne _label_ec0b                ; $EC13  D0 F6
+	lda (_var_0022_indexed),Y      ; $EC0B  B1 22
+	sta PPU_DATA                   ; $EC0D  8D 07 20
+	iny                            ; $EC10  C8
+	cpy _var_0020_indexed          ; $EC11  C4 20
+	bne _label_ec0b                ; $EC13  D0 F6
 
 _label_ec15:
-  pla                            ; $EC15  68
-  tay                            ; $EC16  A8
-  jmp _label_ebc5                ; $EC17  4C C5 EB
+	pla                            ; $EC15  68
+	tay                            ; $EC16  A8
+	jmp _label_ebc5                ; $EC17  4C C5 EB
 
 _label_ec1a:
-  pla                            ; $EC1A  68
-  rts                            ; $EC1B  60
+	pla                            ; $EC1A  68
+	rts                            ; $EC1B  60
 
 _label_ec1c:
-  ldy #$00                       ; $EC1C  A0 00
-  ldx #$00                       ; $EC1E  A2 00
+	ldy #$00                       ; $EC1C  A0 00
+	ldx #$00                       ; $EC1E  A2 00
 
 _label_ec20:
-  lda (_var_0022_indexed),Y      ; $EC20  B1 22
-  bmi _label_ec41                ; $EC22  30 1D
-  beq _label_ec15                ; $EC24  F0 EF
-  sta _var_0020_indexed          ; $EC26  85 20
-  iny                            ; $EC28  C8
-  bne _label_ec2d                ; $EC29  D0 02
-  inc _var_0023                  ; $EC2B  E6 23
+	lda (_var_0022_indexed),Y      ; $EC20  B1 22
+	bmi _label_ec41                ; $EC22  30 1D
+	beq _label_ec15                ; $EC24  F0 EF
+	sta _var_0020_indexed          ; $EC26  85 20
+	iny                            ; $EC28  C8
+	bne _label_ec2d                ; $EC29  D0 02
+	inc _var_0023                  ; $EC2B  E6 23
 
 _label_ec2d:
-  lda (_var_0022_indexed),Y      ; $EC2D  B1 22
-  sta a:_var_0200_indexed,X      ; $EC2F  9D 00 02
-  sta PPU_DATA                   ; $EC32  8D 07 20
-  inx                            ; $EC35  E8
-  iny                            ; $EC36  C8
-  bne _label_ec3b                ; $EC37  D0 02
-  inc _var_0023                  ; $EC39  E6 23
+	lda (_var_0022_indexed),Y      ; $EC2D  B1 22
+	sta a:_var_0200_indexed,X      ; $EC2F  9D 00 02
+	sta PPU_DATA                   ; $EC32  8D 07 20
+	inx                            ; $EC35  E8
+	iny                            ; $EC36  C8
+	bne _label_ec3b                ; $EC37  D0 02
+	inc _var_0023                  ; $EC39  E6 23
 
 _label_ec3b:
-  dec _var_0020_indexed          ; $EC3B  C6 20
-  bne _label_ec2d                ; $EC3D  D0 EE
-  beq _label_ec20                ; $EC3F  F0 DF
+	dec _var_0020_indexed          ; $EC3B  C6 20
+	bne _label_ec2d                ; $EC3D  D0 EE
+	beq _label_ec20                ; $EC3F  F0 DF
 
 _label_ec41:
-  iny                            ; $EC41  C8
-  bne _label_ec46                ; $EC42  D0 02
-  inc _var_0023                  ; $EC44  E6 23
+	iny                            ; $EC41  C8
+	bne _label_ec46                ; $EC42  D0 02
+	inc _var_0023                  ; $EC44  E6 23
 
 _label_ec46:
-  and #$7F                       ; $EC46  29 7F
-  clc                            ; $EC48  18
-  adc #$03                       ; $EC49  69 03
-  sta _var_0020_indexed          ; $EC4B  85 20
-  lda (_var_0022_indexed),Y      ; $EC4D  B1 22
-  sta _var_0021                  ; $EC4F  85 21
-  txa                            ; $EC51  8A
-  clc                            ; $EC52  18
-  sbc _var_0021                  ; $EC53  E5 21
-  sty _var_0021                  ; $EC55  84 21
-  tay                            ; $EC57  A8
+	and #$7F                       ; $EC46  29 7F
+	clc                            ; $EC48  18
+	adc #$03                       ; $EC49  69 03
+	sta _var_0020_indexed          ; $EC4B  85 20
+	lda (_var_0022_indexed),Y      ; $EC4D  B1 22
+	sta _var_0021                  ; $EC4F  85 21
+	txa                            ; $EC51  8A
+	clc                            ; $EC52  18
+	sbc _var_0021                  ; $EC53  E5 21
+	sty _var_0021                  ; $EC55  84 21
+	tay                            ; $EC57  A8
 
 _label_ec58:
-  lda a:_var_0200_indexed,Y      ; $EC58  B9 00 02
-  sta a:_var_0200_indexed,X      ; $EC5B  9D 00 02
-  sta PPU_DATA                   ; $EC5E  8D 07 20
-  inx                            ; $EC61  E8
-  iny                            ; $EC62  C8
-  dec _var_0020_indexed          ; $EC63  C6 20
-  bne _label_ec58                ; $EC65  D0 F1
-  ldy _var_0021                  ; $EC67  A4 21
-  iny                            ; $EC69  C8
-  bne _label_ec20                ; $EC6A  D0 B4
-  inc _var_0023                  ; $EC6C  E6 23
-  jmp _label_ec20                ; $EC6E  4C 20 EC
+	lda a:_var_0200_indexed,Y      ; $EC58  B9 00 02
+	sta a:_var_0200_indexed,X      ; $EC5B  9D 00 02
+	sta PPU_DATA                   ; $EC5E  8D 07 20
+	inx                            ; $EC61  E8
+	iny                            ; $EC62  C8
+	dec _var_0020_indexed          ; $EC63  C6 20
+	bne _label_ec58                ; $EC65  D0 F1
+	ldy _var_0021                  ; $EC67  A4 21
+	iny                            ; $EC69  C8
+	bne _label_ec20                ; $EC6A  D0 B4
+	inc _var_0023                  ; $EC6C  E6 23
+	jmp _label_ec20                ; $EC6E  4C 20 EC
 
 
 .byte $bd, $4c, $06, $85, $3d, $bd, $44, $06, $85, $3c, $bd, $1c, $06, $85, $3f, $bd ; $EC71
@@ -5399,134 +5399,134 @@ _label_ec58:
 .byte $10, $f0, $02, $38, $60, $68, $68, $4c, $9b, $ee ; $EE31
 
 _func_ee3b:
-  jsr _func_e20b                 ; $EE3B  20 0B E2
-  lda _var_0039                  ; $EE3E  A5 39
-  and #$3D                       ; $EE40  29 3D
-  sta _var_0039                  ; $EE42  85 39
-  lda #$00                       ; $EE44  A9 00
-  sta $38                        ; $EE46  85 38
-  rts                            ; $EE48  60
+	jsr _func_e20b                 ; $EE3B  20 0B E2
+	lda _var_0039                  ; $EE3E  A5 39
+	and #$3D                       ; $EE40  29 3D
+	sta _var_0039                  ; $EE42  85 39
+	lda #$00                       ; $EE44  A9 00
+	sta $38                        ; $EE46  85 38
+	rts                            ; $EE48  60
 
 _func_ee49:
-  lda _var_0039                  ; $EE49  A5 39
-  and #$7E                       ; $EE4B  29 7E
-  sta _var_0039                  ; $EE4D  85 39
-  and #$40                       ; $EE4F  29 40
-  bne _label_ee58                ; $EE51  D0 05
-  lda #$10                       ; $EE53  A9 10
-  sta _var_003a                  ; $EE55  85 3A
-  rts                            ; $EE57  60
+	lda _var_0039                  ; $EE49  A5 39
+	and #$7E                       ; $EE4B  29 7E
+	sta _var_0039                  ; $EE4D  85 39
+	and #$40                       ; $EE4F  29 40
+	bne _label_ee58                ; $EE51  D0 05
+	lda #$10                       ; $EE53  A9 10
+	sta _var_003a                  ; $EE55  85 3A
+	rts                            ; $EE57  60
 
 _label_ee58:
-  lda #$F0                       ; $EE58  A9 F0
-  sta _var_003a                  ; $EE5A  85 3A
-  rts                            ; $EE5C  60
+	lda #$F0                       ; $EE58  A9 F0
+	sta _var_003a                  ; $EE5A  85 3A
+	rts                            ; $EE5C  60
 
 _func_ee5d:
-  ldx _var_003a                  ; $EE5D  A6 3A
-  bit _var_0039                  ; $EE5F  24 39
-  bvs _label_ee85                ; $EE61  70 22
-  bmi _label_ee94                ; $EE63  30 2F
-  lda #$F8                       ; $EE65  A9 F8
+	ldx _var_003a                  ; $EE5D  A6 3A
+	bit _var_0039                  ; $EE5F  24 39
+	bvs _label_ee85                ; $EE61  70 22
+	bmi _label_ee94                ; $EE63  30 2F
+	lda #$F8                       ; $EE65  A9 F8
 
 _label_ee67:
-  sta a:_var_0200_indexed,X      ; $EE67  9D 00 02
-  inx                            ; $EE6A  E8
-  inx                            ; $EE6B  E8
-  inx                            ; $EE6C  E8
-  inx                            ; $EE6D  E8
-  cpx #$F4                       ; $EE6E  E0 F4
-  bne _label_ee67                ; $EE70  D0 F5
-  lda _var_0039                  ; $EE72  A5 39
-  and #$08                       ; $EE74  29 08
-  bne _label_ee84                ; $EE76  D0 0C
-  lda _var_0039                  ; $EE78  A5 39
-  and #$04                       ; $EE7A  29 04
-  beq _label_ee94                ; $EE7C  F0 16
-  lda _var_002a                  ; $EE7E  A5 2A
-  and #$A0                       ; $EE80  29 A0
-  bne _label_ee94                ; $EE82  D0 10
+	sta a:_var_0200_indexed,X      ; $EE67  9D 00 02
+	inx                            ; $EE6A  E8
+	inx                            ; $EE6B  E8
+	inx                            ; $EE6C  E8
+	inx                            ; $EE6D  E8
+	cpx #$F4                       ; $EE6E  E0 F4
+	bne _label_ee67                ; $EE70  D0 F5
+	lda _var_0039                  ; $EE72  A5 39
+	and #$08                       ; $EE74  29 08
+	bne _label_ee84                ; $EE76  D0 0C
+	lda _var_0039                  ; $EE78  A5 39
+	and #$04                       ; $EE7A  29 04
+	beq _label_ee94                ; $EE7C  F0 16
+	lda _var_002a                  ; $EE7E  A5 2A
+	and #$A0                       ; $EE80  29 A0
+	bne _label_ee94                ; $EE82  D0 10
 
 _label_ee84:
-  rts                            ; $EE84  60
+	rts                            ; $EE84  60
 
 _label_ee85:
-  bmi _label_ee94                ; $EE85  30 0D
-  lda #$F8                       ; $EE87  A9 F8
+	bmi _label_ee94                ; $EE85  30 0D
+	lda #$F8                       ; $EE87  A9 F8
 
 _label_ee89:
-  sta a:_var_0200_indexed,X      ; $EE89  9D 00 02
-  dex                            ; $EE8C  CA
-  dex                            ; $EE8D  CA
-  dex                            ; $EE8E  CA
-  dex                            ; $EE8F  CA
-  cpx #$0C                       ; $EE90  E0 0C
-  bne _label_ee89                ; $EE92  D0 F5
+	sta a:_var_0200_indexed,X      ; $EE89  9D 00 02
+	dex                            ; $EE8C  CA
+	dex                            ; $EE8D  CA
+	dex                            ; $EE8E  CA
+	dex                            ; $EE8F  CA
+	cpx #$0C                       ; $EE90  E0 0C
+	bne _label_ee89                ; $EE92  D0 F5
 
 _label_ee94:
-  lda _var_0039                  ; $EE94  A5 39
-  eor #$40                       ; $EE96  49 40
-  sta _var_0039                  ; $EE98  85 39
-  rts                            ; $EE9A  60
+	lda _var_0039                  ; $EE94  A5 39
+	eor #$40                       ; $EE96  49 40
+	sta _var_0039                  ; $EE98  85 39
+	rts                            ; $EE9A  60
 
 
 .byte $a9, $00, $9d, $00, $06, $9d, $04, $06, $9d, $40, $06, $9d, $48, $06, $9d, $0c ; $EE9B
 .byte $06, $9d, $10, $06, $60    ; $EEAB
 
 _func_eeb0:
-  ldx #$00                       ; $EEB0  A2 00
-  stx _var_0032                  ; $EEB2  86 32
+	ldx #$00                       ; $EEB0  A2 00
+	stx _var_0032                  ; $EEB2  86 32
 
 _label_eeb4:
-  ldx _var_0032                  ; $EEB4  A6 32
-  lda a:_var_0600_indexed,X      ; $EEB6  BD 00 06
-  beq _label_eebe                ; $EEB9  F0 03
-  jsr _jump_engine_eec7          ; $EEBB  20 C7 EE
+	ldx _var_0032                  ; $EEB4  A6 32
+	lda a:_var_0600_indexed,X      ; $EEB6  BD 00 06
+	beq _label_eebe                ; $EEB9  F0 03
+	jsr _jump_engine_eec7          ; $EEBB  20 C7 EE
 
 _label_eebe:
-  inc _var_0032                  ; $EEBE  E6 32
-  lda _var_0032                  ; $EEC0  A5 32
-  cmp #$04                       ; $EEC2  C9 04
-  bne _label_eeb4                ; $EEC4  D0 EE
-  rts                            ; $EEC6  60
+	inc _var_0032                  ; $EEBE  E6 32
+	lda _var_0032                  ; $EEC0  A5 32
+	cmp #$04                       ; $EEC2  C9 04
+	bne _label_eeb4                ; $EEC4  D0 EE
+	rts                            ; $EEC6  60
 
 _jump_engine_eec7:               ; jump engine detected
-  ldy a:_var_0604_indexed,X      ; $EEC7  BC 04 06
-  beq _label_eed6                ; $EECA  F0 0A
-  sty _var_001d                  ; $EECC  84 1D
-  lda a:_var_0608_indexed,X      ; $EECE  BD 08 06
-  sta _var_001c_indexed          ; $EED1  85 1C
-  jmp (_var_001c_indexed)        ; $EED3  6C 1C 00
+	ldy a:_var_0604_indexed,X      ; $EEC7  BC 04 06
+	beq _label_eed6                ; $EECA  F0 0A
+	sty _var_001d                  ; $EECC  84 1D
+	lda a:_var_0608_indexed,X      ; $EECE  BD 08 06
+	sta _var_001c_indexed          ; $EED1  85 1C
+	jmp (_var_001c_indexed)        ; $EED3  6C 1C 00
 
 _label_eed6:
-  asl a                          ; $EED6  0A
-  tay                            ; $EED7  A8
-  lda (_var_0006_indexed),Y      ; $EED8  B1 06
-  sta _var_001c_indexed          ; $EEDA  85 1C
-  iny                            ; $EEDC  C8
-  lda (_var_0006_indexed),Y      ; $EEDD  B1 06
-  sta _var_001d                  ; $EEDF  85 1D
-  jmp (_var_001c_indexed)        ; $EEE1  6C 1C 00
+	asl a                          ; $EED6  0A
+	tay                            ; $EED7  A8
+	lda (_var_0006_indexed),Y      ; $EED8  B1 06
+	sta _var_001c_indexed          ; $EEDA  85 1C
+	iny                            ; $EEDC  C8
+	lda (_var_0006_indexed),Y      ; $EEDD  B1 06
+	sta _var_001d                  ; $EEDF  85 1D
+	jmp (_var_001c_indexed)        ; $EEE1  6C 1C 00
 
 _func_eee4:
-  ldy #$00                       ; $EEE4  A0 00
-  pha                            ; $EEE6  48
+	ldy #$00                       ; $EEE4  A0 00
+	pha                            ; $EEE6  48
 
 _label_eee7:
-  lda a:_var_0600_indexed,Y      ; $EEE7  B9 00 06
-  beq _label_eef4                ; $EEEA  F0 08
-  iny                            ; $EEEC  C8
-  cpy $04                        ; $EEED  C4 04
-  bne _label_eee7                ; $EEEF  D0 F6
-  pla                            ; $EEF1  68
-  sec                            ; $EEF2  38
-  rts                            ; $EEF3  60
+	lda a:_var_0600_indexed,Y      ; $EEE7  B9 00 06
+	beq _label_eef4                ; $EEEA  F0 08
+	iny                            ; $EEEC  C8
+	cpy $04                        ; $EEED  C4 04
+	bne _label_eee7                ; $EEEF  D0 F6
+	pla                            ; $EEF1  68
+	sec                            ; $EEF2  38
+	rts                            ; $EEF3  60
 
 _label_eef4:
-  pla                            ; $EEF4  68
-  sta a:_var_0600_indexed,Y      ; $EEF5  99 00 06
-  clc                            ; $EEF8  18
-  rts                            ; $EEF9  60
+	pla                            ; $EEF4  68
+	sta a:_var_0600_indexed,Y      ; $EEF5  99 00 06
+	clc                            ; $EEF8  18
+	rts                            ; $EEF9  60
 
 
 .byte $9d, $14, $06, $68, $18, $69, $01, $9d, $08, $06, $85, $30, $68, $69, $00, $9d ; $EEFA
@@ -5537,14 +5537,14 @@ _label_eef4:
 .byte $1d, $c6, $19, $d0, $eb, $60 ; $EF4A
 
 _func_ef50:
-  lda #$00                       ; $EF50  A9 00
-  tax                            ; $EF52  AA
+	lda #$00                       ; $EF50  A9 00
+	tax                            ; $EF52  AA
 
 _label_ef53:
-  sta a:_var_0600_indexed,X      ; $EF53  9D 00 06
-  dex                            ; $EF56  CA
-  bne _label_ef53                ; $EF57  D0 FA
-  rts                            ; $EF59  60
+	sta a:_var_0600_indexed,X      ; $EF53  9D 00 06
+	dex                            ; $EF56  CA
+	bne _label_ef53                ; $EF57  D0 FA
+	rts                            ; $EF59  60
 
 .byte $ce, $d3, $d8, $dd, $e2, $e7, $ec, $f1, $f6, $fb, $00, $05, $0a, $0f, $14, $19 ; $EF5A
 .byte $1e, $23, $28, $2d, $32, $37, $3c, $41, $46, $4b, $50, $55, $5a, $5f, $64, $69 ; $EF6A
@@ -5592,13 +5592,13 @@ _data_ff08:
 .byte $00                        ; $FF08
 
 _func_ff09:
-  sta _var_0000_indexed          ; $FF09  85 00
-  sty _var_0020_indexed          ; $FF0B  84 20
-  tay                            ; $FF0D  A8
-  lda a:_data_ff00_indexed,Y     ; $FF0E  B9 00 FF
-  sta a:_data_ff00_indexed,Y     ; $FF11  99 00 FF
-  ldy _var_0020_indexed          ; $FF14  A4 20
-  rts                            ; $FF16  60
+	sta _var_0000_indexed          ; $FF09  85 00
+	sty _var_0020_indexed          ; $FF0B  84 20
+	tay                            ; $FF0D  A8
+	lda a:_data_ff00_indexed,Y     ; $FF0E  B9 00 FF
+	sta a:_data_ff00_indexed,Y     ; $FF11  99 00 FF
+	ldy _var_0020_indexed          ; $FF14  A4 20
+	rts                            ; $FF16  60
 
 .pad $ffe0, $ff
 
