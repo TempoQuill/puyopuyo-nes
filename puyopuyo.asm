@@ -1795,7 +1795,7 @@ _label_8e98:
 .incbin "chr/font.chr"
 .incbin "chr/bricks.chr"
 
-.align $4000
+.align $4000, $ff
 ; banks 2-4 are entirely empty, this provides plenty of room for additional game code
 .dsb $4000, $ff
 .dsb $4000, $ff
@@ -5597,8 +5597,8 @@ _func_ff09:
 	sta _var_0000_indexed          ; $FF09  85 00
 	sty _var_0020_indexed          ; $FF0B  84 20
 	tay                            ; $FF0D  A8
-	lda _data_ff00_indexed,Y     ; $FF0E  B9 00 FF
-	sta _data_ff00_indexed,Y     ; $FF11  99 00 FF
+	lda _data_ff00_indexed,Y       ; $FF0E  B9 00 FF
+	sta _data_ff00_indexed,Y       ; $FF11  99 00 FF
 	ldy _var_0020_indexed          ; $FF14  A4 20
 	rts                            ; $FF16  60
 
