@@ -5583,7 +5583,7 @@ _data_f0eb_indexed:
 
 .pad $f700, $ff
 
-.incbin "src/dmc.bin"
+.incbin "src/raw/dmc.bin"
 
 ; appears to represent the available ROM banks, as the routine responsible reads and pokes
 ; this table
